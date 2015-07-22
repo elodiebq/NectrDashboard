@@ -1,9 +1,4 @@
-/*
-Team 5
-Task 7
-Date: Jan. 28, 2015
-Only for educational use
- */
+
 package model;
 
 import javax.servlet.ServletConfig;
@@ -13,15 +8,13 @@ import org.genericdao.ConnectionPool;
 import org.genericdao.DAOException;
 import org.genericdao.RollbackException;
 
-import databeans.EmployeeBean;
+import databeans.AdminBean;
+import databeans.BusinessProfileBean;
 
 public class Model {
-	private CustomerDAO 	customerDAO;
-	private EmployeeDAO     employeeDAO;
-	private FundDAO     	fundDAO;
-	private PositionDAO 	positionDAO;
-	private PriceDAO    	priceDAO;
-	private TransactionDAO  transactionDAO; 
+	private BusinessProfileDAO 	businessDAO;
+	private AdminDAO     adminDAO;
+
 	
 
 	public Model(ServletConfig config) throws ServletException {
@@ -30,33 +23,16 @@ public class Model {
 			String jdbcURL    = config.getInitParameter("jdbcURL");
 		
 			ConnectionPool pool = new ConnectionPool(jdbcDriver, jdbcURL);
-			employeeDAO     = new EmployeeDAO("employee", pool);
-			customerDAO     = new CustomerDAO("customer", pool);
-			fundDAO 	    = new FundDAO("fund", pool);
-			positionDAO     = new PositionDAO("position", pool);
-			priceDAO        = new PriceDAO("price", pool);
-			transactionDAO  = new TransactionDAO("transaction", pool);
+			adminDAO     = new AdminDAO("admin", pool);
+			businessDAO   = new BusinessProfileDAO("businessProfile",pool);
+	
 		} catch (DAOException e) {
 			throw new ServletException(e);
 		}
 		
-		try {
-			if (employeeDAO.read("admin") == null) {
-				EmployeeBean admin = new EmployeeBean();
-				admin.setFirstName("John");
-				admin.setLastName("Smith");
-				admin.setPassword("123");
-				admin.setUserName("admin");
-				employeeDAO.create(admin);
-			}
-		} catch (RollbackException e) {
-			e.printStackTrace();
-		}
+		
 	}
-	public EmployeeDAO    getEmployeeDAO()    { return employeeDAO;    }
-	public CustomerDAO    getCustomerDAO()    { return customerDAO;    }
-	public FundDAO        geFundDAO()  		  { return fundDAO;  	   }
-	public PositionDAO    getPositionDAO()    { return positionDAO;    }
-	public PriceDAO  	  getPriceDAO()  	  { return priceDAO;       }
-	public TransactionDAO getTransactionDAO() { return transactionDAO; }
+	public AdminDAO    getAdminDAO()    { return adminDAO;    }
+	public BusinessProfileDAO    getBusinessProfileDAO()    { return businessDAO;    }
 }
+

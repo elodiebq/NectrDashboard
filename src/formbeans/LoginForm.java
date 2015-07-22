@@ -1,9 +1,9 @@
-/*
-Team 5
-Task 7
-Date: Jan. 28, 2015
-Only for educational use
- */
+//Hua-Ming Lee
+//huamingl
+//08-600
+//hw9
+//2014/12/1
+
 package formbeans;
 
 import java.util.ArrayList;
@@ -11,34 +11,34 @@ import java.util.List;
 
 import org.mybeans.form.FormBean;
 
-public class LoginForm extends FormBean{
-	private String userName;
+public class LoginForm extends FormBean {
+	private String username;
 	private String password;
-	private String action;
-	
-	public void setUserName(String s) { userName = trimAndConvert(s,"<>\""); }
-	public void setAction(String s)   { action   = trimAndConvert(s,"<>\""); }
-	public void setPassword(String s) { password = trimAndConvert(s,"<>\""); }
-	public String getUserName() { return userName; }
-	public String getPassword() { return password; }
-	public String getAction()   { return action;   }
+	private String type;
 
+	public void setUsername(String s) { username = s.trim(); }
+	public void setPassword(String s) { password = s.trim();	}
+    public void setType(String s) {	type = s;}
+	
+	public String getUsername() {	return username;	}
+	public String getPassword() {		return password;	}
+    public String getType() {	return type;}
+	
 
 	public List<String> getValidationErrors() {
 		List<String> errors = new ArrayList<String>();
 
-		if (userName == null || userName.length() == 0)
-			errors.add("UserName is required");
+		if (username == null || username.length() == 0)
+			errors.add("Username is required");
 		if (password == null || password.length() == 0)
 			errors.add("Password is required");
-		if (action == null)
-			errors.add("Button is required");
 
 		if (errors.size() > 0)
 			return errors;
+		
+        if (username.matches(".*[<>?*\"].*")) errors.add("User Name may not contain angle brackets or quotes");
 
-		if (!action.equals("Login"))
-			errors.add("Invalid button");
 		return errors;
 	}
+
 }
