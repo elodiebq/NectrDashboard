@@ -112,12 +112,12 @@ public class LoginAction extends Action {
 		            return "login.jsp";
 		        }
 	        	
-	        	//prevent multiple sessions
-	    		AdminBean a = (AdminBean) request.getSession(false).getAttribute("admin");
-	    		if(a!=null)
-	    		{
-	    			return "login.jsp";
-	    		}
+//	        	//prevent multiple sessions
+//	    		AdminBean a = (AdminBean) request.getSession(false).getAttribute("admin");
+//	    		if(a!=null)
+//	    		{
+//	    			return "login.jsp";
+//	    		}
 	        	
 	        	session.setAttribute("admin",admin);
 				return "create_business.jsp";
