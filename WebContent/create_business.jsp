@@ -296,7 +296,8 @@
                         <!-- start: REGISTER BOX -->
 				<div class="box-register">
 				<div class="col-sm-6">
-					<form class="form-register">
+					<h4 style="color: red">${msg}</h4>
+					<form class="form-register" method="POST" action="create_business.do">
 						<fieldset>
 							<legend>
 								Business Info
@@ -305,7 +306,7 @@
 								Enter new business owner's info below:
 							</p>
 							<div class="form-group">
-								<input type="text" class="form-control" name="full_name" placeholder="Company Name">
+								<input type="text" name="name" class="form-control" placeholder="Company Name">
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" name="address" placeholder="Address">
@@ -333,41 +334,41 @@
 								</div>
 							</div>
 							<div>
-							<form class="form-horizontal" role="form">
+							
 								  <div class="form-group">
 								    <label class="control-label col-sm-2" for="phone">Phone:</label>
 								    <div class="col-sm-10">
-								      <input type="phone" class="form-control" id="phone" placeholder="Enter phone number">
+								      <input type="phone" name="phone" class="form-control" id="phone" placeholder="Enter phone number">
 								    </div>
 								  </div>
 								  <div class="form-group">
 								    <label class="control-label col-sm-2" for="website">Website:</label>
 								    <div class="col-sm-10"> 
-								      <input type="website" class="form-control" id="website" placeholder="Enter website address">
+								      <input type="website" class="form-control" name="website" placeholder="Enter website address">
 								    </div>
 								  </div>
 								  <div class="form-group">
 								    <label class="control-label col-sm-2" for="email">Email:</label>
 								    <div class="col-sm-10"> 
-								      <input type="email" class="form-control" id="email" placeholder="Enter email address">
+								      <input type="email" class="form-control" name="email" placeholder="Enter email address">
 								    </div>
 								  </div>
 								<div class="input-append bootstrap-timepicker">
 								            Business Hours <br></br>
-								            From:<input type="time" name="hrs" id="timefrom" placeholder="hrs:mins" value="" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="inputs duration t1 time hrs" required>
-								            To:<input type="time" name="hrs" id = "timeto" placeholder="hrs:mins" value="" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="inputs duration t1 time hrs" required>
+								            From:<input type="time" name="hrs" name="timefrom" placeholder="hrs:mins" value="" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="inputs duration t1 time hrs" required>
+								            To:<input type="time" name="hrs" name = "timeto" placeholder="hrs:mins" value="" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="inputs duration t1 time hrs" required>
 								        </div>
-								</form>
+							
 								<br></br>
 								</div>
 							<div class = "form-group">
 							<p>
 								Description:
 							</p>
-							<textarea class="form-control" rows="5" id="description"></textarea>
+							<textarea class="form-control" rows="5" name="description"></textarea>
 							</div>
 							<div class="form-actions">
-								<button type="submit" class="btn btn-primary pull-right">
+								<button type="submit"  name="action" class="btn btn-primary pull-right">
 									Submit <i class="fa fa-arrow-circle-right"></i>
 								</button>
 							</div>
