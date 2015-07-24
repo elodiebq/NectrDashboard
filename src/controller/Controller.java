@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -17,6 +16,7 @@ import org.genericdao.RollbackException;
 
 import databeans.AdminBean;
 import databeans.BusinessProfileBean;
+import databeans.CampaignBean;
 
 public class Controller extends HttpServlet {
 
@@ -49,6 +49,7 @@ public class Controller extends HttpServlet {
 		String servletPath = request.getServletPath();
 		AdminBean admin = (AdminBean) session.getAttribute("admin");
 		BusinessProfileBean business = (BusinessProfileBean) session.getAttribute("business");
+		CampaignBean campaign = (CampaignBean) session.getAttribute("campaign");
 
 		String action = getActionName(servletPath);
 
