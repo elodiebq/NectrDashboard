@@ -296,7 +296,8 @@
                         <!-- start: REGISTER BOX -->
 				<div class="box-register">
 				<div class="col-sm-6">
-					<form class="form-register">
+				<h4 style="color: red">${msg}</h4>
+					<form class="form-register"  method="POST" action="create_campaign.do">
 						<fieldset>
 							<legend>
 								Campaign Info
