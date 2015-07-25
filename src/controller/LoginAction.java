@@ -120,7 +120,7 @@ public class LoginAction extends Action {
 //	    		}
 	        	
 	        	session.setAttribute("admin",admin);
-				return "create_business.jsp";
+				return "create_campaign.jsp";
 	        }
         } catch (RollbackException e) {
         	errors.add(e.getMessage());

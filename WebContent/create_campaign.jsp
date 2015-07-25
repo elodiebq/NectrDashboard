@@ -21,6 +21,8 @@
         <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
         <!-- end: GOOGLE FONTS -->
         <!-- start: MAIN CSS -->
+        <link rel="stylesheet" href="styles/kendo.common.min.css" />
+    	<link rel="stylesheet" href="styles/kendo.default.min.css" />
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="vendor/themify-icons/themify-icons.min.css">
@@ -39,6 +41,11 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-2.2.2.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+        <script language="javascript">var today = new Date();
+        			document.getElementById('time').innerHTML=today;
+ 		</script>
+ 		<script src="js/jquery.min.js"></script>
+    	<script src="js/kendo.all.min.js"></script>
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     </head>
     <!-- end: HEAD -->
@@ -261,6 +268,7 @@
                                 <div class="col-sm-7">
                                     <h1 class="mainTitle">Create Campaign</h1>
                                     <span class="mainDescription">for a new campaign </span>
+                                    <span id="time"></span>
                                 </div>
                                 <div class="col-sm-5">
                                     <!-- start: MINI STATS WITH SPARKLINE -->
@@ -310,14 +318,12 @@
 							</div>
 							<div class="form-group">
 								            Campaign Time <br></br>
-								            From:&nbsp;<input type="date" name="hrs" placeholder="hrs:mins" value="" class="inputs duration t1 time hrs" required>
-								            <input type="time" name="hrs" placeholder="hrs:mins" value="" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="inputs duration t1 time hrs" required>
-								            To:&nbsp;<input type="date" name="hrs" placeholder="hrs:mins" value="" class="inputs duration t1 time hrs" required>
-								            <input type="time" name="hrs" placeholder="hrs:mins" value="" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="inputs duration t1 time hrs" required>
+								            From:&nbsp; <input type="datetime-local" name="time_from" value = "time_from">
+								            To:&nbsp;<input type="datetime-local" name="time_to" value = "time_to">
 											<br>
 											</div>
 											<div class = "form-group">
-											Repeats:    <select name="repeat">
+											Repeats:    <select name="repeats">
 															<option value="never">Never</option>
 															<option value="daily">Daily</option>
 															<option value="weekly">Weekly</option>
@@ -325,13 +331,13 @@
 															<option value="yearly">Yearly</option>
 															</select>
 															<br>
-											Repeat on: <input type="checkbox" name="day" value="sunday">S
-											<input type="checkbox" name="day" value="monday">M
-											<input type="checkbox" name="day" value="tuesday">T
-											<input type="checkbox" name="day" value="wednesday">W
-											<input type="checkbox" name="day" value="thursday">T
-											<input type="checkbox" name="day" value="friday">F
-											<input type="checkbox" name="day" value="saturday">S
+											Repeat on: <input type="checkbox" name="repeats_on" value="7">S
+											<input type="checkbox" name="repeats_on" value="1">M
+											<input type="checkbox" name="repeats_on" value="2">T
+											<input type="checkbox" name="repeats_on" value="3">W
+											<input type="checkbox" name="repeats_on" value="4">T
+											<input type="checkbox" name="repeats_on" value="5">F
+											<input type="checkbox" name="repeats_on" value="6">S
 											<br>
 								           
 								           </div>
@@ -339,10 +345,10 @@
 							<p>
 								Campaign Message:
 							</p>
-							<textarea class="form-control" rows="5" id="description"></textarea>
+							<textarea class="form-control" name = "message" rows="5" id="description"></textarea>
 							</div>
 							<div class="form-actions">
-								<button type="submit" class="btn btn-primary pull-right">
+								<button type="submit" name = "action" class="btn btn-primary pull-right">
 									Submit <i class="fa fa-arrow-circle-right"></i>
 								</button>
 							</div>

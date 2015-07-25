@@ -27,6 +27,7 @@ public class Controller extends HttpServlet {
 		
 		Action.add(new LoginAction(model));
 		Action.add(new CreateBusinessAction(model));
+		Action.add(new CreateCampaignAction(model));
 		
 	
 	initializeTable(model.getAdminDAO());
