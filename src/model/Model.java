@@ -13,6 +13,7 @@ import databeans.BusinessProfileBean;
 
 public class Model {
 	private BusinessProfileDAO 	businessDAO;
+	private CampaignDAO campaignDAO;
 	private AdminDAO     adminDAO;
 
 	
@@ -25,6 +26,7 @@ public class Model {
 			ConnectionPool pool = new ConnectionPool(jdbcDriver, jdbcURL);
 			adminDAO     = new AdminDAO("admin", pool);
 			businessDAO   = new BusinessProfileDAO("businessProfile",pool);
+			campaignDAO = new CampaignDAO("campaign",pool);
 	
 		} catch (DAOException e) {
 			throw new ServletException(e);
@@ -34,5 +36,6 @@ public class Model {
 	}
 	public AdminDAO    getAdminDAO()    { return adminDAO;    }
 	public BusinessProfileDAO    getBusinessProfileDAO()    { return businessDAO;    }
+	public CampaignDAO getCampaignDAO() {return campaignDAO;}
 }
 
