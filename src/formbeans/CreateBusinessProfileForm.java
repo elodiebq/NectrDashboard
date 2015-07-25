@@ -6,6 +6,7 @@
 
 package formbeans;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +22,9 @@ public class CreateBusinessProfileForm extends FormBean {
 	private String twitter;
 	private String created_at;  
 	private String password;
-	//private String email;
 
 	public String getName()    { return name; }
 	public String getPhone()     { return phone;  }
-	//public String getEmail()    { return email; }
 	public String getOperation_hours() 	{ return operation_hours;	}
 	public String getWebsite() 		{ return website;		}
 	public String getDescription() 		{ return description;		}
@@ -35,7 +34,6 @@ public class CreateBusinessProfileForm extends FormBean {
 
 	public void setName(String s) 		  {	name      = s.trim(); }
     public void setPhone(String s) 	  {	phone  = s.trim(); }
-    //public void setEmail(String s)    { email = s; }
 	public void setOperation_housrs(String s)     {	operation_hours   = s.trim(); }
 	public void setWebsite(String s) 		  {	website       = s.trim();	}
 	public void setDescription(String s)    {	description  = s.trim(); }

@@ -1,9 +1,10 @@
 
 package databeans;
 
-
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
-
+import java.util.Random;
 
 import org.genericdao.PrimaryKey;
 
@@ -20,13 +21,11 @@ public class BusinessProfileBean {
 	private String twitter;
 	private Date created_at; 
 	private String password;
-	//private String email;
 	
 	
 	
 	public int    getBusiness_id()   { return business_id;}
 	public String getName()    { return name; }
-	//public String getEmail()    { return email; }
 	public String getPhone()     { return phone;  }
 	public String getOperation_hours() 	{ return operation_hours;	}
 	public String getWebsite() 		{ return website;		}
@@ -37,7 +36,6 @@ public class BusinessProfileBean {
 
 	public void setBusiness_id(int i) 	  {	business_id = i; }
 	public void setName(String s) 		  {	name      = s; }
-	//public void setEmail(String s)    { email = s; }
     public void setPhone(String s) 	  {	phone  = s; }
 	public void setOperation_housrs(String s)     {	operation_hours   = s; }
 	public void setWebsite(String s) 		  {	website       = s;	}
