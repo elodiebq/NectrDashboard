@@ -266,8 +266,8 @@
                         <section id="page-title" class="padding-top-15 padding-bottom-15">
                             <div class="row">
                                 <div class="col-sm-7">
-                                    <h1 class="mainTitle">Create Campaign</h1>
-                                    <span class="mainDescription">for a new campaign </span>
+                                    <h1 class="mainTitle">Business Performance</h1>
+                                    <span class="mainDescription">for all time record </span>
                                     <span id="time"></span>
                                 </div>
                                 <div class="col-sm-5">
@@ -280,18 +280,7 @@
                                             <div class="values">
                                                 <strong class="text-dark">18304</strong>
                                                 <p class="text-small no-margin">
-                                                    Sales
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="sparkline-2">
-                                                <span ></span>
-                                            </div>
-                                            <div class="values">
-                                                <strong class="text-dark">&#36;3,833</strong>
-                                                <p class="text-small no-margin">
-                                                    Earnings
+                                                    Follower
                                                 </p>
                                             </div>
                                         </li>
