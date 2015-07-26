@@ -75,7 +75,7 @@
                             </form>
                         </div>
                         <!-- end: SEARCH FORM -->
-                        <!-- start: MAIN NAVIGATION MENU -->
+                       <!-- start: MAIN NAVIGATION MENU -->
                         <div class="navbar-title">
                             <span>Main Navigation</span>
                         </div>
@@ -87,7 +87,7 @@
                                             <i class="ti-home"></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Create Company </span>
+                                            <span class="title"><a href="create_campaign.jsp"> Create Campaign </a></span>
                                         </div>
                                     </div>
                                 </a>
@@ -100,25 +100,25 @@
                         </div>
                         <ul class="folders">
                             <li>
-                                <a href="pages_calendar.html">
+                                <a href="campaign_history.jsp">
                                     <div class="item-content">
                                         <div class="item-media">
                                             <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Calendar </span>
+                                            <span class="title">History Campaign </span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages_messages.html">
+                                <a href="view_data.jsp">
                                     <div class="item-content">
                                         <div class="item-media">
                                             <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-folder-open-o fa-stack-1x fa-inverse"></i> </span>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Messages </span>
+                                            <span class="title"> Business Performance</span>
                                         </div>
                                     </div>
                                 </a>
@@ -145,7 +145,7 @@
                         <a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
                             <i class="ti-align-justify"></i>
                         </a>
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="business_main.jsp">
                             <h2> Nectr</h2>
                         </a>
                         <a href="#" class="sidebar-toggler pull-right visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">

@@ -93,7 +93,7 @@ public class LoginAction extends Action {
 //	      		}
 //	        	
 	        	session.setAttribute("business",business);
-				return "create_campaign.jsp";
+				return "business_main.jsp";
 	        }
 	        else {
 	        	AdminBean admin = adminDAO.getAdmin(form.getUsername());
