@@ -206,28 +206,9 @@
                                     <img src="assets/images/avatar-1.jpg" alt="Peter"> <span class="username">Peter <i class="ti-angle-down"></i></i></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-dark">
+                                   
                                     <li>
-                                        <a href="pages_user_profile.html">
-                                            My Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="campaign_history.jsp">
-                                            My Calendar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a hef="view_data.jsp">
-                                            My Messages (3)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="login_lockscreen.html">
-                                            Lock Screen
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="login_signin.html">
+                                        <a href="logout.do">
                                             Log Out
                                         </a>
                                     </li>
