@@ -318,8 +318,8 @@
 							</div>
 							<div class="form-group">
 								            Campaign Time <br></br>
-								            From:&nbsp; <input type="datetime-local" name="time_from" value = "time_from">
-								            To:&nbsp;<input type="datetime-local" name="time_to" value = "time_to">
+								            From:&nbsp; <input type="datetime-local" name="time_from" value = "time_from" required>
+								            To:&nbsp;<input type="datetime-local" name="time_to" value = "time_to" required>
 											<br>
 											</div>
 											<div class = "form-group">

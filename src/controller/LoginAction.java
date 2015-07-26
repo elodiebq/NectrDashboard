@@ -71,7 +71,6 @@ public class LoginAction extends Action {
 
 	        
 	        // Look up the user
-        	System.out.println(form.getType());
 
 	        if (form.getType().equals("business")) {
 	        	BusinessProfileBean business = businessDAO.getBusiness(form.getUsername());

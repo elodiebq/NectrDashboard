@@ -20,7 +20,7 @@ public class BusinessProfileDAO extends GenericDAO<BusinessProfileBean> {
 	}
 
 	public BusinessProfileBean getBusiness(String name) throws RollbackException {
-		BusinessProfileBean admin[] = match(MatchArg.equals("name", name));
+		BusinessProfileBean admin[] = match(MatchArg.equals("username", name));
 		if (admin.length == 0) {
 			return null;
 		}

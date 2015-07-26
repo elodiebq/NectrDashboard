@@ -45,9 +45,9 @@ public class CreateCampaignAction extends Action{
             String timeStamp = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
             String c[] = request.getParameterValues("repeats_on");
             StringBuffer sb = new StringBuffer();
-            if (c.length == 0 || c == null)
-            	c[0] = " ";
-            else{
+            if (request.getParameterValues("repeats_on")!=null ){
+            	
+            
             	for (int i = 0; i < c.length; i++)
             		sb.append(c[i]);
             }
@@ -67,6 +67,8 @@ public class CreateCampaignAction extends Action{
             if (sb.toString() != null || c.length != 0)
             	campaign.setRepeats_on(sb.toString());
             campaign.setMessage(form.getMessage());
+            BusinessProfileBean busi = (BusinessProfileBean) request.getSession(false).getAttribute("business");
+            campaign.setBusiness_id(busi.getBusiness_id());
             
             try {
                 campaignDAO.create(campaign);
