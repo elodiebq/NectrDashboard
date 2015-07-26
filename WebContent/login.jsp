@@ -48,7 +48,7 @@
 				</div>
 				<!-- start: LOGIN BOX -->
 				<div class="box-login">
-					<form class="form-login" action="login.do">
+					<form class="form-login" action="login.do" method = "Post">
 						<fieldset>
 							<legend>
 								Sign in to your accounts
