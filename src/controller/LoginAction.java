@@ -86,15 +86,15 @@ public class LoginAction extends Action {
 		            errors.add("Incorrect password");
 		            return "login.jsp";
 		        }
-	        	//prevent multiple sessions
-	        	BusinessProfileBean busi = (BusinessProfileBean) request.getSession(false).getAttribute("business");
-	      		if(busi!=null)
-	      		{
-	      			return "login.jsp";
-	      		}
-	        	
+//	        	//prevent multiple sessions
+//	        	BusinessProfileBean busi = (BusinessProfileBean) request.getSession(false).getAttribute("business");
+//	      		if(busi!=null)
+//	      		{
+//	      			return "login.jsp";
+//	      		}
+//	        	
 	        	session.setAttribute("business",business);
-				return "employee_login.jsp";
+				return "create_campaign.jsp";
 	        }
 	        else {
 	        	AdminBean admin = adminDAO.getAdmin(form.getUsername());
@@ -120,7 +120,7 @@ public class LoginAction extends Action {
 //	    		}
 	        	
 	        	session.setAttribute("admin",admin);
-				return "create_campaign.jsp";
+				return "create_business.jsp";
 	        }
         } catch (RollbackException e) {
         	errors.add(e.getMessage());
