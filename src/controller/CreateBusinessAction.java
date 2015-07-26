@@ -68,6 +68,7 @@ public class CreateBusinessAction extends Action {
             customer.setDescription(form.getDescription());
             customer.setOperation_housrs(form.getOperation_hours());
             customer.setWebsite(form.getWebsite());
+            customer.setUsername(form.getUsername());
             customer.setPassword(form.getPassword());
             
 
