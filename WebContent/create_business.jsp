@@ -309,11 +309,18 @@
 								<input type="text" name="name" class="form-control" placeholder="Company Name">
 							</div>
 							<div class="form-group">
+                                <input type="text" class="form-control" name="username" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="password" placeholder="Password">
+                            </div>
+							<div class="form-group">
 								<input type="text" class="form-control" name="address" placeholder="Address">
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" name="city" placeholder="City">
 							</div>
+							
 							<div class="form-group">
 								<label class="block">
 									Categories

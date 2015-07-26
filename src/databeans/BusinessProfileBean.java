@@ -21,6 +21,7 @@ public class BusinessProfileBean {
 	private String twitter;
 	private Date created_at; 
 	private String password;
+	private String username;
 	
 	
 	
@@ -33,6 +34,8 @@ public class BusinessProfileBean {
 	public String getFacebook() 	{ return facebook; }
 	public String getTwitter() 			{ return twitter;		}
 	public Date getCreated_at() 		{ return created_at;		}
+	public String getPassword()  {return password;}
+	public String getUsername() {return username;}
 
 	public void setBusiness_id(int i) 	  {	business_id = i; }
 	public void setName(String s) 		  {	name      = s; }
@@ -43,6 +46,8 @@ public class BusinessProfileBean {
 	public void setFacebook(String s)    {	facebook  = s; }
 	public void setTwitter(String s) 		  { twitter       = s;	}
 	public void setCreated_at(Date d)		  { created_at     = d; }
+	public void setPassword(String s) {password = s;}
+	public void setUsername(String s) {username = s;}
 
 
 	public boolean checkPassword(String password) {

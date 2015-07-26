@@ -45,7 +45,9 @@ public class CreateCampaignAction extends Action{
             String timeStamp = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
             String c[] = request.getParameterValues("repeats_on");
             StringBuffer sb = new StringBuffer();
-            if (request.getParameter("repeats_on") != null ){
+            if (c.length == 0 || c == null)
+            	c[0] = " ";
+            else{
             	for (int i = 0; i < c.length; i++)
             		sb.append(c[i]);
             }

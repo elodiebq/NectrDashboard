@@ -22,7 +22,8 @@ public class CreateBusinessProfileForm extends FormBean {
 	private String twitter;
 	private String created_at;  
 	private String password;
-
+	private String username;
+	
 	public String getName()    { return name; }
 	public String getPhone()     { return phone;  }
 	public String getOperation_hours() 	{ return operation_hours;	}
@@ -31,8 +32,10 @@ public class CreateBusinessProfileForm extends FormBean {
 	public String getFacebook() 	{ return facebook; }
 	public String getTwitter() 			{ return twitter;		}
 	public String getCreated_at() 		{ return created_at;		}
+	public String getPassword()      { return password;        }
+	public String getUsername() {return username;}
 
-	public void setName(String s) 		  {	name      = s.trim(); }
+	public void setName(String s) 		  {	name   = s.trim(); }
     public void setPhone(String s) 	  {	phone  = s.trim(); }
 	public void setOperation_housrs(String s)     {	operation_hours   = s.trim(); }
 	public void setWebsite(String s) 		  {	website       = s.trim();	}
@@ -40,6 +43,8 @@ public class CreateBusinessProfileForm extends FormBean {
 	public void setFacebook(String s)    {	facebook  = s.trim(); }
 	public void setTwitter(String s) 		  { twitter       = s.trim();	}
 	public void setCreated_at(String s)		  { created_at     = s.trim(); }
+	public void setPassword(String s)      { password = s.trim();        }
+	public void setUsername(String s) {username = s;}
 
 
 	public List<String> getValidationErrors() {
