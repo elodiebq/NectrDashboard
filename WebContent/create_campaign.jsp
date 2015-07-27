@@ -78,14 +78,14 @@
                             <span>Main Navigation</span>
                         </div>
                         <ul class="main-navigation-menu">
-                            <li class="active open">
-                                <a href="index.html">
+                            <li>
+                                <a href="create_campaign.jsp">
                                     <div class="item-content">
                                         <div class="item-media">
-                                            <i class="ti-home"></i>
+                                            <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"><a href="create_campaign.jsp"> Create Campaign </a></span>
+                                            <span class="title">Create Campaign </span>
                                         </div>
                                     </div>
                                 </a>

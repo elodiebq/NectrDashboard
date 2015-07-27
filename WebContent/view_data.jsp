@@ -79,14 +79,14 @@
                             <span>Main Navigation</span>
                         </div>
                         <ul class="main-navigation-menu">
-                            <li class="active open">
-                                <a href="index.html">
+                             <li>
+                                <a href="create_campaign.jsp">
                                     <div class="item-content">
                                         <div class="item-media">
-                                            <i class="ti-home"></i>
+                                            <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"><a href="create_campaign.jsp"> Create Campaign </a></span>
+                                            <span class="title">Create Campaign </span>
                                         </div>
                                     </div>
                                 </a>
@@ -248,13 +248,8 @@
                         <section id="page-title" class="padding-top-15 padding-bottom-15">
                             <div class="row">
                                 <div class="col-sm-7">
-<<<<<<< HEAD
-                                    <h1 class="mainTitle">View Business Performance</h1>
-                                    <span class="mainDescription">you've done a great job </span>
-=======
                                     <h1 class="mainTitle">Business Performance</h1>
                                     <span class="mainDescription">for all time record </span>
->>>>>>> origin/master
                                     <span id="time"></span>
                                 </div>
                                 <div class="col-sm-5">
