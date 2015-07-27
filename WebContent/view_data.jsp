@@ -86,7 +86,7 @@
                                             <i class="ti-home"></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Create Company </span>
+                                            <span class="title"><a href="create_campaign.jsp"> Create Campaign </a></span>
                                         </div>
                                     </div>
                                 </a>
@@ -99,25 +99,25 @@
                         </div>
                         <ul class="folders">
                             <li>
-                                <a href="pages_calendar.html">
+                                <a href="campaign_history.jsp">
                                     <div class="item-content">
                                         <div class="item-media">
                                             <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Calendar </span>
+                                            <span class="title">History Campaign </span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages_messages.html">
+                                <a href="view_data.jsp">
                                     <div class="item-content">
                                         <div class="item-media">
                                             <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-folder-open-o fa-stack-1x fa-inverse"></i> </span>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Messages </span>
+                                            <span class="title"> Business Performance</span>
                                         </div>
                                     </div>
                                 </a>
@@ -144,7 +144,7 @@
                         <a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
                             <i class="ti-align-justify"></i>
                         </a>
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="business_main.jsp">
                             <h2> Nectr</h2>
                         </a>
                         <a href="#" class="sidebar-toggler pull-right visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">
@@ -219,28 +219,9 @@
                                     <img src="assets/images/avatar-1.jpg" alt="Peter"> <span class="username">Peter <i class="ti-angle-down"></i></i></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-dark">
+                                  
                                     <li>
-                                        <a href="pages_user_profile.html">
-                                            My Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="pages_calendar.html">
-                                            My Calendar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a hef="pages_messages.html">
-                                            My Messages (3)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="login_lockscreen.html">
-                                            Lock Screen
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="login_signin.html">
+                                        <a href="logout.do">
                                             Log Out
                                         </a>
                                     </li>
@@ -267,8 +248,13 @@
                         <section id="page-title" class="padding-top-15 padding-bottom-15">
                             <div class="row">
                                 <div class="col-sm-7">
+<<<<<<< HEAD
                                     <h1 class="mainTitle">View Business Performance</h1>
                                     <span class="mainDescription">you've done a great job </span>
+=======
+                                    <h1 class="mainTitle">Business Performance</h1>
+                                    <span class="mainDescription">for all time record </span>
+>>>>>>> origin/master
                                     <span id="time"></span>
                                 </div>
                                 <div class="col-sm-5">
@@ -281,18 +267,7 @@
                                             <div class="values">
                                                 <strong class="text-dark">18304</strong>
                                                 <p class="text-small no-margin">
-                                                    Sales
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="sparkline-2">
-                                                <span ></span>
-                                            </div>
-                                            <div class="values">
-                                                <strong class="text-dark">&#36;3,833</strong>
-                                                <p class="text-small no-margin">
-                                                    Earnings
+                                                    Follower
                                                 </p>
                                             </div>
                                         </li>
