@@ -311,7 +311,8 @@
     						<li><a href="view_dataYear.jsp">Year</a></li>
   						</ul>
   						<span class="glyphicon glyphicon-user" aria-hidden="true">Visits Detail</span>
-        				<canvas id="hour" width="600" height="400"></canvas>
+        				<!-- bar chart canvas element -->
+       					 <canvas id="month" width="600" height="400"></canvas>
                       
                       </div>
                        <div class="col-md-4">
@@ -346,21 +347,20 @@
 				
         <!-- start: MAIN JAVASCRIPTS -->
         <script>
-       // bar chart data
-            var barHourData = {
-                labels : ["00:00","02:00","04:00","06:00","08:00","10:00","12:00","14:00","16:00","18:00","20:00","22:00"],
+       var barMonthData = {
+                labels : ["January","February","March","April","May","June"],
                 datasets : [
                     {
                         fillColor : "rgba(73,188,170,0.4)",
                         strokeColor : "rgba(72,174,209,0.4)",
-                        data : [36,50,60,40,34,32,10,2,4,6,12,20]
+                        data : [364,504,605,400,345,320]
                     }
                 ]
             }
-        // get bar chart canvas
-    	var hour = document.getElementById("hour").getContext("2d");
-        // draw bar chart
-    	new Chart(hour).Bar(barHourData);
+       // get bar chart canvas
+            var month = document.getElementById("month").getContext("2d");
+            // draw bar chart
+            new Chart(month).Bar(barMonthData);
         </script>
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
