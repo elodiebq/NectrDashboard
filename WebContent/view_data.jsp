@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@ page import="java.io.*,java.util.*" %>
+<%@ page import="javax.servlet.*,java.text.*" %>
 <!-- Template Name: Clip-Two - Responsive Admin Template build with Twitter Bootstrap 3.x | Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8" lang="en"><![endif]-->
 <!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
@@ -22,7 +24,7 @@
         <!-- end: GOOGLE FONTS -->
         <!-- start: MAIN CSS -->
         <link rel="stylesheet" href="styles/kendo.common.min.css" />
-    	<link rel="stylesheet" href="styles/kendo.default.min.css" />
+        <link rel="stylesheet" href="styles/kendo.default.min.css" />
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="vendor/themify-icons/themify-icons.min.css">
@@ -42,11 +44,12 @@
         <script type="text/javascript" src="assets/js/bootstrap-2.2.2.min.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap-timepicker.min.js"></script>
         <script language="javascript">var today = new Date();
-        			document.getElementById('time').innerHTML=today;
- 		</script>
- 		<script src="js/jquery.min.js"></script>
-    	<script src="js/kendo.all.min.js"></script>
-    	<script src='assets/js/Chart.js'></script>
+                    document.getElementById('time').innerHTML=today;
+        </script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+        <script src='assets/js/Chart.js'></script>
+        <script src='assets/js/nectr.js'></script>
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     </head>
     <!-- end: HEAD -->
@@ -272,38 +275,49 @@
                             </div>
                         </section>
                          <div class="viewData" style="margin-up:-100px;">
+                         <p id="bar" style="display: none">${walkIn},${walkBy},${totalVisit},${defaultWalkByView}</p>
+                         <p id="walkIn" style="display: none">${defaultWalkInView}</p>
+                         <p id="walkBy" style="display: none">${defaultWalkByView}</p>
                       <div class="col-md-8">
-                      	<!-- bar chart canvas element -->
-                      	<ul class="pagination">
-                      		<li><a href="view_data.jsp">Hour</a></li>
-    						<li><a href="view_dataDay.jsp">Day</a></li>
-    						<li><a href="view_dataMonth.jsp">Month</a></li>
-    						<li><a href="view_dataYear.jsp">Year</a></li>
-  						</ul>
-  						<span class="glyphicon glyphicon-user" aria-hidden="true">Visits Detail</span>
-        				<canvas id="hour" width="600" height="400"></canvas>
+                        <!-- bar chart canvas element -->
+                       <!--  <ul class="pagination"> -->
+                            <li><a href="view_data.jsp">Hour</a></li>
+                            <form action="view_data_day.do"><button type="submit">Day</button></form>
+                            <li><a href="view_dataMonth.jsp">Month</a></li>
+                            <li><a href="view_dataYear.jsp">Year</a></li>
+                       <!--  </ul> -->
+                       
+                         <h2 align=center>Current date is ${currTime}</h2>
+                          
+                        <form action="view_data.do">
+                          <center>Change date to:
+                          <input type="date" name="chooseday">
+                          <input type="submit"></center>
+                        </form>
+                        <center><span class="glyphicon glyphicon-user" aria-hidden="true">Walkin vs. Walkby</center></span>
+                        <canvas id="hour" width="600" height="400"></canvas>
                       
                       </div>
                        <div class="col-md-4">
                        <table>
-                       		<tr>
-                       			<br/>
-                       		</tr>
-                       		<tr>
-                       			<h2>Walk in &nbsp&nbsp&nbsp&nbsp<span class="label label-success">201</span></h2>
-                       		</tr>
-                       		<tr>
-                       			<br/>
-                       		</tr>
-                       		<tr>
-                       			<h2>Walk by &nbsp&nbsp&nbsp<span class="label label-warning">301</span></h2>
-                       		</tr>
-                       		<tr>
-                       			<br/>
-                       		</tr>
-                       		<tr>
-                       			<h2>Total Visit&nbsp&nbsp<span class="label label-warning">1001</span></h2>
-                       		</tr>
+                            <tr>
+                                <br/>
+                            </tr>
+                            <tr>
+                                <h2>Walk in &nbsp&nbsp&nbsp&nbsp<span class="label label-success">${walkIn}</span></h2>
+                            </tr>
+                            <tr>
+                                <br/>
+                            </tr>
+                            <tr>
+                                <h2>Walk by &nbsp&nbsp&nbsp<span class="label label-warning">${walkBy}</span></h2>
+                            </tr>
+                            <tr>
+                                <br/>
+                            </tr>
+                            <tr>
+                                <h2>Total Visit&nbsp&nbsp<span class="label label-warning">${totalVisit}</span></h2>
+                            </tr>
                        </table>
                       </div>
                     </div>
@@ -313,10 +327,10 @@
                      
                 </div>
                        <!-- end: data -->
-				
+                
         <!-- start: MAIN JAVASCRIPTS -->
         <script>
-       // bar chart data
+      /*  // bar chart data
             var barHourData = {
                 labels : ["00:00","02:00","04:00","06:00","08:00","10:00","12:00","14:00","16:00","18:00","20:00","22:00"],
                 datasets : [
@@ -328,9 +342,9 @@
                 ]
             }
         // get bar chart canvas
-    	var hour = document.getElementById("hour").getContext("2d");
+        var hour = document.getElementById("hour").getContext("2d");
         // draw bar chart
-    	new Chart(hour).Bar(barHourData);
+        new Chart(hour).Bar(barHourData); */
         </script>
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -345,9 +359,11 @@
         <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
         <!-- start: CLIP-TWO JAVASCRIPTS -->
         <script src="assets/js/main.js"></script>
-         <script src="assets/js/angular-chart.js"></script>
+         <script src="assets/js/Chart.js"></script>
+         <script src='assets/js/nectr.js'></script>
+         <!-- <script src="assets/js/angular-chart.js"></script> -->
         <!-- start: JavaScript Event Handlers for this page -->
-        <script src="assets/js/index.js"></script>
+        <!-- <script src="assets/js/index.js"></script> -->
         <script>
             jQuery(document).ready(function() {
                 Main.init();

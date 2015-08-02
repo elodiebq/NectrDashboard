@@ -60,7 +60,7 @@
                             <a class="s-open" href="#">
                                 <i class="ti-search"></i>
                             </a>
-                            <form class="navbar-form" role="search">
+                            <form class="navbar-form" role="search" action="view_data.do">
                                 <a class="s-remove" href="#" target=".navbar-form">
                                     <i class="ti-close"></i>
                                 </a>
