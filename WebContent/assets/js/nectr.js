@@ -1,8 +1,12 @@
 var bar = $("#bar").html();
 var walkIn = $("#walkIn").html();
 var walkBy = $("#walkBy").html();
+
 var walkIns = String(walkIn).split(',');
 var walkBys = String(walkBy).split(',');
+
+
+
 var barHourData = {
         labels : ["00:00","02:00","04:00","06:00","08:00","10:00","12:00","14:00","16:00","18:00","20:00","22:00"],
         datasets : [
@@ -43,5 +47,6 @@ var barHourData = {
             
         ]
     };
+
 var hour = $("#hour").get(0).getContext("2d");
 new Chart(hour).Bar(barHourData);

@@ -22,7 +22,7 @@
         <!-- end: GOOGLE FONTS -->
         <!-- start: MAIN CSS -->
         <link rel="stylesheet" href="styles/kendo.common.min.css" />
-    	<link rel="stylesheet" href="styles/kendo.default.min.css" />
+        <link rel="stylesheet" href="styles/kendo.default.min.css" />
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="vendor/themify-icons/themify-icons.min.css">
@@ -41,12 +41,10 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap-2.2.2.min.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap-timepicker.min.js"></script>
-        <script language="javascript">var today = new Date();
-        			document.getElementById('time').innerHTML=today;
- 		</script>
- 		<script src="js/jquery.min.js"></script>
-    	<script src="js/kendo.all.min.js"></script>
-    	<script src='assets/js/Chart.js'></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+        <script src='assets/js/Chart.js'></script>
+        <script src='assets/js/nectrMonth.js'></script>
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     </head>
     <!-- end: HEAD -->
@@ -304,13 +302,58 @@
                          <div class="viewData" style="margin-up:-100px;">
                       <div class="col-md-8">
                       	<!-- bar chart canvas element -->
-                      	<ul class="pagination">
-                      		<li><a href="view_data.jsp">Hour</a></li>
-    						<li><a href="view_dataDay.jsp">Day</a></li>
-    						<li><a href="view_dataMonth.jsp">Month</a></li>
-    						<li><a href="view_dataYear.jsp">Year</a></li>
-  						</ul>
-  						<span class="glyphicon glyphicon-user" aria-hidden="true">Visits Detail</span>
+                      	<div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <form action="view_data.jsp">
+                                            <button class="btn btn-success" type="submit">Hour&nbsp</button>
+                                        </form>
+                                        
+                                    </td>
+                                    <td>
+                                        <form action="view_data_day.do">
+                                            <button class="btn btn-success" type="submit">Day&nbsp</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="view_data_month.do">
+                                            <button class="btn btn-success" type="submit">Month&nbsp</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                    
+                                        <form action="view_data_year.do">
+                                            <button class="btn btn-success" type="submit">Year&nbsp</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                            </div>
+                            
+                            <h3 align=center>View from ${currTime} to ${timeTo}</h3>
+                            <p id="defaultWalkInView" style="display: none">${defaultWalkInView}</p>
+                            <p id="defaultWalkByView" style="display: none">${defaultWalkByView}</p>
+                            
+                            <p id="timeMonth" style="display: none">${timeMonth}</p>
+                            <p id="MonthWalkIn" style="display: none">${MonthWalkIn}</p>
+                             <p id="MonthWalkBy" style="display: none">${MonthWalkBy}</p>
+                            
+                            
+                            
+                            
+
+                            <form action="view_data_month.do">
+                                <center>
+                                    Change date From: <input  type="month" name="chooseMonthFrom">
+                                     To: <input type="month" name="chooseMonthTo">
+                                     <input class="btn btn-warning" type="submit">
+                                </center>
+                            </form>
+                            <center>
+                                <span class="glyphicon glyphicon-user" aria-hidden="true">Walkin
+                                    vs. Walkby </span>
+                            </center>
         				<!-- bar chart canvas element -->
        					 <canvas id="month" width="600" height="400"></canvas>
                       
@@ -321,19 +364,19 @@
                        			<br/>
                        		</tr>
                        		<tr>
-                       			<h2>Walk in &nbsp&nbsp&nbsp&nbsp<span class="label label-success">201</span></h2>
+                       			<h2>Walk in &nbsp&nbsp&nbsp&nbsp<span class="label label-success">${MonthWalkIn}</span></h2>
                        		</tr>
                        		<tr>
                        			<br/>
                        		</tr>
                        		<tr>
-                       			<h2>Walk by &nbsp&nbsp&nbsp<span class="label label-warning">301</span></h2>
+                       			<h2>Walk by &nbsp&nbsp&nbsp<span class="label label-warning">${MonthWalkBy}</span></h2>
                        		</tr>
                        		<tr>
                        			<br/>
                        		</tr>
                        		<tr>
-                       			<h2>Total Visit&nbsp&nbsp<span class="label label-warning">1001</span></h2>
+                       			<h2>Total Visit&nbsp&nbsp<span class="label label-warning">${totalVisit}</span></h2>
                        		</tr>
                        </table>
                       </div>
@@ -346,7 +389,7 @@
                        <!-- end: data -->
 				
         <!-- start: MAIN JAVASCRIPTS -->
-        <script>
+       <!--  <script>
        var barMonthData = {
                 labels : ["January","February","March","April","May","June"],
                 datasets : [
@@ -361,7 +404,7 @@
             var month = document.getElementById("month").getContext("2d");
             // draw bar chart
             new Chart(month).Bar(barMonthData);
-        </script>
+        </script> -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
         <script src="vendor/modernizr/modernizr.js"></script>
@@ -375,9 +418,11 @@
         <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
         <!-- start: CLIP-TWO JAVASCRIPTS -->
         <script src="assets/js/main.js"></script>
-         <script src="assets/js/angular-chart.js"></script>
+         <script src="assets/js/Chart.js"></script>
+         <script src='assets/js/nectrMonth.js'></script>
+         <!-- <script src="assets/js/angular-chart.js"></script> -->
         <!-- start: JavaScript Event Handlers for this page -->
-        <script src="assets/js/index.js"></script>
+        <!-- <script src="assets/js/index.js"></script> -->
         <script>
             jQuery(document).ready(function() {
                 Main.init();

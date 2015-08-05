@@ -35,6 +35,8 @@ public class Controller extends HttpServlet {
 		Action.add(new CreateCampaignAction(model));
 		Action.add(new SetViewDataAction(model));
 		Action.add(new SetViewDataByDayAction(model));
+		Action.add(new SetViewDataByMonthAction(model));
+		Action.add(new SetViewDataByYearAction(model));
 		
 	
 	initializeTable(model.getAdminDAO(), model.getBusinessProfileDAO(), model.getCustomerAnalysisDAO());

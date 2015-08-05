@@ -103,8 +103,8 @@ public class SetViewDataAction extends Action {
             request.setAttribute("currTime", currTime);
             request.setAttribute("defaultWalkInView", defaultWalkInView);
             request.setAttribute("defaultWalkByView", defaultWalkByView);
-            request.setAttribute("walkIn", walkIn);
-            request.setAttribute("walkBy", walkBy);
+            request.setAttribute("walkInByDay", walkIn);
+            request.setAttribute("walkByDay", walkBy);
             request.setAttribute("totalVisit", totalVisit);
          
         } catch (Exception e) {
