@@ -70,6 +70,10 @@ public class CreateBusinessAction extends Action {
             customer.setWebsite(form.getWebsite());
             customer.setUsername(form.getUsername());
             customer.setPassword(form.getPassword());
+            customer.setInLat(form.getInLat());
+            customer.setInLng(form.getInLnt());
+            customer.setCategory(form.getCategory());
+            
             
 
             try {

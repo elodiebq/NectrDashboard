@@ -3,7 +3,6 @@
 <!--[if IE 8]><html class="ie8" lang="en"><![endif]-->
 <!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
 <!--[if !IE]><!-->
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
     <!--<![endif]-->
     <!-- start: HEAD -->
@@ -22,9 +21,8 @@
         <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
         <!-- end: GOOGLE FONTS -->
         <!-- start: MAIN CSS -->
-         <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="styles/kendo.common.min.css" />
-    	<link rel="stylesheet" href="styles/kendo.default.min.css" />
+        <link rel="stylesheet" href="styles/kendo.default.min.css" />
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="vendor/themify-icons/themify-icons.min.css">
@@ -38,17 +36,15 @@
         <link rel="stylesheet" href="assets/css/themes/theme-1.css" id="skin_color" />
         <!-- end: CLIP-TWO CSS -->
         <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-        <link type="text/css" href="css/bootstrap.min.css" />
-        <link type="text/css" href="css/bootstrap-timepicker.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/index copy.css">
+        <link type="text/css" href="assets/css/bootstrap.min.css" />
+        <link type="text/css" href="assets/css/bootstrap-timepicker.min.css" />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap-2.2.2.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
-        <script language="javascript">var today = new Date();
-        			document.getElementById('time').innerHTML=today;
- 		</script>
- 		<script src="js/jquery.min.js"></script>
-    	<script src="js/kendo.all.min.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap-2.2.2.min.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap-timepicker.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+        <script src='assets/js/Chart.js'></script>
+        <script src='assets/js/nectrMonth.js'></script>
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     </head>
     <!-- end: HEAD -->
@@ -76,7 +72,7 @@
                             </form>
                         </div>
                         <!-- end: SEARCH FORM -->
-                       <!-- start: MAIN NAVIGATION MENU -->
+                        <!-- start: MAIN NAVIGATION MENU -->
                         <div class="navbar-title">
                             <span>Main Navigation</span>
                         </div>
@@ -99,7 +95,7 @@
                         <div class="navbar-title">
                             <span>Core Features</span>
                         </div>
-                        <ul class="folders">
+                         <ul class="folders">
                             <li>
                                 <a href="campaign_history.jsp">
                                     <div class="item-content">
@@ -146,7 +142,7 @@
                         <a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
                             <i class="ti-align-justify"></i>
                         </a>
-                        <a class="navbar-brand" href="business_main.jsp">
+                        <a class="navbar-brand" href="#">
                             <h2> Nectr</h2>
                         </a>
                         <a href="#" class="sidebar-toggler pull-right visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">
@@ -221,9 +217,28 @@
                                     <img src="assets/images/avatar-1.jpg" alt="Peter"> <span class="username">Peter <i class="ti-angle-down"></i></i></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-dark">
-                                    
                                     <li>
-                                         <a href="logout.do">
+                                        <a href="pages_user_profile.html">
+                                            My Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="pages_calendar.html">
+                                            My Calendar
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a hef="pages_messages.html">
+                                            My Messages (3)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="login_lockscreen.html">
+                                            Lock Screen
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="login_signin.html">
                                             Log Out
                                         </a>
                                     </li>
@@ -250,8 +265,8 @@
                         <section id="page-title" class="padding-top-15 padding-bottom-15">
                             <div class="row">
                                 <div class="col-sm-7">
-                                    <h1 class="mainTitle">Campaign History</h1>
-                                    <span class="mainDescription">campaigns you have created </span>
+                                    <h1 class="mainTitle">Business Performance</h1>
+                                    <span class="mainDescription">for all time record </span>
                                     <span id="time"></span>
                                 </div>
                                 <div class="col-sm-5">
@@ -284,147 +299,112 @@
                                 </div>
                             </div>
                         </section>
+                         <div class="viewData" style="margin-up:-100px;">
+                      <div class="col-md-8">
+                      	<!-- bar chart canvas element -->
+                      	<div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <form action="view_data.jsp">
+                                            <button class="btn btn-success" type="submit">Hour&nbsp</button>
+                                        </form>
+                                        
+                                    </td>
+                                    <td>
+                                        <form action="view_data_day.do">
+                                            <button class="btn btn-success" type="submit">Day&nbsp</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="view_data_month.do">
+                                            <button class="btn btn-success" type="submit">Month&nbsp</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                    
+                                        <form action="view_data_year.do">
+                                            <button class="btn btn-success" type="submit">Year&nbsp</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                            </div>
+                            
+                            <h3 align=center>View from ${currTime} to ${timeTo}</h3>
+                            <p id="defaultWalkInView" style="display: none">${defaultWalkInView}</p>
+                            <p id="defaultWalkByView" style="display: none">${defaultWalkByView}</p>
+                            
+                            <p id="timeMonth" style="display: none">${timeMonth}</p>
+                            <p id="MonthWalkIn" style="display: none">${MonthWalkIn}</p>
+                             <p id="MonthWalkBy" style="display: none">${MonthWalkBy}</p>
+                            
+                            
+                            
+                            
+
+                            <form action="view_data_month.do">
+                                <center>
+                                    Change date From: <input  type="month" name="chooseMonthFrom">
+                                     To: <input type="month" name="chooseMonthTo">
+                                     <input class="btn btn-warning" type="submit">
+                                </center>
+                            </form>
+                            <center>
+                                <span class="glyphicon glyphicon-user" aria-hidden="true">Walkin
+                                    vs. Walkby </span>
+                            </center>
+        				<!-- bar chart canvas element -->
+       					 <canvas id="month" width="600" height="400"></canvas>
+                      
+                      </div>
+                       <div class="col-md-4">
+                       <table>
+                       		<tr>
+                       			<br/>
+                       		</tr>
+                       		<tr>
+                       			<h2>Walk in &nbsp&nbsp&nbsp&nbsp<span class="label label-success">${MonthWalkIn}</span></h2>
+                       		</tr>
+                       		<tr>
+                       			<br/>
+                       		</tr>
+                       		<tr>
+                       			<h2>Walk by &nbsp&nbsp&nbsp<span class="label label-warning">${MonthWalkBy}</span></h2>
+                       		</tr>
+                       		<tr>
+                       			<br/>
+                       		</tr>
+                       		<tr>
+                       			<h2>Total Visit&nbsp&nbsp<span class="label label-warning">${totalVisit}</span></h2>
+                       		</tr>
+                       </table>
+                      </div>
+                    </div>
+                        </div>
                         <!-- end: DASHBOARD TITLE -->
-                        <!-- start: CAMPAIGN HISTORY -->
-                        <div class="col-mid-6 col-mid-off-3">
-				 <section id="mainsection">
-
-
-     <c:forEach var="c" items="${campaignList}">    
-          <c:set var="index" value="${index+1}"/>
-		     <h3>Campaign${index}: ${c.title }</h3>
-		      <section>
-		      <p>Date Post: ${c.date_post }
-		      </p>
-		        <p>
-		         ${c.message }
-		         </p>
-		         <p>
-		          <br/>
-		          Coupon Used:${c.total_amount }
-		          <br/>
-		          Coupon Posted: ${c.used_amount }
-		        </p>
-		      </section>
-		        </c:forEach>
-					</section>
-   
-    </div>
-				<!-- end: CAMPAIGN HISTORY -->
-            <!-- start: SETTINGS -->
-            <div class="settings panel panel-default hidden-xs hidden-sm" id="settings">
-                <button ct-toggle="toggle" data-toggle-class="active" data-toggle-target="#settings" class="btn btn-default">
-                    <i class="fa fa-spin fa-gear"></i>
-                </button>
-                <div class="panel-heading">
-                    Style Selector
+                      <!-- start: data -->
+                     
                 </div>
-                <div class="panel-body">
-                    <!-- start: FIXED HEADER -->
-                    <div class="setting-box clearfix">
-                        <span class="setting-title pull-left"> Fixed header</span>
-                        <span class="setting-switch pull-right">
-                            <input type="checkbox" class="js-switch" id="fixed-header" />
-                        </span>
-                    </div>
-                    <!-- end: FIXED HEADER -->
-                    <!-- start: FIXED SIDEBAR -->
-                    <div class="setting-box clearfix">
-                        <span class="setting-title pull-left">Fixed sidebar</span>
-                        <span class="setting-switch pull-right">
-                            <input type="checkbox" class="js-switch" id="fixed-sidebar" />
-                        </span>
-                    </div>
-                    <!-- end: FIXED SIDEBAR -->
-                    <!-- start: CLOSED SIDEBAR -->
-                    <div class="setting-box clearfix">
-                        <span class="setting-title pull-left">Closed sidebar</span>
-                        <span class="setting-switch pull-right">
-                            <input type="checkbox" class="js-switch" id="closed-sidebar" />
-                        </span>
-                    </div>
-                    <!-- end: CLOSED SIDEBAR -->
-                    <!-- start: FIXED FOOTER -->
-                    <div class="setting-box clearfix">
-                        <span class="setting-title pull-left">Fixed footer</span>
-                        <span class="setting-switch pull-right">
-                            <input type="checkbox" class="js-switch" id="fixed-footer" />
-                        </span>
-                    </div>
-                    <!-- end: FIXED FOOTER -->
-                    <!-- start: THEME SWITCHER -->
-                    <div class="colors-row setting-box">
-                        <div class="color-theme theme-1">
-                            <div class="color-layout">
-                                <label>
-                                    <input type="radio" name="setting-theme" value="theme-1">
-                                    <span class="ti-check"></span>
-                                    <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
-                                    <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="color-theme theme-2">
-                            <div class="color-layout">
-                                <label>
-                                    <input type="radio" name="setting-theme" value="theme-2">
-                                    <span class="ti-check"></span>
-                                    <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
-                                    <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="colors-row setting-box">
-                        <div class="color-theme theme-3">
-                            <div class="color-layout">
-                                <label>
-                                    <input type="radio" name="setting-theme" value="theme-3">
-                                    <span class="ti-check"></span>
-                                    <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
-                                    <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="color-theme theme-4">
-                            <div class="color-layout">
-                                <label>
-                                    <input type="radio" name="setting-theme" value="theme-4">
-                                    <span class="ti-check"></span>
-                                    <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
-                                    <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="colors-row setting-box">
-                        <div class="color-theme theme-5">
-                            <div class="color-layout">
-                                <label>
-                                    <input type="radio" name="setting-theme" value="theme-5">
-                                    <span class="ti-check"></span>
-                                    <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
-                                    <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="color-theme theme-6">
-                            <div class="color-layout">
-                                <label>
-                                    <input type="radio" name="setting-theme" value="theme-6">
-                                    <span class="ti-check"></span>
-                                    <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
-                                    <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end: THEME SWITCHER -->
-                </div>
-            </div>
-            <!-- end: SETTINGS -->
-        </div>
+                       <!-- end: data -->
+				
         <!-- start: MAIN JAVASCRIPTS -->
+       <!--  <script>
+       var barMonthData = {
+                labels : ["January","February","March","April","May","June"],
+                datasets : [
+                    {
+                        fillColor : "rgba(73,188,170,0.4)",
+                        strokeColor : "rgba(72,174,209,0.4)",
+                        data : [364,504,605,400,345,320]
+                    }
+                ]
+            }
+       // get bar chart canvas
+            var month = document.getElementById("month").getContext("2d");
+            // draw bar chart
+            new Chart(month).Bar(barMonthData);
+        </script> -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
         <script src="vendor/modernizr/modernizr.js"></script>
@@ -438,24 +418,19 @@
         <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
         <!-- start: CLIP-TWO JAVASCRIPTS -->
         <script src="assets/js/main.js"></script>
+         <script src="assets/js/Chart.js"></script>
+         <script src='assets/js/nectrMonth.js'></script>
+         <!-- <script src="assets/js/angular-chart.js"></script> -->
         <!-- start: JavaScript Event Handlers for this page -->
-        <script src="assets/js/index.js"></script>
-        <script type="text/javascript" src="assets/js/index copy.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.js"></script>
-    <!-- Including the non-minified (not for production) jQuery UI library from the CDN -->
-    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+        <!-- <script src="assets/js/index.js"></script> -->
         <script>
-            // jQuery(document).ready(function() {
-//                 Main.init();
-//                 Index.init();
-//             });
-            $(function() {
-       	$("#mainsection").accordion();
-       });
+            jQuery(document).ready(function() {
+                Main.init();
+                Index.init();
+            });
         </script>
-        
-   
         <!-- end: JavaScript Event Handlers for this page -->
         <!-- end: CLIP-TWO JAVASCRIPTS -->
+        
     </body>
 </html>

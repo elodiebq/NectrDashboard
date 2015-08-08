@@ -102,9 +102,7 @@ public class LoginAction extends Action {
 		            errors.add("This admin does not exist");
 		            return "login.jsp";
 		        }
-	        	System.out.println("username" + admin.getUsername());
-	        	System.out.println("Password" + admin.getPassword());
-
+	
 
 	        	if (!admin.checkPassword(form.getPassword())) {
 		            errors.add("Incorrect password");
@@ -117,7 +115,21 @@ public class LoginAction extends Action {
 //	    		{
 //	    			return "login.jsp";
 //	    		}
-	        	
+	        	BusinessProfileBean[] businesslist = businessDAO.getBusinessList();
+	            StringBuilder list = new StringBuilder();
+				if (businesslist.length != 0) {
+
+					for (int i = 0; i < businesslist.length; i++) {
+					list.append(businesslist[i].getInLat());
+					list.append(",");
+					list.append(businesslist[i].getInLng());
+					list.append(" ");
+					
+					}
+				String addList = list.toString();
+				System.out.println(addList);
+				request.setAttribute("addList", addList);
+				}
 	        	session.setAttribute("admin",admin);
 				return "create_business.jsp";
 	        }

@@ -23,6 +23,11 @@ public class CreateBusinessProfileForm extends FormBean {
 	private String created_at;  
 	private String password;
 	private String username;
+	private String address;
+	private String inLng;
+	private String inLat;
+	private String category;
+
 	
 	public String getName()    { return name; }
 	public String getPhone()     { return phone;  }
@@ -34,6 +39,13 @@ public class CreateBusinessProfileForm extends FormBean {
 	public String getCreated_at() 		{ return created_at;		}
 	public String getPassword()      { return password;        }
 	public String getUsername() {return username;}
+	public String getAddress() {return address;}
+	public String getInLnt() {return inLng;}
+	public String getInLat() {return inLat;}
+	public String getCategory() {return category;}
+
+
+
 
 	public void setName(String s) 		  {	name   = s.trim(); }
     public void setPhone(String s) 	  {	phone  = s.trim(); }
@@ -45,6 +57,12 @@ public class CreateBusinessProfileForm extends FormBean {
 	public void setCreated_at(String s)		  { created_at     = s.trim(); }
 	public void setPassword(String s)      { password = s.trim();        }
 	public void setUsername(String s) {username = s;}
+	public void setAddress(String s) {address = s;}
+	public void setInLng(String s){inLng = s;}
+	public void setInLat(String s){inLat = s;}
+	public void setCategory(String s){category = s;}
+
+
 
 
 	public List<String> getValidationErrors() {

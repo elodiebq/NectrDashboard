@@ -22,7 +22,7 @@
         <!-- end: GOOGLE FONTS -->
         <!-- start: MAIN CSS -->
         <link rel="stylesheet" href="styles/kendo.common.min.css" />
-    	<link rel="stylesheet" href="styles/kendo.default.min.css" />
+        <link rel="stylesheet" href="styles/kendo.default.min.css" />
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="vendor/themify-icons/themify-icons.min.css">
@@ -36,16 +36,15 @@
         <link rel="stylesheet" href="assets/css/themes/theme-1.css" id="skin_color" />
         <!-- end: CLIP-TWO CSS -->
         <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-        <link type="text/css" href="css/bootstrap.min.css" />
-        <link type="text/css" href="css/bootstrap-timepicker.min.css" />
+        <link type="text/css" href="assets/css/bootstrap.min.css" />
+        <link type="text/css" href="assets/css/bootstrap-timepicker.min.css" />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap-2.2.2.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
-        <script language="javascript">var today = new Date();
-        			document.getElementById('time').innerHTML=today;
- 		</script>
- 		<script src="js/jquery.min.js"></script>
-    	<script src="js/kendo.all.min.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap-2.2.2.min.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap-timepicker.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+        <script src='assets/js/Chart.js'></script>
+        <script src='assets/js/nectrYear.js'></script>
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     </head>
     <!-- end: HEAD -->
@@ -78,14 +77,14 @@
                             <span>Main Navigation</span>
                         </div>
                         <ul class="main-navigation-menu">
-                            <li class="active open">
-                                <a href="index.html">
+                             <li>
+                                <a href="create_campaign.jsp">
                                     <div class="item-content">
                                         <div class="item-media">
-                                            <i class="ti-home"></i>
+                                            <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"><a href="create_campaign.jsp"> Create Campaign </a></span>
+                                            <span class="title">Create Campaign </span>
                                         </div>
                                     </div>
                                 </a>
@@ -143,7 +142,7 @@
                         <a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
                             <i class="ti-align-justify"></i>
                         </a>
-                        <a class="navbar-brand" href="business_main.jsp">
+                        <a class="navbar-brand" href="#">
                             <h2> Nectr</h2>
                         </a>
                         <a href="#" class="sidebar-toggler pull-right visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">
@@ -218,9 +217,28 @@
                                     <img src="assets/images/avatar-1.jpg" alt="Peter"> <span class="username">Peter <i class="ti-angle-down"></i></i></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-dark">
-                                  
                                     <li>
-                                        <a href="logout.do">
+                                        <a href="pages_user_profile.html">
+                                            My Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="pages_calendar.html">
+                                            My Calendar
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a hef="pages_messages.html">
+                                            My Messages (3)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="login_lockscreen.html">
+                                            Lock Screen
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="login_signin.html">
                                             Log Out
                                         </a>
                                     </li>
@@ -261,7 +279,18 @@
                                             <div class="values">
                                                 <strong class="text-dark">18304</strong>
                                                 <p class="text-small no-margin">
-                                                    Follower
+                                                    Sales
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="sparkline-2">
+                                                <span ></span>
+                                            </div>
+                                            <div class="values">
+                                                <strong class="text-dark">&#36;3,833</strong>
+                                                <p class="text-small no-margin">
+                                                    Earnings
                                                 </p>
                                             </div>
                                         </li>
@@ -270,33 +299,111 @@
                                 </div>
                             </div>
                         </section>
-                        <!-- end: DASHBOARD TITLE -->
-                      <!-- start: data -->
-                      <div class="viewData">
+                         <div class="viewData" style="margin-up:-100px;">
                       <div class="col-md-8">
-                      <canvas id="bar" class="chart chart-bar" data="data"
-  labels="labels">
-  <script>
-                      angular.module("app", ["chart.js"]).controller("BarCtrl", function ($scope) {
-  $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  $scope.series = ['Series A', 'Series B'];
+                      	<!-- bar chart canvas element -->
+                      	 <div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <form action="view_data.jsp">
+                                            <button class="btn btn-success" type="submit">Hour&nbsp</button>
+                                        </form>
+                                        
+                                    </td>
+                                    <td>
+                                        <form action="view_data_day.do">
+                                            <button class="btn btn-success" type="submit">Day&nbsp</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="view_data_month.do">
+                                            <button class="btn btn-success" type="submit">Month&nbsp</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                    
+                                        <form action="view_data_year.do">
+                                            <button class="btn btn-success" type="submit">Year&nbsp</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                            </div>
+                            
+                            <h3 align=center>View from ${currTime} to ${timeTo}</h3>
+                            <p id="defaultWalkInView" style="display: none">${defaultWalkInView}</p>
+                            <p id="defaultWalkByView" style="display: none">${defaultWalkByView}</p>
+                            
+                            <p id="timeMonth" style="display: none">${timeMonth}</p>
+                            <p id="MonthWalkIn" style="display: none">${MonthWalkIn}</p>
+                             <p id="MonthWalkBy" style="display: none">${MonthWalkBy}</p>
+                            
+                            
+                            
+                            
 
-  $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
-  ];
-});
-                      </script>
-  </canvas>
+                            <form action="view_data_year.do">
+                                <center>
+                                    Change date From: <input  type="year" name="chooseYearFrom">
+                                     To: <input type="year" name="chooseYearTo">
+                                     <input class="btn btn-warning" type="submit">
+                                </center>
+                            </form>
+                            <center>
+                                <span class="glyphicon glyphicon-user" aria-hidden="true">Walkin
+                                    vs. Walkby </span>
+                            </center>
+        				<canvas id="year" width="600" height="400"></canvas>
                       
                       </div>
                        <div class="col-md-4">
+                       <table>
+                       		<tr>
+                       			<br/>
+                       		</tr>
+                       		<tr>
+                       			<h2>Walk in &nbsp&nbsp&nbsp&nbsp<span class="label label-success">${MonthWalkIn}</span></h2>
+                       		</tr>
+                       		<tr>
+                       			<br/>
+                       		</tr>
+                       		<tr>
+                       			<h2>Walk by &nbsp&nbsp&nbsp<span class="label label-warning">${MonthWalkBy}</span></h2>
+                       		</tr>
+                       		<tr>
+                       			<br/>
+                       		</tr>
+                       		<tr>
+                       			<h2>Total Visit&nbsp&nbsp<span class="label label-warning">${totalVisit}</span></h2>
+                       		</tr>
+                       </table>
                       </div>
-                      </div>
-                      
+                    </div>
+                        </div>
+                        <!-- end: DASHBOARD TITLE -->
+                      <!-- start: data -->
+                     
+                </div>
                        <!-- end: data -->
 				
         <!-- start: MAIN JAVASCRIPTS -->
+        <!-- <script>
+       var barYearData = {
+                labels : ["2012","2013","2014","2015"],
+                datasets : [
+                    {
+                        fillColor : "rgba(73,188,170,0.4)",
+                        strokeColor : "rgba(72,174,209,0.4)",
+                        data : [364,504,605,400]
+                    }
+                ]
+            }
+       // get bar chart canvas
+            var year = document.getElementById("year").getContext("2d");
+            // draw bar chart
+            new Chart(year).Bar(barYearData);
+        </script> -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
         <script src="vendor/modernizr/modernizr.js"></script>
@@ -310,9 +417,11 @@
         <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
         <!-- start: CLIP-TWO JAVASCRIPTS -->
         <script src="assets/js/main.js"></script>
-         <script src="assets/js/angular-chart.js"></script>
+         <script src="assets/js/Chart.js"></script>
+         <script src='assets/js/nectrYear.js'></script>
+         <!-- <script src="assets/js/angular-chart.js"></script> -->
         <!-- start: JavaScript Event Handlers for this page -->
-        <script src="assets/js/index.js"></script>
+        <!-- <script src="assets/js/index.js"></script> -->
         <script>
             jQuery(document).ready(function() {
                 Main.init();
@@ -321,5 +430,6 @@
         </script>
         <!-- end: JavaScript Event Handlers for this page -->
         <!-- end: CLIP-TWO JAVASCRIPTS -->
+        
     </body>
 </html>

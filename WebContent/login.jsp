@@ -77,6 +77,7 @@
 									<input type="radio" name="type" value="admin" checked=""><label>&nbsp Login as Admin</label>
 									<br>
 									<input type="radio" name="type" value="business" checked="checked"><label>&nbsp Login as Business</label>
+									
 								</div>
 							</div>
 							

@@ -22,6 +22,10 @@ public class BusinessProfileBean {
 	private Date created_at; 
 	private String password;
 	private String username;
+	private String address;
+	private String inLng;
+	private String inLat;
+	private String category;
 	
 	
 	
@@ -36,6 +40,14 @@ public class BusinessProfileBean {
 	public Date getCreated_at() 		{ return created_at;		}
 	public String getPassword()  {return password;}
 	public String getUsername() {return username;}
+	public String getAddress() {return address;}
+	public String getInLng() {return inLng;}
+	public String getInLat() {return inLat;}
+	public String getCategory() {return category;}
+
+
+
+
 
 	public void setBusiness_id(int i) 	  {	business_id = i; }
 	public void setName(String s) 		  {	name      = s; }
@@ -48,6 +60,14 @@ public class BusinessProfileBean {
 	public void setCreated_at(Date d)		  { created_at     = d; }
 	public void setPassword(String s) {password = s;}
 	public void setUsername(String s) {username = s;}
+	public void setAddress(String s) {address = s;}
+	public void setInLng(String s){inLng = s;}
+	public void setInLat(String s){inLat = s;}
+	public void setCategory(String s){category = s;}
+
+
+
+	
 
 
 	public boolean checkPassword(String password) {

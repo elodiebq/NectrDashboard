@@ -296,8 +296,65 @@
                                 <input type="text" class="form-control" name="password" placeholder="Password">
                             </div>
 							<div class="form-group">
-								<input type="text" class="form-control" name="address" placeholder="Address">
+							<input id="address" name="address" type="text" size="40" placeholder="Address" />
 							</div>
+						
+						
+							<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAG_4i2swR3KOd-nGYrlrt8RTkyS8SRe_kYPTAbwTumvAqao01PRRUcCtCzTBnNH2kRURGR8RhQQoZ3w"
+      type="text/javascript"></script>
+<script type="text/javascript">
+
+
+var myMap;
+var myMarker
+function load() {
+	if (GBrowserIsCompatible()) {
+		myMap = new GMap2(document.getElementById("my_map"));
+		var myLatLng = new GLatLng(25.04763902653048, 121.51715755462646);
+		myMap.setCenter(myLatLng, 15);
+		myMap.addControl(new GLargeMapControl());
+		
+		document.getElementById('inLat').value = myLatLng.lat();
+		document.getElementById('inLng').value = myLatLng.lng();		
+		
+		myMarker = new GMarker( myLatLng );
+		myMap.addOverlay( myMarker );
+	}
+}
+
+function addressGps() {
+	var myGeocoder = new GClientGeocoder();
+	var address = document.getElementById('address').value;
+	myGeocoder.getLatLng(address, function getRequest( point ){
+							if(!point){
+								alert('這個地址 Google 說不知道！');
+							}else{
+								//移動地圖中心點
+								myMap.panTo( point );
+								//設定標註座標
+								myMarker.setLatLng(point);
+								
+								document.getElementById('inLat').value = point.lat();
+								document.getElementById('inLng').value = point.lng();
+							}
+						});
+}
+
+//]]>
+</script>
+</head>
+<body onload="load()" onunload="GUnload()">
+
+	<input name="button" type="button" value="Check" onclick="javascript:addressGps();" />
+	<br>
+	
+	<input id="inLat" name="inLat" type="hidden" size="20" value="" />
+	<br>
+	<input id="inLng" name="inLng" type="hidden" size="20" value="" />
+	<p>
+	<div id="my_map" style="width: 400px; height: 300px"></div>
+</body>
+
 							<div class="form-group">
 								<input type="text" class="form-control" name="city" placeholder="City">
 							</div>

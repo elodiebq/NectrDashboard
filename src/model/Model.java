@@ -15,6 +15,7 @@ public class Model {
 	private BusinessProfileDAO 	businessDAO;
 	private CampaignDAO campaignDAO;
 	private AdminDAO     adminDAO;
+	private CustomerAnalysisDAO customerAnalysisDAO;
 
 	
 
@@ -27,15 +28,16 @@ public class Model {
 			adminDAO     = new AdminDAO("admin", pool);
 			businessDAO   = new BusinessProfileDAO("businessProfile",pool);
 			campaignDAO = new CampaignDAO("campaign",pool);
+			customerAnalysisDAO = new CustomerAnalysisDAO("customerAnalysis", pool);
 	
 		} catch (DAOException e) {
 			throw new ServletException(e);
 		}
 		
-		
 	}
 	public AdminDAO    getAdminDAO()    { return adminDAO;    }
 	public BusinessProfileDAO    getBusinessProfileDAO()    { return businessDAO;    }
 	public CampaignDAO getCampaignDAO() {return campaignDAO;}
+	public CustomerAnalysisDAO getCustomerAnalysisDAO() {return customerAnalysisDAO;}
 }
 

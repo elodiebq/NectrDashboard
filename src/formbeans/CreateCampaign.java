@@ -17,8 +17,8 @@ public class CreateCampaign extends FormBean {
 	private String time_to;
 	private String repeats;
 	private String repeats_on;
-	private String total_amount;
-	private String used_amount;
+	private int total_amount;
+	private int used_amount;
 	
 	public String getTitle()                          { return title; }
 	public String getMessage()                   { return message;  }
@@ -28,8 +28,8 @@ public class CreateCampaign extends FormBean {
 	public String getTime_to() 	                { return time_to; }
 	public String getRepeats() 			        { return repeats;		}
 	public String getRepeats_on()               { return repeats_on;  }
-	public String getTotal_amount() 			{ return total_amount;		}
-	public String getUsed_amount()           { return used_amount;		}
+	public int getTotal_amount() 			{ return total_amount;		}
+	public int getUsed_amount()           { return used_amount;		}
 
 	public void setTitle(String s)                          { title = s.trim(); }
 	public void setMessage(String s)                   { message = s.trim();  }
@@ -39,7 +39,7 @@ public class CreateCampaign extends FormBean {
 	public void setTime_to(String s) 	                { time_to = s; }
 	public void setRepeats(String s) 			        { repeats = s.trim();		}
 	public void setRepeats_on(String s)              { repeats_on = s.trim(); }
-	public void setTotal_amount(String s) 			{ total_amount = s.trim();		}
-	public void setUsed_amount(String s)           { used_amount = s.trim();		}
+	public void setTotal_amount(int s) 			{ total_amount = s;		}
+	public void setUsed_amount(int s)           { used_amount = s;		}
 
 }

@@ -28,6 +28,11 @@ public class BusinessProfileDAO extends GenericDAO<BusinessProfileBean> {
 			return admin[0];
 		}
 	}
+	public BusinessProfileBean[] getBusinessList() throws RollbackException{
+		BusinessProfileBean[] businesslist = match();
+		if(businesslist.length == 0) return null;
+		return businesslist;
+	}
 	
 //	public void setPassword(int id, String password) throws RollbackException {
 //        try {

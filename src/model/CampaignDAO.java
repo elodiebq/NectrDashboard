@@ -18,8 +18,15 @@ public class CampaignDAO extends GenericDAO<CampaignBean>  {
 		super(CampaignBean.class, tableName, pool);
 	}
 	
-	public CampaignBean getBusiness(String name) throws RollbackException {
-		CampaignBean admin[] = match(MatchArg.equals("name", name));
+	public CampaignBean[] getCampaigns() throws RollbackException {
+		CampaignBean[]campaigns = match();
+		// We want them sorted by last and first names (as per
+		// User.compareTo());
+		return campaigns;
+	}
+	
+	public CampaignBean getBusiness(int name) throws RollbackException {
+		CampaignBean admin[] = match(MatchArg.equals("business_id", name));
 		if (admin.length == 0) {
 			return null;
 		}

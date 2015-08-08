@@ -67,13 +67,13 @@
                         </div>
                         <ul class="main-navigation-menu">
                             <li class="active open">
-                                <a href="index.html">
+                                <a href="create_campaign.jsp">
                                     <div class="item-content">
                                         <div class="item-media">
                                             <i class="ti-home"></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"><a href="create_campaign.jsp"> Create Campaign </a></span>
+                                             <span class="title">Create Campaign </span>
                                         </div>
                                     </div>
                                 </a>
@@ -86,7 +86,7 @@
                         </div>
                         <ul class="folders">
                             <li>
-                                <a href="campaign_history.jsp">
+                                <a href="view_history.do">
                                     <div class="item-content">
                                         <div class="item-media">
                                             <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
@@ -98,7 +98,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="view_data.jsp">
+                                <a href="view_data.do">
                                     <div class="item-content">
                                         <div class="item-media">
                                             <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-folder-open-o fa-stack-1x fa-inverse"></i> </span>
@@ -276,14 +276,9 @@
                                     <div class="panel panel-white no-radius text-center">
                                         <div class="panel-body">
                                             <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
-                                            <h2 class="StepTitle"><a href="campaign_history.jsp">History Campaigns</a></h2>
+                                            <h2 class="StepTitle"><a href="view_history.do">History Campaigns</a></h2>
                                             <p class="text-small">
                                                 View all previous campaigns
-                                            </p>
-                                            <p class="links cl-effect-1">
-                                                <a href>
-                                                    view more
-                                                </a>
                                             </p>
                                         </div>
                                     </div>
@@ -292,14 +287,9 @@
                                     <div class="panel panel-white no-radius text-center">
                                         <div class="panel-body">
                                             <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
-                                            <h2 class="StepTitle"><a href="view_data.jsp">Business Performance</a></h2>
+                                            <h2 class="StepTitle"><a href="view_data.do">Business Performance</a></h2>
                                             <p class="text-small">
                                                 View how your business performs for all time.
-                                            </p>
-                                            <p class="cl-effect-1">
-                                                <a href>
-                                                    view more
-                                                </a>
                                             </p>
                                         </div>
                                     </div>
