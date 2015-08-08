@@ -11,7 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import model.AdminDAO;
 import model.BusinessProfileDAO;
+<<<<<<< HEAD
 import model.CampaignDAO;
+=======
+>>>>>>> origin/master
 import model.CustomerAnalysisDAO;
 import model.Model;
 
@@ -40,8 +43,13 @@ public class Controller extends HttpServlet {
 		Action.add(new SetViewDataByYearAction(model));
 		
 	
+<<<<<<< HEAD
 		initializeTable(model.getAdminDAO(), model.getBusinessProfileDAO(), model.getCustomerAnalysisDAO(), model.getCampaignDAO());
 		
+=======
+	initializeTable(model.getAdminDAO(), model.getBusinessProfileDAO(), model.getCustomerAnalysisDAO());
+	
+>>>>>>> origin/master
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -112,8 +120,12 @@ public class Controller extends HttpServlet {
 	}
 	
 	
+<<<<<<< HEAD
 	public void initializeTable(AdminDAO adminDAO, BusinessProfileDAO businessprofileDAO, 
 			CustomerAnalysisDAO customerAnalysisDAO, CampaignDAO campaignDAO) {
+=======
+	public void initializeTable(AdminDAO adminDAO, BusinessProfileDAO businessprofileDAO, CustomerAnalysisDAO customerAnalysisDAO) {
+>>>>>>> origin/master
 
 		try {
 			if (adminDAO.read("admin") == null) {
@@ -143,6 +155,7 @@ public class Controller extends HttpServlet {
 		} catch (RollbackException e) {
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 
 		try {
 			if (campaignDAO.read(1) == null) {
@@ -265,6 +278,85 @@ public class Controller extends HttpServlet {
                 analysis.setTime("2015-08-01T16");
                 customerAnalysisDAO.create(analysis);
 
+=======
+
+		try {
+			if (customerAnalysisDAO.read(1,1) == null) {
+				CustomerAnalysisBean analysis = new CustomerAnalysisBean();
+		
+				analysis.setId(1);              
+                analysis.setBusiness_id(1);
+                analysis.setAmount_passby(12);
+                analysis.setAmount_enter(0);
+                analysis.setTotal_visit(0);
+                analysis.setTime("2015-08-01T00");
+                customerAnalysisDAO.create(analysis);
+                
+                analysis.setId(2);
+                analysis.setBusiness_id(1);
+                analysis.setAmount_passby(3);
+                analysis.setAmount_enter(0);
+                analysis.setTotal_visit(0);
+                analysis.setTime("2015-08-01T02");
+                customerAnalysisDAO.create(analysis);
+                
+                analysis.setId(3);
+                analysis.setBusiness_id(1);
+                analysis.setAmount_passby(12);
+                analysis.setAmount_enter(0);
+                analysis.setTotal_visit(0);
+                analysis.setTime("2015-08-01T04");
+                customerAnalysisDAO.create(analysis);
+                
+                analysis.setId(4);
+                analysis.setBusiness_id(1);
+                analysis.setAmount_passby(12);
+                analysis.setAmount_enter(0);
+                analysis.setTotal_visit(0);
+                analysis.setTime("2015-08-01T06");
+                customerAnalysisDAO.create(analysis);
+                
+                analysis.setId(5);
+                analysis.setBusiness_id(1);
+                analysis.setAmount_passby(25);
+                analysis.setAmount_enter(0);
+                analysis.setTotal_visit(0);
+                analysis.setTime("2015-08-01T08");
+                customerAnalysisDAO.create(analysis);
+                
+                analysis.setId(6);
+                analysis.setBusiness_id(1);
+                analysis.setAmount_passby(36);
+                analysis.setAmount_enter(0);
+                analysis.setTotal_visit(0);
+                analysis.setTime("2015-08-01T10");
+                customerAnalysisDAO.create(analysis);
+            
+                analysis.setId(7);
+                analysis.setBusiness_id(1);
+                analysis.setAmount_passby(25);
+                analysis.setAmount_enter(3);
+                analysis.setTotal_visit(3);
+                analysis.setTime("2015-08-01T12");
+                customerAnalysisDAO.create(analysis);
+                
+                analysis.setId(8);
+                analysis.setBusiness_id(1);
+                analysis.setAmount_passby(30);
+                analysis.setAmount_enter(8);
+                analysis.setTotal_visit(11);
+                analysis.setTime("2015-08-01T14");
+                customerAnalysisDAO.create(analysis);
+
+                analysis.setId(9);
+                analysis.setBusiness_id(1);
+                analysis.setAmount_passby(20);
+                analysis.setAmount_enter(5);
+                analysis.setTotal_visit(16);
+                analysis.setTime("2015-08-01T16");
+                customerAnalysisDAO.create(analysis);
+
+>>>>>>> origin/master
                 analysis.setId(10);
                 analysis.setBusiness_id(1);
                 analysis.setAmount_passby(50);
