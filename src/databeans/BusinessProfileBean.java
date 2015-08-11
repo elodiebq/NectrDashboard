@@ -8,7 +8,7 @@ import java.util.Random;
 
 import org.genericdao.PrimaryKey;
 
-@PrimaryKey("business_id, regionId")
+@PrimaryKey("business_id,regionId")
 public class BusinessProfileBean {
 	
 	private int    business_id;
