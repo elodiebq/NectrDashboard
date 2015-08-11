@@ -175,6 +175,7 @@ public class Controller extends HttpServlet {
 				business.setDescription("Hi this is for ");
 				business.setInLat("40.450899");
 				business.setInLng("-79.94972000000001");
+				business.setRegionId(1);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(2);
@@ -211,6 +212,7 @@ public class Controller extends HttpServlet {
 				business.setInLat("40.4448,");
 				business.setInLng("-79.94851");
 				business.setAddress("417 South Craig Street");
+				business.setRegionId(3);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(5);
@@ -247,6 +249,7 @@ public class Controller extends HttpServlet {
 				business.setInLat("40.45086");
 				business.setInLng("-79.9335");
 				business.setAddress("5500 Walnut Street");
+				business.setRegionId(1);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(8);
@@ -295,6 +298,7 @@ public class Controller extends HttpServlet {
 				business.setInLat("40.451");
 				business.setInLng("-79.93386");
 				business.setAddress("5442 Walnut Street");
+				business.setRegionId(1);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(12);
