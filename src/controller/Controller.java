@@ -14,6 +14,7 @@ import model.BusinessProfileDAO;
 import model.CampaignDAO;
 import model.CustomerAnalysisDAO;
 import model.Model;
+import model.RegionDAO;
 
 import org.genericdao.RollbackException;
 
@@ -21,6 +22,7 @@ import databeans.AdminBean;
 import databeans.BusinessProfileBean;
 import databeans.CampaignBean;
 import databeans.CustomerAnalysisBean;
+import databeans.RegionBean;
 
 public class Controller extends HttpServlet {
 
@@ -64,6 +66,7 @@ public class Controller extends HttpServlet {
 		BusinessProfileBean business = (BusinessProfileBean) session.getAttribute("business");
 		CampaignBean campaign = (CampaignBean) session.getAttribute("campaign");
 		CustomerAnalysisBean analysis = (CustomerAnalysisBean) session.getAttribute("customerAnalysis");
+		RegionBean region = (RegionBean) session.getAttribute("region");
 
 		String action = getActionName(servletPath);
 
@@ -115,7 +118,7 @@ public class Controller extends HttpServlet {
 	
 	
 	public void initializeTable(AdminDAO adminDAO, BusinessProfileDAO businessprofileDAO, 
-			CustomerAnalysisDAO customerAnalysisDAO, CampaignDAO campaignDAO) {
+			CustomerAnalysisDAO customerAnalysisDAO, CampaignDAO campaignDAO, RegionDAO regionDAO) {
 
 		try {
 			if (adminDAO.read("admin") == null) {
@@ -124,6 +127,35 @@ public class Controller extends HttpServlet {
 				admin.setPassword("123456");
 				admin.setUsername("admin");
 				adminDAO.create(admin);
+			}
+		} catch (RollbackException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			if (regionDAO.read(1) == null) {
+				RegionBean region = new RegionBean();
+		
+				region.setId(1);
+				region.setRegionName("Walnut");
+				region.setCenterLat(40.451114);
+				region.setCenterLng(-79.933960);
+				region.setRadius(180);
+				regionDAO.create(region);
+				
+				region.setId(2);
+				region.setRegionName("East Shady");
+				region.setCenterLat(40.458951);
+				region.setCenterLng(-79.920056);
+				region.setRadius(350);
+				regionDAO.create(region);
+				
+				region.setId(3);
+				region.setRegionName("Craig St");
+				region.setCenterLat(40.447249);
+				region.setCenterLng(-79.949135);
+				region.setRadius(200);
+				regionDAO.create(region);
 			}
 		} catch (RollbackException e) {
 			e.printStackTrace();
