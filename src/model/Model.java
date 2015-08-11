@@ -16,6 +16,7 @@ public class Model {
 	private CampaignDAO campaignDAO;
 	private AdminDAO     adminDAO;
 	private CustomerAnalysisDAO customerAnalysisDAO;
+	private RegionDAO regionDAO;
 
 	
 
@@ -34,30 +35,11 @@ public class Model {
 			throw new ServletException(e);
 		}
 		
-<<<<<<< HEAD
-=======
-		try {
-			if (businessDAO.read(1) == null) {
-				BusinessProfileBean business = new BusinessProfileBean();
-		
-				business.setPassword("123456");
-				business.setUsername("business1");
-				business.setPhone("347-654-1234");
-				business.setName("TestBusiness");
-				business.setWebsite("www.business.com");
-				business.setDescription("Hi this is for ");
-				businessDAO.create(business);
-			}
-		} catch (RollbackException e) {
-			e.printStackTrace();
-		}
-		
-		
->>>>>>> origin/master
 	}
 	public AdminDAO    getAdminDAO()    { return adminDAO;    }
 	public BusinessProfileDAO    getBusinessProfileDAO()    { return businessDAO;    }
 	public CampaignDAO getCampaignDAO() {return campaignDAO;}
 	public CustomerAnalysisDAO getCustomerAnalysisDAO() {return customerAnalysisDAO;}
+	public RegionDAO getRegionDAO() {return regionDAO;}
 }
 

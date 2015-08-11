@@ -3,7 +3,7 @@
 <!--[if IE 8]><html class="ie8" lang="en"><![endif]-->
 <!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html>
     <!--<![endif]-->
     <!-- start: HEAD -->
     <head>
@@ -39,75 +39,13 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-2.2.2.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
-        <script src="assets/js/mapMark.js"></script>
-                                    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAG_4i2swR3KOd-nGYrlrt8RTkyS8SRe_kYPTAbwTumvAqao01PRRUcCtCzTBnNH2kRURGR8RhQQoZ3w&language=us"
-      type="text/javascript"></script>
-                <script type="text/javascript">
-                
-                var geocoder = new google.maps.Geocoder();
-                var myMap;
-                var myMarker
-                function load() {
-                    if (GBrowserIsCompatible()) {
-                        myMap = new GMap2(document.getElementById("my_map"));
-                        var myLatLng = new GLatLng(40.444597, -79.945033);
-                        myMap.setCenter(myLatLng, 15);
-                        myMap.addControl(new GLargeMapControl());
-                        
-                        document.getElementById('inLat').value = myLatLng.lat();
-                        document.getElementById('inLng').value = myLatLng.lng();        
-                        
-                        myMarker = new GMarker( myLatLng );
-                        myMap.addOverlay( myMarker );
-                    }
-                }
-                
-                function extractFromAdress(components, type){  //
-                    for (var i=0; i<components.length; i++)
-                        for (var j=0; j<components[i].types.length; j++)
-                            if (components[i].types[j]==type) return components[i].long_name;
-                    return "";
-                }
-                
-                function addressGps() {
-                    var myGeocoder = new GClientGeocoder();
-                    var address = document.getElementById('address').value;
-                    myGeocoder.getLatLng(address, function getRequest( point ){
-                                            if(!point){
-                                                alert('No such addess�');
-                                            }else{
-                                                //移動地圖中心點
-                                                myMap.panTo( point );
-                                                //設定標註座標
-                                                myMarker.setLatLng(point);
-                                                
-                                                document.getElementById('inLat').value = point.lat();
-                                                document.getElementById('inLng').value = point.lng();
-                                            }
-                                        });
-                    geocoder.geocode( { 'address': address, "region": "US"}, function(results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
+       
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
-                          var postCode = extractFromAdress(results[0].address_components, "neighborhood");
-                          
-                          document.getElementById("region").innerHTML = "Region:" + postCode;
-                          document.getElementById('inReg').value = postCode;
-                          /* var marker = new google.maps.Marker({
-                              map: map,
-                              position: results[0].geometry.location
-                          }); */
-                        } else {
-                          alert('Geocode was not successful for the following reason: ' + status);
-                        }
-                      });
-                }
-                
-                //]]>
-                </script>
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     </head>
     <!-- end: HEAD -->
-    <body>
+    <body >
         <div id="app">
             <!-- sidebar -->
             <div class="sidebar app-aside" id="sidebar">
@@ -355,31 +293,26 @@
                                 <input type="text" name="name" class="form-control" placeholder="Company Name">
                             </div>
                             <div class="form-group">
-                                <input type="text"  name="username" placeholder="Username">
+                                <input type="text" class="form-control" name="username" placeholder="Username">
                             </div>
                             <div class="form-group">
-                                <input type="text"  name="password" placeholder="Password">
+                                <input type="text" class="form-control" name="password" placeholder="Password">
                             </div>
                             <div class="form-group">
-                            <input id="address" class="form-control" name="address" type="text" size="40" placeholder="Address" />
+                            <input id="address" name="address" type="text" size="40" placeholder="Address" />
+                            <input name="button" type="button" value="Check" onclick="javascript:addressGps();" />
                             </div>
-                        <div class="form-group">
-                                <input type="text"  name="city" placeholder="City">
-                            </div>
-                            <p name = "region" id="region"> </p> 
+                 
+                            <input id="inLat" name="inLat" type="hidden" size="20" value="" />
+                            <p id="addList" style="display: none">${addList}</p>
 
-
-                            <body onload="load()" onunload="GUnload()">
+                            <input id="inLng" name="inLng" type="hidden" size="20" value="" />
+                        
                             
-                                <input name="button" type="button" value="Check" onclick="javascript:addressGps();" />
-                                <br>
-                                
-                                <input id="inLat" name="inLat"  type="hidden" size="20" value="" />
-                                <input id="inLng" name="inLng" type="hidden"  size="20" value="" />
-                                <input id="inReg" name="inReg" type= "hidden" size="20" value="" />
-                                <p>
-                                <div id="my_map" style="width: 400px; height: 300px"></div>
-                            </body>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="city" placeholder="City">
+                            </div>
                             
                             <div class="form-group">
                                 <label class="block">
@@ -563,6 +496,7 @@
             </div>
             <!-- end: SETTINGS -->
         </div>
+                </div>
         <!-- start: MAIN JAVASCRIPTS -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -578,6 +512,10 @@
         <!-- start: CLIP-TWO JAVASCRIPTS -->
         <script src="assets/js/main.js"></script>
         <!-- start: JavaScript Event Handlers for this page -->
+        
+        <script
+            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+        </script>
         <script src="assets/js/mapMark.js"></script>
         <script>
             jQuery(document).ready(function() {

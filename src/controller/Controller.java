@@ -11,10 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import model.AdminDAO;
 import model.BusinessProfileDAO;
-<<<<<<< HEAD
 import model.CampaignDAO;
-=======
->>>>>>> origin/master
 import model.CustomerAnalysisDAO;
 import model.Model;
 
@@ -37,19 +34,16 @@ public class Controller extends HttpServlet {
 		Action.add(new ViewHistoryAction(model));
 		Action.add(new CreateBusinessAction(model));
 		Action.add(new CreateCampaignAction(model));
+        Action.add(new ListAction(model));
+        Action.add(new RegionAction(model));
 		Action.add(new SetViewDataAction(model));
 		Action.add(new SetViewDataByDayAction(model));
 		Action.add(new SetViewDataByMonthAction(model));
 		Action.add(new SetViewDataByYearAction(model));
 		
 	
-<<<<<<< HEAD
 		initializeTable(model.getAdminDAO(), model.getBusinessProfileDAO(), model.getCustomerAnalysisDAO(), model.getCampaignDAO());
 		
-=======
-	initializeTable(model.getAdminDAO(), model.getBusinessProfileDAO(), model.getCustomerAnalysisDAO());
-	
->>>>>>> origin/master
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -120,12 +114,8 @@ public class Controller extends HttpServlet {
 	}
 	
 	
-<<<<<<< HEAD
 	public void initializeTable(AdminDAO adminDAO, BusinessProfileDAO businessprofileDAO, 
 			CustomerAnalysisDAO customerAnalysisDAO, CampaignDAO campaignDAO) {
-=======
-	public void initializeTable(AdminDAO adminDAO, BusinessProfileDAO businessprofileDAO, CustomerAnalysisDAO customerAnalysisDAO) {
->>>>>>> origin/master
 
 		try {
 			if (adminDAO.read("admin") == null) {
@@ -144,18 +134,320 @@ public class Controller extends HttpServlet {
 			if (businessprofileDAO.read(1) == null) {
 				BusinessProfileBean business = new BusinessProfileBean();
 		
+				business.setBusiness_id(1);
 				business.setPassword("123456");
 				business.setUsername("business1");
 				business.setPhone("347-654-1234");
 				business.setName("TestBusiness");
 				business.setWebsite("www.business.com");
 				business.setDescription("Hi this is for ");
+				business.setInLat("40.450899");
+				business.setInLng("-79.94972000000001");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(2);
+				business.setPassword("123456");
+				business.setUsername("SushiFukuOakland");
+				business.setPhone("347-654-1234");
+				business.setName("Sushi Fuku Oakland");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Sushi Fuku ");
+				business.setInLat("40.44166");
+				business.setInLng("-79.95734");
+				business.setAddress("120 Oakland Avenue");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(3);
+				business.setPassword("123456");
+				business.setUsername("WilliamPennTavern");
+				business.setPhone("347-654-1234");
+				business.setName("William Penn Tavern");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello William Penn Tavern ");
+				business.setInLat("40.45136");
+				business.setInLng("-79.93378");
+				business.setAddress("739 Bellefonte Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(4);
+				business.setPassword("123456");
+				business.setUsername("SushiFukuCraigStreet");
+				business.setPhone("347-654-1234");
+				business.setName("Sushi Fuku Craig Street");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Sushi Fuku ");
+				business.setInLat("40.4448,");
+				business.setInLng("-79.94851");
+				business.setAddress("417 South Craig Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(5);
+				business.setPassword("123456");
+				business.setUsername("Sorrento'sPizza");
+				business.setPhone("347-654-1234");
+				business.setName("Sorrento's Pizza");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Sorrento's Pizza ");
+				business.setInLat("40.4404");
+				business.setInLng("-79.9565");
+				business.setAddress("233 Atwood Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(6);
+				business.setPassword("123456");
+				business.setUsername("Social");
+				business.setPhone("347-654-1234");
+				business.setName("Social");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Sushi Fuku ");
+				business.setInLat("40.45689");
+				business.setInLng("-79.91615");
+				business.setAddress("6425 Penn Avenue");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(7);
+				business.setPassword("123456");
+				business.setUsername("ShadyGrove");
+				business.setPhone("347-654-1234");
+				business.setName("Shady Grove");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Shady Grove ");
+				business.setInLat("40.45086");
+				business.setInLng("-79.9335");
+				business.setAddress("5500 Walnut Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(8);
+				business.setPassword("123456");
+				business.setUsername("PizzaRomano");
+				business.setPhone("347-654-1234");
+				business.setName("Pizza Romano");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Pizza Romano");
+				business.setInLat("40.44066");
+				business.setInLng("-79.95695");
+				business.setAddress("219 Atwood Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(9);
+				business.setPassword("123456");
+				business.setUsername("Peter'sPub");
+				business.setPhone("347-654-1234");
+				business.setName("Peter's Pub");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Peter's Pub ");
+				business.setInLat("40.44176, ");
+				business.setInLng("-79.95734");
+				business.setAddress("116 Oakland Avenue");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(10);
+				business.setPassword("123456");
+				business.setUsername("OriginalMilanoPizza");
+				business.setPhone("347-654-1234");
+				business.setName("Original Milano Pizza");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Original Milano Pizza");
+				business.setInLat("40.44133");
+				business.setInLng("-79.95875");
+				business.setAddress("3606 Fifth Avenue");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(11);
+				business.setPassword("123456");
+				business.setUsername("Mario'sEastSideSaloon");
+				business.setPhone("347-654-1234");
+				business.setName("Mario's East Side Saloon");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Sushi Fuku ");
+				business.setInLat("40.451");
+				business.setInLng("-79.93386");
+				business.setAddress("5442 Walnut Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(12);
+				business.setPassword("123456");
+				business.setUsername("LivNutrition");
+				business.setPhone("347-654-1234");
+				business.setName("Liv Nutrition");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Liv Nutrition");
+				business.setInLat("40.44169");
+				business.setInLng("-79.95838");
+				business.setAddress("110 Atwood St");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(13);
+				business.setPassword("123456");
+				business.setUsername("LarryCarol'sPizza");
+				business.setPhone("347-654-1234");
+				business.setName("Larry & Carol's Pizza");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Larry & Carol's Pizza ");
+				business.setInLat("40.43674");
+				business.setInLng("-79.95478");
+				business.setAddress("410 Semple Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(14);
+				business.setPassword("123456");
+				business.setUsername("JittersCafe&IceCream");
+				business.setPhone("347-654-1234");
+				business.setName("Jitters Cafe & Ice Cream");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Jitters Cafe & Ice Cream");
+				business.setInLat("40.4518");
+				business.setInLng("-79.93237");
+				business.setAddress("5541 Walnut Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(15);
+				business.setPassword("123456");
+				business.setUsername("Hemingway'sCafe");
+				business.setPhone("347-654-1234");
+				business.setName("Hemingway's Cafe");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Hemingway's Cafe");
+				business.setInLat("40.44229");
+				business.setInLng("-79.95625");
+				business.setAddress("3911 Forbes Avenue");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(16);
+				business.setPassword("123456");
+				business.setUsername("GarageDoorSaloon");
+				business.setPhone("347-654-1234");
+				business.setName("Garage Door Saloon");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Garage Door Saloon");
+				business.setInLat("40.44065");
+				business.setInLng("-79.95682");
+				business.setAddress("223 Atwood Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(17);
+				business.setPassword("123456");
+				business.setUsername("FuelandFuddle");
+				business.setPhone("347-654-1234");
+				business.setName("Fuel and Fuddle");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Sushi Fuku ");
+				business.setInLat("40.44115");
+				business.setInLng("-79.95672");
+				business.setAddress("212 Oakland Avenue");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(18);
+				business.setPassword("123456");
+				business.setUsername("ForbesGyro");
+				business.setPhone("347-654-1234");
+				business.setName("Forbes Gyro");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello SForbes Gyro ");
+				business.setInLat("40.44143");
+				business.setInLng("-79.9574");
+				business.setAddress("3715 Forbes Avenue");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(19);
+				business.setPassword("123456");
+				business.setUsername("Everyday�s A Sundae & Caf�");
+				business.setPhone("347-654-1234");
+				business.setName("Everyday�s A Sundae & Caf�");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Everyday�s A Sundae & Caf�");
+				business.setInLat("40.45992");
+				business.setInLng("-79.92431");
+				business.setAddress("6014 Centre Avenue");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(20);
+				business.setPassword("123456");
+				business.setUsername("Empire Tattoo");
+				business.setPhone("347-654-1234");
+				business.setName("Empire Tattoo");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Empire Tattoo ");
+				business.setInLat("40.43963");
+				business.setInLng("-79.9575");
+				business.setAddress("230 Meyran Avenue");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(21);
+				business.setPassword("123456");
+				business.setUsername("Eatunique");
+				business.setPhone("347-654-1234");
+				business.setName("Eatunique");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Eatunique ");
+				business.setInLat("40.4456");
+				business.setInLng("-79.94857");
+				business.setAddress("305 South Craig Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(22);
+				business.setPassword("123456");
+				business.setUsername("Dave & Andy's Homemade Ice Cream");
+				business.setPhone("347-654-1234");
+				business.setName("Dave & Andy's Homemade Ice Cream");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Dave & Andy's Homemade Ice Cream ");
+				business.setInLat("40.44094");
+				business.setInLng("-79.95724");
+				business.setAddress("207 Atwood Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(23);
+				business.setPassword("123456");
+				business.setUsername("Cappy's Cafe");
+				business.setPhone("347-654-1234");
+				business.setName("Cappy's Cafe");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Cappy's Cafe");
+				business.setInLat("40.4511");
+				business.setInLng("-79.93436");
+				business.setAddress("5431 Walnut Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(24);
+				business.setPassword("123456");
+				business.setUsername("Buddy's Brews on Carson");
+				business.setPhone("347-654-1234");
+				business.setName("Buddy's Brews on Carson");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Buddy's Brews on Carson");
+				business.setInLat("40.4283");
+				business.setInLng("-79.97571");
+				business.setAddress("2112 East Carson Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(25);
+				business.setPassword("123456");
+				business.setUsername("Bangal Kabab House & Restaurant");
+				business.setPhone("347-654-1234");
+				business.setName("Bangal Kabab House & Restaurant");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Sushi Fuku ");
+				business.setInLat("40.43909");
+				business.setInLng("-79.95539");
+				business.setAddress("320 Atwood Street");
+				businessprofileDAO.create(business);
+				
+				business.setBusiness_id(26);
+				business.setPassword("123456");
+				business.setUsername("Ace Athletic");
+				business.setPhone("347-654-1234");
+				business.setName("Ace Athletic");
+				business.setWebsite("www.business.com");
+				business.setDescription("Hello Ace Athletic ");
+				business.setInLat("40.44075");
+				business.setInLng("-79.9577");
+				business.setAddress("3614 Forbes Ave");
 				businessprofileDAO.create(business);
 			}
 		} catch (RollbackException e) {
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
 
 		try {
 			if (campaignDAO.read(1) == null) {
@@ -278,85 +570,6 @@ public class Controller extends HttpServlet {
                 analysis.setTime("2015-08-01T16");
                 customerAnalysisDAO.create(analysis);
 
-=======
-
-		try {
-			if (customerAnalysisDAO.read(1,1) == null) {
-				CustomerAnalysisBean analysis = new CustomerAnalysisBean();
-		
-				analysis.setId(1);              
-                analysis.setBusiness_id(1);
-                analysis.setAmount_passby(12);
-                analysis.setAmount_enter(0);
-                analysis.setTotal_visit(0);
-                analysis.setTime("2015-08-01T00");
-                customerAnalysisDAO.create(analysis);
-                
-                analysis.setId(2);
-                analysis.setBusiness_id(1);
-                analysis.setAmount_passby(3);
-                analysis.setAmount_enter(0);
-                analysis.setTotal_visit(0);
-                analysis.setTime("2015-08-01T02");
-                customerAnalysisDAO.create(analysis);
-                
-                analysis.setId(3);
-                analysis.setBusiness_id(1);
-                analysis.setAmount_passby(12);
-                analysis.setAmount_enter(0);
-                analysis.setTotal_visit(0);
-                analysis.setTime("2015-08-01T04");
-                customerAnalysisDAO.create(analysis);
-                
-                analysis.setId(4);
-                analysis.setBusiness_id(1);
-                analysis.setAmount_passby(12);
-                analysis.setAmount_enter(0);
-                analysis.setTotal_visit(0);
-                analysis.setTime("2015-08-01T06");
-                customerAnalysisDAO.create(analysis);
-                
-                analysis.setId(5);
-                analysis.setBusiness_id(1);
-                analysis.setAmount_passby(25);
-                analysis.setAmount_enter(0);
-                analysis.setTotal_visit(0);
-                analysis.setTime("2015-08-01T08");
-                customerAnalysisDAO.create(analysis);
-                
-                analysis.setId(6);
-                analysis.setBusiness_id(1);
-                analysis.setAmount_passby(36);
-                analysis.setAmount_enter(0);
-                analysis.setTotal_visit(0);
-                analysis.setTime("2015-08-01T10");
-                customerAnalysisDAO.create(analysis);
-            
-                analysis.setId(7);
-                analysis.setBusiness_id(1);
-                analysis.setAmount_passby(25);
-                analysis.setAmount_enter(3);
-                analysis.setTotal_visit(3);
-                analysis.setTime("2015-08-01T12");
-                customerAnalysisDAO.create(analysis);
-                
-                analysis.setId(8);
-                analysis.setBusiness_id(1);
-                analysis.setAmount_passby(30);
-                analysis.setAmount_enter(8);
-                analysis.setTotal_visit(11);
-                analysis.setTime("2015-08-01T14");
-                customerAnalysisDAO.create(analysis);
-
-                analysis.setId(9);
-                analysis.setBusiness_id(1);
-                analysis.setAmount_passby(20);
-                analysis.setAmount_enter(5);
-                analysis.setTotal_visit(16);
-                analysis.setTime("2015-08-01T16");
-                customerAnalysisDAO.create(analysis);
-
->>>>>>> origin/master
                 analysis.setId(10);
                 analysis.setBusiness_id(1);
                 analysis.setAmount_passby(50);

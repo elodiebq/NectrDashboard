@@ -24,6 +24,8 @@ public class CreateBusinessProfileForm extends FormBean {
 	private String password;
 	private String username;
 	private String address;
+	private String city;
+	private String region;
 	private String inLng;
 	private String inLat;
 	private String category;
@@ -40,6 +42,8 @@ public class CreateBusinessProfileForm extends FormBean {
 	public String getPassword()      { return password;        }
 	public String getUsername() {return username;}
 	public String getAddress() {return address;}
+	public String getCity()    {return city;}
+	public String getRegion() {return region;}
 	public String getInLnt() {return inLng;}
 	public String getInLat() {return inLat;}
 	public String getCategory() {return category;}
@@ -58,6 +62,8 @@ public class CreateBusinessProfileForm extends FormBean {
 	public void setPassword(String s)      { password = s.trim();        }
 	public void setUsername(String s) {username = s;}
 	public void setAddress(String s) {address = s;}
+	public void setCity(String s)   {city = s;}
+	public void setRegion(String s) {region = s;}
 	public void setInLng(String s){inLng = s;}
 	public void setInLat(String s){inLat = s;}
 	public void setCategory(String s){category = s;}

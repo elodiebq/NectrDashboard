@@ -281,7 +281,7 @@
                                                 To add users, you need to be signed in as the super user.
                                             </p>
                                             <p class="links cl-effect-1">
-                                                <a href>
+                                                <a href="list.do">
                                                     view more
                                                 </a>
                                             </p>
@@ -297,7 +297,7 @@
                                                 The Manage Orders tool provides a view of all your orders.
                                             </p>
                                             <p class="cl-effect-1">
-                                                <a href>
+                                                <a href="create_business.do">
                                                     view more
                                                 </a>
                                             </p>

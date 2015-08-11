@@ -60,10 +60,11 @@ public class CreateCampaignAction extends Action{
             CampaignBean campaign = new CampaignBean();
             campaign.setDate_create(timeStamp);
             campaign.setDate_post(datepost);
+            campaign.setDate_from(form.getDate_from());
+            campaign.setDate_to(form.getDate_to());          
             campaign.setTitle(form.getTitle());
             campaign.setTime_from(form.getTime_from());            
             campaign.setTime_to(form.getTime_to());
-            campaign.setRepeats(form.getRepeats());
             if (sb.toString() != null || c.length != 0)
             	campaign.setRepeats_on(sb.toString());
             campaign.setMessage(form.getMessage());

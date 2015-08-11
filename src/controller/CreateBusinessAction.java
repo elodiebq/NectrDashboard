@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import model.BusinessProfileDAO;
 import model.Model;
+import model.RegionDAO;
 
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
@@ -17,15 +18,18 @@ import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
 import databeans.BusinessProfileBean;
+import databeans.RegionBean;
 import formbeans.CreateBusinessProfileForm;
 
 
 public class CreateBusinessAction extends Action {
     private FormBeanFactory<CreateBusinessProfileForm> formBeanFactory = FormBeanFactory.getInstance(CreateBusinessProfileForm.class);
     private BusinessProfileDAO customerDAO;
+    private RegionDAO regionDAO;
 
     public CreateBusinessAction(Model model) {
         customerDAO = model.getBusinessProfileDAO();
+        regionDAO = model.getRegionDAO();
     }
 
     public String getName() {
@@ -63,6 +67,7 @@ public class CreateBusinessAction extends Action {
 //            
 
             BusinessProfileBean customer = new BusinessProfileBean();
+            RegionBean region = new RegionBean();
             customer.setName(form.getName());
             customer.setPhone(form.getPhone());
             customer.setDescription(form.getDescription());
@@ -70,8 +75,12 @@ public class CreateBusinessAction extends Action {
             customer.setWebsite(form.getWebsite());
             customer.setUsername(form.getUsername());
             customer.setPassword(form.getPassword());
+            customer.setAddress(form.getAddress());
+            customer.setCity(form.getCity());
             customer.setInLat(form.getInLat());
             customer.setInLng(form.getInLnt());
+//            region = regionDAO.getAnalysis(name);
+//            customer.setRegionId(regionDAO.form.getRegion());
             customer.setCategory(form.getCategory());
             
             

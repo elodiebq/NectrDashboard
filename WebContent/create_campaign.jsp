@@ -299,19 +299,14 @@
 							</div>
 							<div class="form-group">
 								            Campaign Time <br></br>
-								            From:&nbsp; <input type="datetime-local" name="time_from" value = "time_from" required>
-								            To:&nbsp;<input type="datetime-local" name="time_to" value = "time_to" required>
+								            Date from:&nbsp; <input type="date" name="date_from" value = "date_from" required>
+								            To:&nbsp;<input type="date" name="date_to" value = "date_to" required>
+								            <br>
+								            Time from:&nbsp; <input type="time" name="time_from" value = "time_from" required>
+								            To:&nbsp;<input type="time" name="time_to" value = "time_to" required>
 											<br>
 											</div>
 											<div class = "form-group">
-											Repeats:    <select name="repeats">
-															<option value="never">Never</option>
-															<option value="daily">Daily</option>
-															<option value="weekly">Weekly</option>
-															<option value="monthly">Monthly</option>
-															<option value="yearly">Yearly</option>
-															</select>
-															<br>
 											Repeat on: <input type="checkbox" name="repeats_on" value="7">S
 											<input type="checkbox" name="repeats_on" value="1">M
 											<input type="checkbox" name="repeats_on" value="2">T
@@ -337,7 +332,7 @@
 					</form>
 					<!-- start: COPYRIGHT -->
 					<div class="copyright">
-						&copy; <span class="current-year"></span><span class="text-bold text-uppercase"> ClipTheme</span>. <span>All rights reserved</span>
+						&copy; <span class="current-year"></span><span class="text-bold text-uppercase"> Nectr</span>. <span>All rights reserved</span>
 					</div>
 					</div>
 					<div class="col-sm-6"></div>

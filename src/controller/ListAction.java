@@ -69,12 +69,13 @@ public class ListAction extends Action {
 				
 				}
 			String addList = list.toString();
+			request.setAttribute("businesslist", businesslist);
 			request.setAttribute("addList", addList);
 			}
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
 			return "error.jsp";
 		}
-		return "create_business.jsp"; 
+		return "manage_region.jsp"; 
 	}
 }

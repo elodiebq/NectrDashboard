@@ -3,7 +3,8 @@
 <!--[if IE 8]><html class="ie8" lang="en"><![endif]-->
 <!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
     <!--<![endif]-->
     <!-- start: HEAD -->
     <head>
@@ -39,75 +40,13 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-2.2.2.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
-        <script src="assets/js/mapMark.js"></script>
-                                    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAG_4i2swR3KOd-nGYrlrt8RTkyS8SRe_kYPTAbwTumvAqao01PRRUcCtCzTBnNH2kRURGR8RhQQoZ3w&language=us"
-      type="text/javascript"></script>
-                <script type="text/javascript">
-                
-                var geocoder = new google.maps.Geocoder();
-                var myMap;
-                var myMarker
-                function load() {
-                    if (GBrowserIsCompatible()) {
-                        myMap = new GMap2(document.getElementById("my_map"));
-                        var myLatLng = new GLatLng(40.444597, -79.945033);
-                        myMap.setCenter(myLatLng, 15);
-                        myMap.addControl(new GLargeMapControl());
-                        
-                        document.getElementById('inLat').value = myLatLng.lat();
-                        document.getElementById('inLng').value = myLatLng.lng();        
-                        
-                        myMarker = new GMarker( myLatLng );
-                        myMap.addOverlay( myMarker );
-                    }
-                }
-                
-                function extractFromAdress(components, type){  //
-                    for (var i=0; i<components.length; i++)
-                        for (var j=0; j<components[i].types.length; j++)
-                            if (components[i].types[j]==type) return components[i].long_name;
-                    return "";
-                }
-                
-                function addressGps() {
-                    var myGeocoder = new GClientGeocoder();
-                    var address = document.getElementById('address').value;
-                    myGeocoder.getLatLng(address, function getRequest( point ){
-                                            if(!point){
-                                                alert('No such addess�');
-                                            }else{
-                                                //移動地圖中心點
-                                                myMap.panTo( point );
-                                                //設定標註座標
-                                                myMarker.setLatLng(point);
-                                                
-                                                document.getElementById('inLat').value = point.lat();
-                                                document.getElementById('inLng').value = point.lng();
-                                            }
-                                        });
-                    geocoder.geocode( { 'address': address, "region": "US"}, function(results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
+       
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
-                          var postCode = extractFromAdress(results[0].address_components, "neighborhood");
-                          
-                          document.getElementById("region").innerHTML = "Region:" + postCode;
-                          document.getElementById('inReg').value = postCode;
-                          /* var marker = new google.maps.Marker({
-                              map: map,
-                              position: results[0].geometry.location
-                          }); */
-                        } else {
-                          alert('Geocode was not successful for the following reason: ' + status);
-                        }
-                      });
-                }
-                
-                //]]>
-                </script>
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     </head>
     <!-- end: HEAD -->
-    <body>
+    <body >
         <div id="app">
             <!-- sidebar -->
             <div class="sidebar app-aside" id="sidebar">
@@ -143,7 +82,7 @@
                                             <i class="ti-home"></i>
                                         </div>
                                         <div class="item-inner">
-                                            <span class="title"> Create Company </span>
+                                            <span class="title"> Manage Region </span>
                                         </div>
                                     </div>
                                 </a>
@@ -305,8 +244,8 @@
                         <section id="page-title" class="padding-top-15 padding-bottom-15">
                             <div class="row">
                                 <div class="col-sm-7">
-                                    <h1 class="mainTitle">Create Company</h1>
-                                    <span class="mainDescription">for new business owner </span>
+                                    <h1 class="mainTitle">Manege Region</h1>
+                                    <span class="mainDescription">for exist businesses </span>
                                 </div>
                                 <div class="col-sm-5">
                                     <!-- start: MINI STATS WITH SPARKLINE -->
@@ -342,108 +281,38 @@
                         <!-- start: REGISTER BOX -->
                 <div class="box-register">
                 <div class="col-sm-6">
-                    <h4 style="color: red">${msg}</h4>
-                    <form class="form-register" method="POST" action="create_business.do">
-                        <fieldset>
-                            <legend>
-                                Business Info
-                            </legend>
-                            <p>
-                                Enter new business owner's info below:
-                            </p>
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Company Name">
-                            </div>
-                            <div class="form-group">
-                                <input type="text"  name="username" placeholder="Username">
-                            </div>
-                            <div class="form-group">
-                                <input type="text"  name="password" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                            <input id="address" class="form-control" name="address" type="text" size="40" placeholder="Address" />
-                            </div>
-                        <div class="form-group">
-                                <input type="text"  name="city" placeholder="City">
-                            </div>
-                            <p name = "region" id="region"> </p> 
-
-
-                            <body onload="load()" onunload="GUnload()">
-                            
-                                <input name="button" type="button" value="Check" onclick="javascript:addressGps();" />
-                                <br>
-                                
-                                <input id="inLat" name="inLat"  type="hidden" size="20" value="" />
-                                <input id="inLng" name="inLng" type="hidden"  size="20" value="" />
-                                <input id="inReg" name="inReg" type= "hidden" size="20" value="" />
-                                <p>
-                                <div id="my_map" style="width: 400px; height: 300px"></div>
-                            </body>
-                            
-                            <div class="form-group">
-                                <label class="block">
-                                    Categories
-                                </label>
-                                <div class="clip-radio radio-primary">
-                                    <input type="radio" id="rg-restaurant" name="category" value="restaurant">
-                                    <label for="rg-restaurant">
-                                        Restaurants
-                                    </label>
-                                    <input type="radio" id="rg-bar" name="category" value="bar">
-                                    <label for="rg-bar">
-                                        Bars
-                                    </label>
-                                    <input type="radio" id="rg-ct" name="category" value="ct">
-                                    <label for="rg-ct">
-                                        Coffee & Tea
-                                    </label>
-                                </div>
-                            </div>
-                            <div>
-                            
-                                  <div class="form-group">
-                                    <label class="control-label col-sm-2" for="phone">Phone:</label>
-                                    <div class="col-sm-10">
-                                      <input type="phone" name="phone" class="form-control" id="phone" placeholder="Enter phone number">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="control-label col-sm-2" for="website">Website:</label>
-                                    <div class="col-sm-10"> 
-                                      <input type="website" class="form-control" name="website" placeholder="Enter website address">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="control-label col-sm-2" for="email">Email:</label>
-                                    <div class="col-sm-10"> 
-                                      <input type="email" class="form-control" name="email" placeholder="Enter email address">
-                                    </div>
-                                  </div>
-                                <div class="input-append bootstrap-timepicker">
-                                            Business Hours <br></br>
-                                            From:<input type="time" name="hrs" name="timefrom" placeholder="hrs:mins" value="" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="inputs duration t1 time hrs" required>
-                                            To:<input type="time" name="hrs" name = "timeto" placeholder="hrs:mins" value="" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="inputs duration t1 time hrs" required>
-                                        </div>
-                            
-                                <br></br>
-                                </div>
-                            <div class = "form-group">
-                            <p>
-                                Description:
-                            </p>
-                            <textarea class="form-control" rows="5" name="description"></textarea>
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit"  name="action" class="btn btn-primary pull-right">
-                                    Submit <i class="fa fa-arrow-circle-right"></i>
-                                </button>
-                            </div>
-                        </fieldset>
-                    </form>
+                   
+                   <p id="addList" style="display: none">${addList}</p>
+                    <div id="googleMap" style="width:1000px;height:600px;"></div>
+                    <br>
+                    <table class="table table-bordered">
+					    <thead>
+					      <tr>
+					        <th>Business Name</th>
+					        <th>Business ID</th>
+					        <th>Address</th>
+					        <th>Region</th>
+					        <th>Modify</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      
+					     <c:forEach var="f" items="${businesslist}">    
+					      <tr>
+					        <td>${f.name }</td>
+					        <td>${f.business_id }</td>
+					        <td>${f.address }</td>
+					        <td>${f.region }</td>
+					        <td></td>
+					      </tr>
+						</c:forEach>
+					    </tbody>
+					    
+					  </table>
+                    
                     <!-- start: COPYRIGHT -->
                     <div class="copyright">
-                        &copy; <span class="current-year"></span><span class="text-bold text-uppercase"> ClipTheme</span>. <span>All rights reserved</span>
+                        &copy; <span class="current-year"></span><span class="text-bold text-uppercase"> Nectr</span>. <span>All rights reserved</span>
                     </div>
                     </div>
                     <div class="col-sm-6"></div>
@@ -563,6 +432,7 @@
             </div>
             <!-- end: SETTINGS -->
         </div>
+                </div>
         <!-- start: MAIN JAVASCRIPTS -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -578,6 +448,10 @@
         <!-- start: CLIP-TWO JAVASCRIPTS -->
         <script src="assets/js/main.js"></script>
         <!-- start: JavaScript Event Handlers for this page -->
+        
+        <script
+            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+        </script>
         <script src="assets/js/mapMark.js"></script>
         <script>
             jQuery(document).ready(function() {
