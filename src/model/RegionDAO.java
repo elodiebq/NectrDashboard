@@ -11,6 +11,8 @@ import org.genericdao.RollbackException;
 
 
 
+
+import databeans.BusinessProfileBean;
 import databeans.RegionBean;
 
 public class RegionDAO extends GenericDAO<RegionBean>  {
@@ -19,7 +21,7 @@ public class RegionDAO extends GenericDAO<RegionBean>  {
 		super(RegionBean.class, tableName, pool);
 	}
 	
-	public RegionBean getAnalysis(int name) throws RollbackException {
+	public RegionBean getRegionList(int name) throws RollbackException {
 	    RegionBean region[] = match(MatchArg.equals("regionId", name));
 		int a = region.length - 1;
 		if (region.length == 0) {
@@ -28,6 +30,12 @@ public class RegionDAO extends GenericDAO<RegionBean>  {
 		else {
 			return region[a];
 		}
+	}
+	
+	public RegionBean[] getRegionList() throws RollbackException{
+		RegionBean[] regionlist = match();
+		if(regionlist.length == 0) return null;
+		return regionlist;
 	}
 	
 	

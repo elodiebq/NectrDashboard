@@ -41,7 +41,7 @@ public class RegionAction extends Action {
             if (businessList.length != 0) {
 
                 for (int i = 0; i < businessList.length; i++) {
-                    regionList = regionDAO.getAnalysis(businessList[i].getRegionId() - 1);
+                    regionList = regionDAO.getRegionList(businessList[i].getRegionId() - 1);
                     list.add(regionList.getRegionName());
                 }
                 String[] region = new String[list.size()];

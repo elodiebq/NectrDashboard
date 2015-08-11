@@ -44,7 +44,7 @@ public class Controller extends HttpServlet {
 		Action.add(new SetViewDataByYearAction(model));
 		
 	
-		initializeTable(model.getAdminDAO(), model.getBusinessProfileDAO(), model.getCustomerAnalysisDAO(), model.getCampaignDAO());
+		initializeTable(model.getAdminDAO(), model.getBusinessProfileDAO(), model.getCustomerAnalysisDAO(), model.getCampaignDAO(), model.getRegionDAO());
 		
 	}
 
@@ -175,7 +175,6 @@ public class Controller extends HttpServlet {
 				business.setDescription("Hi this is for ");
 				business.setInLat("40.450899");
 				business.setInLng("-79.94972000000001");
-				business.setRegionId(1);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(2);
@@ -188,6 +187,7 @@ public class Controller extends HttpServlet {
 				business.setInLat("40.44166");
 				business.setInLng("-79.95734");
 				business.setAddress("120 Oakland Avenue");
+				business.setRegionId(1);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(3);
@@ -200,6 +200,7 @@ public class Controller extends HttpServlet {
 				business.setInLat("40.45136");
 				business.setInLng("-79.93378");
 				business.setAddress("739 Bellefonte Street");
+				business.setRegionId(2);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(4);
@@ -249,7 +250,6 @@ public class Controller extends HttpServlet {
 				business.setInLat("40.45086");
 				business.setInLng("-79.9335");
 				business.setAddress("5500 Walnut Street");
-				business.setRegionId(1);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(8);
@@ -916,6 +916,5 @@ public class Controller extends HttpServlet {
 			e.printStackTrace();
 		}
 			
-	}
-	
+	}	
 }
