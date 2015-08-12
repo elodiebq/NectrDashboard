@@ -271,10 +271,44 @@
 					<!-- end: DASHBOARD TITLE -->
 					<!-- start: REGISTER BOX -->
 					<div class="box-register">
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 
 							<p id="addList" style="display: none">${addList}</p>
-							<div id="googleMap" style="width: 1000px; height: 600px;"></div>
+							
+							<div class ="col-sm-8"><div id="googleMap" style="width: 880px; height: 550px;"></div></div>
+							<div class ="col-sm-4">
+							<h1 class="mainTitle">Create Region</h1>
+							<h4 style="color: green">${msg}</h4>
+							<form class="form-register"  method="POST" action="list.do">
+						<fieldset>
+							<legend>
+								Region Info
+							</legend>
+							<p>
+								Enter new region info below:
+							</p>
+							<div class="form-group">
+								Name:&nbsp; &nbsp;<input type="text"  name="regionName" placeholder="Region Name">
+							<br><br>
+								            Center Location <br><br>
+								           <p> Latitude:&nbsp; &nbsp;<input type="text" name="centerLat" placeholder="Latitude" required></p>
+								            <br>
+								           <p> Longitude:&nbsp;<input type="text" name="centerLng" placeholder="Longitude" required></p>
+								            <br>
+								            <p>Radius: &nbsp;&nbsp;<input type="text" name="radius"  required></p>
+							</div>
+											
+							<div class="form-actions">
+								<button type="submit" name = "action" class="btn btn-primary pull-right">
+									Submit <i class="fa fa-arrow-circle-right"></i>
+								</button>
+							</div>
+						</fieldset>
+					</form>
+							
+							
+							
+							</div>
 							<br>
 							<form method="POST">
 							<table class="table table-bordered">

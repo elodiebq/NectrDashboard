@@ -18,8 +18,10 @@ import org.mybeans.form.FormBeanFactory;
 
 
 
+
 import databeans.BusinessProfileBean;
 import databeans.RegionBean;
+import formbeans.CreateRegion;
 
 /*
  * Looks up the photos for a given "user".
@@ -32,8 +34,8 @@ import databeans.RegionBean;
  *   (3) Forwards to list.jsp.
  */
 public class ListAction extends Action {
-//	private FormBeanFactory<ListForm> formBeanFactory = FormBeanFactory
-//			.getInstance(ListForm.class);
+	private FormBeanFactory<CreateRegion> formBeanFactory = FormBeanFactory
+			.getInstance(CreateRegion.class);
 
 	private BusinessProfileDAO businessDAO;
 	private RegionDAO regionDAO;
@@ -53,17 +55,46 @@ public class ListAction extends Action {
 		// correct)
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
+		try {
+			CreateRegion form = (CreateRegion) formBeanFactory.create(request);
+			if (!form.isPresent()) return "manage_region.jsp";
+			
+			RegionBean region = new RegionBean();
+			
+			double rad = Double.valueOf(request.getParameter("radius"));
+			double lat = Double.valueOf(request.getParameter("centerLat"));
+			double lng = Double.valueOf(request.getParameter("centerLng"));
+			
+			
+			region.setRegionName(form.getRegionName());
+			region.setCenterLat(lat);
+			region.setCenterLng(lng);
+			region.setRadius(rad);
+			
+			 try {
+	                regionDAO.create(region);
+	                request.setAttribute("msg", region.getRegionName() + " " + " has been created");
+	            } catch (RollbackException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+		} catch (FormBeanException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		if (request.getParameter("action") != null){
 			BusinessProfileBean[] businessList;
 			try {
 				businessList = businessDAO.getBusinessList();
 				for (int i = 0; i < businessList.length; i++){
-					int id = Integer.parseInt( request.getParameter(businessList[i].getName()));
-					if (businessList[i].getRegionId() != id){
-						//System.out.println("?? "+ businessList[i].getRegionId() + " "+request.getParameter(businessList[i].getName()));
-						businessList[i].setRegionId(id);
-						businessDAO.update(businessList[i]);
+					if (request.getParameter(businessList[i].getName()) != null){
+						int id = Integer.parseInt( request.getParameter(businessList[i].getName()));
+						if (businessList[i].getRegionId() != id){
+							//System.out.println("?? "+ businessList[i].getRegionId() + " "+request.getParameter(businessList[i].getName()));
+							businessList[i].setRegionId(id);
+							businessDAO.update(businessList[i]);
+						}
 					}
 				}
 			} catch (RollbackException e) {
