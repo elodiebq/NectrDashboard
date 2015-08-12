@@ -9,13 +9,17 @@ import javax.servlet.http.HttpSession;
 
 import model.BusinessProfileDAO;
 import model.Model;
+import model.RegionDAO;
 
 import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
 
-import databeans.BusinessProfileBean;;
+
+
+import databeans.BusinessProfileBean;
+import databeans.RegionBean;
 
 /*
  * Looks up the photos for a given "user".
@@ -32,9 +36,11 @@ public class ListAction extends Action {
 //			.getInstance(ListForm.class);
 
 	private BusinessProfileDAO businessDAO;
+	private RegionDAO regionDAO;
 
 	public ListAction(Model model) {
 		businessDAO = model.getBusinessProfileDAO();
+		regionDAO = model.getRegionDAO();
 	}
 
 	public String getName() {
@@ -48,16 +54,35 @@ public class ListAction extends Action {
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
 		
+		if (request.getParameter("action") != null){
+			BusinessProfileBean[] businessList;
+			try {
+				businessList = businessDAO.getBusinessList();
+				for (int i = 0; i < businessList.length; i++){
+					int id = Integer.parseInt( request.getParameter(businessList[i].getName()));
+					if (businessList[i].getRegionId() != id){
+						//System.out.println("?? "+ businessList[i].getRegionId() + " "+request.getParameter(businessList[i].getName()));
+						businessList[i].setRegionId(id);
+						businessDAO.update(businessList[i]);
+					}
+				}
+			} catch (RollbackException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 		//prevent multiple sessions
 		      		BusinessProfileBean business = (BusinessProfileBean) request.getSession(false).getAttribute("business");
+		      		RegionBean region = (RegionBean) request.getSession(false).getAttribute("region");
 		      		if(business!=null)
 		      		{
 		      			return "login.jsp";
 		      		}
-		
+		      		
 		try {
 			BusinessProfileBean[] businesslist = businessDAO.getBusinessList();
+			RegionBean[] regionlist = regionDAO.getRegionList();
             StringBuilder list = new StringBuilder();
 			if (businesslist.length != 0) {
 
@@ -71,6 +96,7 @@ public class ListAction extends Action {
 			String addList = list.toString();
 			request.setAttribute("businesslist", businesslist);
 			request.setAttribute("addList", addList);
+			request.setAttribute("regionlist", regionlist);
 			}
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());

@@ -41,6 +41,10 @@ public class RegionDAO extends GenericDAO<RegionBean>  {
         }
     }
 	
-	
+	public RegionBean[] getRegionList() throws RollbackException{
+		RegionBean[] regionlist = match();
+		if(regionlist.length == 0) return null;
+		return regionlist;
+	}
 	
 }
