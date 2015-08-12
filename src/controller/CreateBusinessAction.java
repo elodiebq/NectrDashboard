@@ -1,19 +1,24 @@
 package controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
+import org.genericdao.ConnectionPool;
+import org.genericdao.DAOException;
+import org.genericdao.GenericDAO;
+import org.genericdao.MatchArg;
+import org.genericdao.RollbackException;
+
 import javax.mail.internet.MimeMultipart;
+
 import javax.servlet.http.HttpServletRequest;
 
 import model.BusinessProfileDAO;
 import model.Model;
 import model.RegionDAO;
-
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
-import org.genericdao.MatchArg;
-import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
@@ -68,6 +73,14 @@ public class CreateBusinessAction extends Action {
 
             BusinessProfileBean customer = new BusinessProfileBean();
             RegionBean region = new RegionBean();
+            try {
+                region = regionDAO.getRegion(form.getRegion());
+                System.out.print(region.getRegionName());
+            } catch (RollbackException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            customer.setRegionId(region.getRegionId());
             customer.setName(form.getName());
             customer.setPhone(form.getPhone());
             customer.setDescription(form.getDescription());
@@ -79,8 +92,7 @@ public class CreateBusinessAction extends Action {
             customer.setCity(form.getCity());
             customer.setInLat(form.getInLat());
             customer.setInLng(form.getInLnt());
-//            region = regionDAO.getAnalysis(name);
-//            customer.setRegionId(regionDAO.form.getRegion());
+            
             customer.setCategory(form.getCategory());
             
             

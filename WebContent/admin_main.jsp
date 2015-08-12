@@ -297,7 +297,7 @@
                                                 The Manage Orders tool provides a view of all your orders.
                                             </p>
                                             <p class="cl-effect-1">
-                                                <a href="create_business.do">
+                                                <a href="get_region.do">
                                                     view more
                                                 </a>
                                             </p>

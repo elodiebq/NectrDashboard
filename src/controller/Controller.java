@@ -34,10 +34,10 @@ public class Controller extends HttpServlet {
 		Action.add(new LoginAction(model));
 		Action.add(new LogoutAction(model));
 		Action.add(new ViewHistoryAction(model));
+		Action.add(new RegionAction(model));
 		Action.add(new CreateBusinessAction(model));
 		Action.add(new CreateCampaignAction(model));
         Action.add(new ListAction(model));
-        Action.add(new RegionAction(model));
 		Action.add(new SetViewDataAction(model));
 		Action.add(new SetViewDataByDayAction(model));
 		Action.add(new SetViewDataByMonthAction(model));
@@ -66,7 +66,6 @@ public class Controller extends HttpServlet {
 		BusinessProfileBean business = (BusinessProfileBean) session.getAttribute("business");
 		CampaignBean campaign = (CampaignBean) session.getAttribute("campaign");
 		CustomerAnalysisBean analysis = (CustomerAnalysisBean) session.getAttribute("customerAnalysis");
-		RegionBean region = (RegionBean) session.getAttribute("region");
 
 		String action = getActionName(servletPath);
 
@@ -132,39 +131,18 @@ public class Controller extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		try {
-			if (regionDAO.read(1) == null) {
-				RegionBean region = new RegionBean();
-		
-				region.setId(1);
-				region.setRegionName("Walnut");
-				region.setCenterLat(40.451114);
-				region.setCenterLng(-79.933960);
-				region.setRadius(180);
-				regionDAO.create(region);
-				
-				region.setId(2);
-				region.setRegionName("East Shady");
-				region.setCenterLat(40.458951);
-				region.setCenterLng(-79.920056);
-				region.setRadius(350);
-				regionDAO.create(region);
-				
-				region.setId(3);
-				region.setRegionName("Craig St");
-				region.setCenterLat(40.447249);
-				region.setCenterLng(-79.949135);
-				region.setRadius(200);
-				regionDAO.create(region);
-			}
-		} catch (RollbackException e) {
-			e.printStackTrace();
-		}
-		
 		
 		try {
-			if (businessprofileDAO.read(1) == null) {
+			if (businessprofileDAO.read(1,1) == null) {
 				BusinessProfileBean business = new BusinessProfileBean();
+				RegionBean region = new RegionBean();
+				region.setRegionId(1);
+				region.setRegionName("M");
+				regionDAO.create(region);
+				
+				region.setRegionId(2);
+                region.setRegionName("F");
+                regionDAO.create(region);
 		
 				business.setBusiness_id(1);
 				business.setPassword("123456");
@@ -175,6 +153,7 @@ public class Controller extends HttpServlet {
 				business.setDescription("Hi this is for ");
 				business.setInLat("40.450899");
 				business.setInLng("-79.94972000000001");
+				business.setRegionId(1);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(2);
@@ -187,7 +166,7 @@ public class Controller extends HttpServlet {
 				business.setInLat("40.44166");
 				business.setInLng("-79.95734");
 				business.setAddress("120 Oakland Avenue");
-				business.setRegionId(1);
+				business.setRegionId(2);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(3);
@@ -200,7 +179,6 @@ public class Controller extends HttpServlet {
 				business.setInLat("40.45136");
 				business.setInLng("-79.93378");
 				business.setAddress("739 Bellefonte Street");
-				business.setRegionId(2);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(4);
@@ -213,7 +191,6 @@ public class Controller extends HttpServlet {
 				business.setInLat("40.4448,");
 				business.setInLng("-79.94851");
 				business.setAddress("417 South Craig Street");
-				business.setRegionId(3);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(5);
@@ -298,7 +275,6 @@ public class Controller extends HttpServlet {
 				business.setInLat("40.451");
 				business.setInLng("-79.93386");
 				business.setAddress("5442 Walnut Street");
-				business.setRegionId(1);
 				businessprofileDAO.create(business);
 				
 				business.setBusiness_id(12);
@@ -916,5 +892,6 @@ public class Controller extends HttpServlet {
 			e.printStackTrace();
 		}
 			
-	}	
+	}
+	
 }

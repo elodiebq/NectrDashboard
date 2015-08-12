@@ -2,24 +2,18 @@ package controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.genericdao.MatchArg;
-import org.genericdao.RollbackException;
-import org.mybeans.form.FormBeanException;
-import org.mybeans.form.FormBeanFactory;
 
 import databeans.BusinessProfileBean;
 import databeans.CustomerAnalysisBean;
-import formbeans.ChangeDayForm;
-import formbeans.CreateBusinessProfileForm;
 import model.CustomerAnalysisDAO;
 import model.Model;
 
 public class SetViewDataAction extends Action {
-    private FormBeanFactory<ChangeDayForm> formBeanFactory = FormBeanFactory.getInstance(ChangeDayForm.class);
+  
     private CustomerAnalysisDAO customerAnalysisDAO;
     
     public SetViewDataAction(Model model) {
@@ -38,7 +32,7 @@ public class SetViewDataAction extends Action {
             return "login.jsp";
         }
         int a = business.getBusiness_id();
-        ChangeDayForm form;
+        
         try {
             String currTime = request.getParameter("chooseday");
             System.out.println(currTime);

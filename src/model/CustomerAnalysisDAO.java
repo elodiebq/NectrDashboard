@@ -11,8 +11,10 @@ import org.genericdao.RollbackException;
 
 
 
+
 import databeans.CampaignBean;
 import databeans.CustomerAnalysisBean;
+import databeans.RegionBean;
 
 public class CustomerAnalysisDAO extends GenericDAO<CustomerAnalysisBean>  {
 
@@ -30,6 +32,9 @@ public class CustomerAnalysisDAO extends GenericDAO<CustomerAnalysisBean>  {
 			return admin[a];
 		}
 	}
+	
+	
+	
 	public CustomerAnalysisBean[] getAnalysisArray(int name) throws RollbackException {
         CustomerAnalysisBean[] admin = match(MatchArg.equals("business_id", name));
         if (admin.length == 0) {

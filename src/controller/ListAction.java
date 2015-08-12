@@ -9,17 +9,13 @@ import javax.servlet.http.HttpSession;
 
 import model.BusinessProfileDAO;
 import model.Model;
-import model.RegionDAO;
 
 import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
 
-
-
-import databeans.BusinessProfileBean;
-import databeans.RegionBean;
+import databeans.BusinessProfileBean;;
 
 /*
  * Looks up the photos for a given "user".
@@ -36,11 +32,9 @@ public class ListAction extends Action {
 //			.getInstance(ListForm.class);
 
 	private BusinessProfileDAO businessDAO;
-	private RegionDAO regionDAO;
 
 	public ListAction(Model model) {
 		businessDAO = model.getBusinessProfileDAO();
-		regionDAO = model.getRegionDAO();
 	}
 
 	public String getName() {
@@ -57,16 +51,13 @@ public class ListAction extends Action {
 
 		//prevent multiple sessions
 		      		BusinessProfileBean business = (BusinessProfileBean) request.getSession(false).getAttribute("business");
-		      		RegionBean region = (RegionBean) request.getSession(false).getAttribute("region");
 		      		if(business!=null)
 		      		{
 		      			return "login.jsp";
 		      		}
-		int a = business.getRegionId();
-		      		
+		
 		try {
 			BusinessProfileBean[] businesslist = businessDAO.getBusinessList();
-			RegionBean[] regionlist = regionDAO.getRegionList();
             StringBuilder list = new StringBuilder();
 			if (businesslist.length != 0) {
 

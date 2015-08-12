@@ -3,22 +3,17 @@ package controller;
 import java.util.HashSet;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 import model.BusinessProfileDAO;
 import model.RegionDAO;
 import model.Model;
 
 import org.genericdao.RollbackException;
-import org.mybeans.form.FormBeanFactory;
 
 import databeans.BusinessProfileBean;
 import databeans.RegionBean;
-import formbeans.CreateBusinessProfileForm;
 
 public class RegionAction extends Action {
-    private FormBeanFactory<CreateBusinessProfileForm> formBeanFactory = FormBeanFactory
-            .getInstance(CreateBusinessProfileForm.class);
     private BusinessProfileDAO customerDAO;
     private RegionDAO regionDAO;
 
@@ -33,16 +28,18 @@ public class RegionAction extends Action {
 
     public String perform(HttpServletRequest request) {
         BusinessProfileBean[] businessList;
-        RegionBean regionList;
+        
         try {
-            
+            System.out.print("I'm here");
             businessList = customerDAO.getBusinessList();
             HashSet<String> list = new HashSet<String>();
             if (businessList.length != 0) {
 
                 for (int i = 0; i < businessList.length; i++) {
-                    regionList = regionDAO.getRegionList(businessList[i].getRegionId() - 1);
+                    System.out.print(businessList[i].getRegionId());
+                    RegionBean regionList = regionDAO.getAnalysis(businessList[i].getRegionId());
                     list.add(regionList.getRegionName());
+                 
                 }
                 String[] region = new String[list.size()];
                 java.util.Iterator<String> iterator = list.iterator();

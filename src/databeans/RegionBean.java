@@ -10,7 +10,7 @@ public class RegionBean {
 	private double  radius;
 	private String  regionName;
 	
-	public int    getId()              { return regionId;}
+	public int    getRegionId()              { return regionId;}
 
 	public double    getCenterLat()              { return centerLat;}
 	public double    getCenterLng()                 { return centerLng;}
@@ -18,7 +18,7 @@ public class RegionBean {
 	public String    getRegionName()              { return regionName;}
 	
 	
-	public void setId(int i)                 { regionId = i; }
+	public void setRegionId(int i)                 { regionId = i; }
 
 	public void setCenterLat(double i)                 { centerLat = i; }
 	public void setCenterLng(double i)                    { centerLng = i;}

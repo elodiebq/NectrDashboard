@@ -30,7 +30,7 @@ public class Model {
 			businessDAO   = new BusinessProfileDAO("businessProfile",pool);
 			campaignDAO = new CampaignDAO("campaign",pool);
 			customerAnalysisDAO = new CustomerAnalysisDAO("customerAnalysis", pool);
-			regionDAO = new RegionDAO("region",pool);
+			regionDAO = new RegionDAO("region", pool);
 	
 		} catch (DAOException e) {
 			throw new ServletException(e);
