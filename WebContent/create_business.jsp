@@ -377,12 +377,14 @@
 									</body>
 									<div class="form-group">
 										<label class="block"> Region </label>
-										<div class="clip-radio radio-primary">
+										<div>
 											<c:forEach var="c" items="${region}">
 												<c:set var="index" value="${index+1}" />
-												<input type="radio" id="rg-restaurant" name="region"
-                                                value=region${index}: ${c}><label for="rg-restaurant">
+												
+												<input type="radio"  name="region"
+                                                value= "${c}" ><label>
                                                 region${index}: ${c} </label>
+                                                
 											</c:forEach>
 										</div>
 									</div>

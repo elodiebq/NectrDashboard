@@ -133,7 +133,7 @@ public class Controller extends HttpServlet {
 		
 		
 		try {
-			if (businessprofileDAO.read(1,1) == null) {
+			if (businessprofileDAO.read(1) == null) {
 				BusinessProfileBean business = new BusinessProfileBean();
 				RegionBean region = new RegionBean();
 				region.setRegionId(1);
