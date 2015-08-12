@@ -7,4 +7,9 @@ public class Response {
 	public String id;
 	public double distance;
 	public HashMap<Integer, ArrayList<String[]>> business;
+	public int     regionId;
+	public double  centerLat;
+	public double  centerLng;
+	public double  radius;
+}
 }
