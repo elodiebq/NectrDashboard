@@ -14,6 +14,7 @@ public class CampaignBean {
 	private int     campaign_id;
 	private int     business_id;
 	private String title;
+	private int type;
 	private String message;
 	private String date_create;
 	private String date_post;
@@ -28,6 +29,7 @@ public class CampaignBean {
 	public int    getCampaign_id()              { return campaign_id;}
 	public int    getBusiness_id()                 { return business_id;}
 	public String getTitle()                          { return title; }
+	public int getType()							{return type;}
 	public String getMessage()                   { return message;  }
 	public String getDate_create()               	{ return date_create;	}
 	public String getDate_post() 		            { return date_post;		}
@@ -42,6 +44,7 @@ public class CampaignBean {
 	public void setCampaign_id(int i)                 { campaign_id = i; }
 	public void setBusiness_id(int i)                    { business_id = i;}
 	public void setTitle(String s)                          { title = s; }
+	public void setType(int i)								{type = i;}
 	public void setMessage(String s)                   { message = s;  }
 	public void setDate_create(String s)               	{ date_create = s;	}
 	public void setDate_post(String d) 		            { date_post = d;		}

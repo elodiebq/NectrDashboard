@@ -53,7 +53,7 @@ public class CreateCampaignAction extends Action{
             }
             
             CreateCampaign form = (CreateCampaign) formBeanFactory.create(request);
-            String datepost = form.getTime_from().substring(0, 10);
+            String datepost = form.getDate_from().substring(0, 10);
 
             if (!form.isPresent()) return "create_campaign.jsp";
             
@@ -63,6 +63,7 @@ public class CreateCampaignAction extends Action{
             campaign.setDate_from(form.getDate_from());
             campaign.setDate_to(form.getDate_to());          
             campaign.setTitle(form.getTitle());
+            campaign.setType(Integer.parseInt(form.getType()));
             campaign.setTime_from(form.getTime_from());            
             campaign.setTime_to(form.getTime_to());
             if (sb.toString() != null || c.length != 0)

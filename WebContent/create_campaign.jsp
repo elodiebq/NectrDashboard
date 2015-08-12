@@ -297,6 +297,13 @@
 							<div class="form-group">
 								<input type="text" class="form-control" name="title" placeholder="Campaign Title">
 							</div>
+							<div class="radio-primary">
+							        Campaingn Type:
+									<input type="radio" name="type" value="0" checked=""><label>&nbsp Coupon</label>
+						
+									<input type="radio" name="type" value="1" checked="checked"><label>&nbsp Message</label>
+									
+								</div>
 							<div class="form-group">
 								            Campaign Time <br></br>
 								            Date from:&nbsp; <input type="date" name="date_from" value = "date_from" required>

@@ -11,6 +11,7 @@ import org.mybeans.form.FormBean;
 public class CreateCampaign extends FormBean {
 	private String title;
 	private String message;
+	private String type;
 	private String date_create;
 	private String date_post;
 	private String date_from;
@@ -23,6 +24,7 @@ public class CreateCampaign extends FormBean {
 	
 	public String getTitle()                          { return title; }
 	public String getMessage()                   { return message;  }
+	public String getType()							{return type;}
 	public String getDate_create()               	{ return date_create;	}
 	public String getDate_post() 		            { return date_post;		}
 	public String getDate_from() 	          	{ return date_from;		}
@@ -35,6 +37,7 @@ public class CreateCampaign extends FormBean {
 
 	public void setTitle(String s)                          { title = s.trim(); }
 	public void setMessage(String s)                   { message = s.trim();  }
+	public void setType(String s)								{type = s;}
 	public void setDate_create(String s)               	{ date_create = s;	}
 	public void setDate_post(String s) 		            { date_post = s;		}
 	public void setDate_from(String s) 	          	{ date_from = s;		}
