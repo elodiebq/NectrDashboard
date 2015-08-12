@@ -55,33 +55,6 @@ public class ListAction extends Action {
 		// correct)
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
-		try {
-			CreateRegion form = (CreateRegion) formBeanFactory.create(request);
-			if (!form.isPresent()) return "manage_region.jsp";
-			
-			RegionBean region = new RegionBean();
-			
-			double rad = Double.valueOf(request.getParameter("radius"));
-			double lat = Double.valueOf(request.getParameter("centerLat"));
-			double lng = Double.valueOf(request.getParameter("centerLng"));
-			
-			
-			region.setRegionName(form.getRegionName());
-			region.setCenterLat(lat);
-			region.setCenterLng(lng);
-			region.setRadius(rad);
-			
-			 try {
-	                regionDAO.create(region);
-	                request.setAttribute("msg", region.getRegionName() + " " + " has been created");
-	            } catch (RollbackException e) {
-	                // TODO Auto-generated catch block
-	                e.printStackTrace();
-	            }
-		} catch (FormBeanException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		
 		if (request.getParameter("action") != null){
 			BusinessProfileBean[] businessList;
@@ -113,7 +86,6 @@ public class ListAction extends Action {
 		      		
 		try {
 			BusinessProfileBean[] businesslist = businessDAO.getBusinessList();
-			RegionBean[] regionlist = regionDAO.getRegionList();
             StringBuilder list = new StringBuilder();
 			if (businesslist.length != 0) {
 
@@ -121,18 +93,71 @@ public class ListAction extends Action {
 				list.append(businesslist[i].getInLat());
 				list.append(",");
 				list.append(businesslist[i].getInLng());
-				list.append(" ");
-				
-				}
+				list.append(",");
+				list.append(businesslist[i].getName());
+				list.append(";");
+			}
 			String addList = list.toString();
 			request.setAttribute("businesslist", businesslist);
 			request.setAttribute("addList", addList);
-			request.setAttribute("regionlist", regionlist);
 			}
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
 			return "error.jsp";
 		}
+		
+		try {
+			RegionBean[] regionlist = regionDAO.getRegionList();
+            StringBuilder list2 = new StringBuilder();
+        	if(regionlist.length !=0) {
+				for (int i = 0; i < regionlist.length; i++) {
+					list2.append(regionlist[i].getCenterLat());
+					list2.append(",");
+					list2.append(regionlist[i].getCenterLng());
+					list2.append(",");
+					list2.append(regionlist[i].getRadius());
+					list2.append(",");
+					list2.append(regionlist[i].getRegionName());
+					list2.append(";");
+				}
+				String addList2 = list2.toString();
+				request.setAttribute("addList2", addList2);
+				System.out.println(addList2);
+				request.setAttribute("regionlist", regionlist);
+			}
+		} catch (RollbackException e) {
+			errors.add(e.getMessage());
+			return "error.jsp";
+		}
+		
+		try {
+			CreateRegion form = (CreateRegion) formBeanFactory.create(request);
+			if (!form.isPresent()) return "manage_region.jsp";
+			
+			RegionBean region2 = new RegionBean();
+			
+			double rad = Double.valueOf(request.getParameter("radius"));
+			double lat = Double.valueOf(request.getParameter("centerLat"));
+			double lng = Double.valueOf(request.getParameter("centerLng"));
+			
+			
+			region2.setRegionName(form.getRegionName());
+			region2.setCenterLat(lat);
+			region2.setCenterLng(lng);
+			region2.setRadius(rad);
+			
+			 try {
+	                regionDAO.create(region2);
+	                request.setAttribute("msg", region2.getRegionName() + " " + " has been created");
+	            } catch (RollbackException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+		} catch (FormBeanException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return "manage_region.jsp"; 
 	}
 }
