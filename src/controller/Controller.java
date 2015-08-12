@@ -131,18 +131,38 @@ public class Controller extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		try {
+			if (regionDAO.read(1) == null) {
+				RegionBean region = new RegionBean();
+		
+				region.setRegionId(1);
+				region.setRegionName("Walnut");
+				region.setCenterLat(40.451114);
+				region.setCenterLng(-79.933960);
+				region.setRadius(180);
+				regionDAO.create(region);
+				
+				region.setRegionId(2);
+				region.setRegionName("East Shady");
+				region.setCenterLat(40.458951);
+				region.setCenterLng(-79.920056);
+				region.setRadius(350);
+				regionDAO.create(region);
+				
+				region.setRegionId(3);
+				region.setRegionName("Craig St");
+				region.setCenterLat(40.447249);
+				region.setCenterLng(-79.949135);
+				region.setRadius(200);
+				regionDAO.create(region);
+			}
+		} catch (RollbackException e) {
+			e.printStackTrace();
+		}
 		
 		try {
 			if (businessprofileDAO.read(1) == null) {
 				BusinessProfileBean business = new BusinessProfileBean();
-				RegionBean region = new RegionBean();
-				region.setRegionId(1);
-				region.setRegionName("M");
-				regionDAO.create(region);
-				
-				region.setRegionId(2);
-                region.setRegionName("F");
-                regionDAO.create(region);
 		
 				business.setBusiness_id(1);
 				business.setPassword("123456");
@@ -363,11 +383,11 @@ public class Controller extends HttpServlet {
 				
 				business.setBusiness_id(19);
 				business.setPassword("123456");
-				business.setUsername("Everyday�s A Sundae & Caf�");
+				business.setUsername("Everyday's A Sundae & Cafe");
 				business.setPhone("347-654-1234");
-				business.setName("Everyday�s A Sundae & Caf�");
+				business.setName("Everyday's A Sundae & Cafe");
 				business.setWebsite("www.business.com");
-				business.setDescription("Hello Everyday�s A Sundae & Caf�");
+				business.setDescription("Hello Everyday's A Sundae & Cafe");
 				business.setInLat("40.45992");
 				business.setInLng("-79.92431");
 				business.setAddress("6014 Centre Avenue");
