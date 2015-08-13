@@ -146,51 +146,37 @@
 						<span>Main Navigation</span>
 					</div>
 					<ul class="main-navigation-menu">
-						<li class="active open"><a href="index.html">
+						<li class="active open"><a href="create_business.jsp">
 								<div class="item-content">
 									<div class="item-media">
 										<i class="ti-home"></i>
 									</div>
 									<div class="item-inner">
-										<span class="title"> Create Company </span>
+										<span class="title"> Create Business </span>
 									</div>
 								</div>
 						</a></li>
 					</ul>
 					<!-- end: MAIN NAVIGATION MENU -->
 					<!-- start: CORE FEATURES -->
-					<div class="navbar-title">
-						<span>Core Features</span>
-					</div>
-					<ul class="folders">
-						<li><a href="pages_calendar.html">
-								<div class="item-content">
-									<div class="item-media">
-										<span class="fa-stack"> <i
-											class="fa fa-square fa-stack-2x"></i> <i
-											class="fa fa-terminal fa-stack-1x fa-inverse"></i>
-										</span>
-									</div>
-									<div class="item-inner">
-										<span class="title"> Calendar </span>
-									</div>
-								</div>
-						</a></li>
-						<li><a href="pages_messages.html">
-								<div class="item-content">
-									<div class="item-media">
-										<span class="fa-stack"> <i
-											class="fa fa-square fa-stack-2x"></i> <i
-											class="fa fa-folder-open-o fa-stack-1x fa-inverse"></i>
-										</span>
-									</div>
-									<div class="item-inner">
-										<span class="title"> Messages </span>
-									</div>
-								</div>
-						</a></li>
-					</ul>
-					<!-- end: CORE FEATURES -->
+                        <div class="navbar-title">
+                            <span>Core Features</span>
+                        </div>
+                        <ul class="folders">
+                            <li>
+                                <a href="list.do">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Manage Users</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- end: CORE FEATURES -->
 					<!-- start: DOCUMENTATION BUTTON -->
 					<div class="wrapper">
 						<a href="documentation.html" class="button-o"> <i
@@ -213,7 +199,7 @@
 						data-toggle-class="app-slide-off" data-toggle-target="#app"
 						data-toggle-click-outside="#sidebar"> <i
 						class="ti-align-justify"></i>
-					</a> <a class="navbar-brand" href="#">
+					</a> <a class="navbar-brand" href="admin_main.jsp">
 						<h2>Nectr</h2>
 					</a> <a href="#"
 						class="sidebar-toggler pull-right visible-md visible-lg"

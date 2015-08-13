@@ -84,51 +84,37 @@
 						<span>Main Navigation</span>
 					</div>
 					<ul class="main-navigation-menu">
-						<li class="active open"><a href="index.html">
+						<li class="active open"><a href="create_business.jsp">
 								<div class="item-content">
 									<div class="item-media">
 										<i class="ti-home"></i>
 									</div>
 									<div class="item-inner">
-										<span class="title"> Manage Region </span>
+										<span class="title"> Create Business </span>
 									</div>
 								</div>
 						</a></li>
 					</ul>
 					<!-- end: MAIN NAVIGATION MENU -->
 					<!-- start: CORE FEATURES -->
-					<div class="navbar-title">
-						<span>Core Features</span>
-					</div>
-					<ul class="folders">
-						<li><a href="pages_calendar.html">
-								<div class="item-content">
-									<div class="item-media">
-										<span class="fa-stack"> <i
-											class="fa fa-square fa-stack-2x"></i> <i
-											class="fa fa-terminal fa-stack-1x fa-inverse"></i>
-										</span>
-									</div>
-									<div class="item-inner">
-										<span class="title"> Calendar </span>
-									</div>
-								</div>
-						</a></li>
-						<li><a href="pages_messages.html">
-								<div class="item-content">
-									<div class="item-media">
-										<span class="fa-stack"> <i
-											class="fa fa-square fa-stack-2x"></i> <i
-											class="fa fa-folder-open-o fa-stack-1x fa-inverse"></i>
-										</span>
-									</div>
-									<div class="item-inner">
-										<span class="title"> Messages </span>
-									</div>
-								</div>
-						</a></li>
-					</ul>
-					<!-- end: CORE FEATURES -->
+                        <div class="navbar-title">
+                            <span>Core Features</span>
+                        </div>
+                        <ul class="folders">
+                            <li>
+                                <a href="list.do">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> Manage Users</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- end: CORE FEATURES -->
 					<!-- start: DOCUMENTATION BUTTON -->
 					<div class="wrapper">
 						<a href="documentation.html" class="button-o"> <i
@@ -151,7 +137,7 @@
 						data-toggle-class="app-slide-off" data-toggle-target="#app"
 						data-toggle-click-outside="#sidebar"> <i
 						class="ti-align-justify"></i>
-					</a> <a class="navbar-brand" href="#">
+					</a> <a class="navbar-brand" href="admin_main.jsp">
 						<h2>Nectr</h2>
 					</a> <a href="#"
 						class="sidebar-toggler pull-right visible-md visible-lg"
@@ -272,9 +258,8 @@
 					<!-- start: REGISTER BOX -->
 					<div class="box-register">
 						<div class="col-sm-12">
-
-							<p id="addList" style="display: none">${addList}</p>
-							
+							<p id="addList"style="display: none" >${addList}</p>	
+							<p id="addList2"style="display: none" >${addList2}</p>							
 							<div class ="col-sm-8"><div id="googleMap" style="width: 880px; height: 550px;"></div></div>
 							<div class ="col-sm-4">
 							<h1 class="mainTitle">Create Region</h1>
@@ -299,8 +284,8 @@
 							</div>
 											
 							<div class="form-actions">
-								<button type="submit" name = "action" class="btn btn-primary pull-right">
-									Submit <i class="fa fa-arrow-circle-right"></i>
+								<button type="submit" name = "create" class="btn btn-primary pull-right">
+									Create <i class="fa fa-arrow-circle-right"></i>
 								</button>
 							</div>
 						</fieldset>
@@ -310,6 +295,8 @@
 							
 							</div>
 							<br>
+							<div class="col-sm-12">
+							<div class ="col-sm-8">
 							<form method="POST">
 							<table class="table table-bordered">
 								<thead>
@@ -353,6 +340,30 @@
                                 </button>
                             </div>
 							</form>
+							</div>
+							<div class ="col-sm-4">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>Region Name</th>
+										<th>Center</th>
+										<th>Radius</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<c:forEach var="r" items="${regionlist}">
+										<tr>
+											<td>${r.regionName }</td>
+											<td>${r.centerLat }, ${r.centerLng } </td>
+											<td>${r.radius }</td>
+											
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							</div>
+							</div>
 							<!-- start: COPYRIGHT -->
 							<div class="copyright">
 								&copy; <span class="current-year"></span><span

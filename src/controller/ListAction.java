@@ -149,6 +149,7 @@ public class ListAction extends Action {
 			 try {
 	                regionDAO.create(region2);
 	                request.setAttribute("msg", region2.getRegionName() + " " + " has been created");
+	                return "list.do";
 	            } catch (RollbackException e) {
 	                // TODO Auto-generated catch block
 	                e.printStackTrace();
