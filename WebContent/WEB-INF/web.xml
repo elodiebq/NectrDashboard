@@ -24,6 +24,10 @@
 		<servlet-name>LocationServlet</servlet-name>
 		<servlet-class>iOS_Communication.LocationServlet</servlet-class>
 	</servlet>
+	 <servlet>
+		<servlet-name>GetRegionServlet</servlet-name>
+		<servlet-class>iOS_Communication.GetRegionServlet</servlet-class>
+	</servlet>
   <servlet-mapping>
     <servlet-name>controller-servlet</servlet-name>
     <url-pattern>   *.do                     </url-pattern>
@@ -32,6 +36,10 @@
   <servlet-mapping>
 		<servlet-name>LocationServlet</servlet-name>
 		<url-pattern>/locate</url-pattern>
+	</servlet-mapping>
+	 <servlet-mapping>
+		<servlet-name>GetRegionServlet</servlet-name>
+		<url-pattern>/getRegion</url-pattern>
 	</servlet-mapping>
 
   <welcome-file-list>

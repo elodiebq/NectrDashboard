@@ -20,6 +20,8 @@ public class RegionDAO extends GenericDAO<RegionBean>  {
 		super(RegionBean.class, tableName, pool);
 	}
 	
+	
+	
 	public RegionBean getAnalysis(int name) throws RollbackException {
 	    RegionBean region[] = match(MatchArg.equals("regionId", name));
 		int a = region.length - 1;
@@ -34,6 +36,7 @@ public class RegionDAO extends GenericDAO<RegionBean>  {
         RegionBean regins[] = match(MatchArg.equals("regionName", name));
         int a = regins.length - 1;
         if (regins.length == 0) {
+			System.out.println("length is 0");
             return null;
         }
         else {
@@ -43,7 +46,9 @@ public class RegionDAO extends GenericDAO<RegionBean>  {
 	
 	public RegionBean[] getRegionList() throws RollbackException{
 		RegionBean[] regionlist = match();
-		if(regionlist.length == 0) return null;
+		if(regionlist.length == 0){
+			return null;
+		}
 		return regionlist;
 	}
 	
