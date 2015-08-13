@@ -13,6 +13,7 @@ public class BusinessProfileBean {
 	
 	private int    business_id;
 	private int    regionId;
+	private int    id;
 	private String name;
 	private String phone;
 	private String operation_hours;
@@ -33,6 +34,7 @@ public class BusinessProfileBean {
 	
 	public int    getBusiness_id()   { return business_id;}
 	public int    getRegionId()   { return regionId;}
+	public int    getBeaconId()   { return id;}
 	public String getName()    { return name; }
 	public String getPhone()     { return phone;  }
 	public String getOperation_hours() 	{ return operation_hours;	}
@@ -55,6 +57,7 @@ public class BusinessProfileBean {
 
 	public void setBusiness_id(int i) 	  {	business_id = i; }
 	public void setRegionId(int i)    { regionId = i; }
+	public void setBeaconId(int i)    { id = i; }
 	public void setName(String s) 		  {	name      = s; }
     public void setPhone(String s) 	  {	phone  = s; }
 	public void setOperation_housrs(String s)     {	operation_hours   = s; }

@@ -28,6 +28,16 @@ public class BusinessProfileDAO extends GenericDAO<BusinessProfileBean> {
 			return admin[0];
 		}
 	}
+	
+	public BusinessProfileBean[] getBusinessByRegionId(int name) throws RollbackException {
+        BusinessProfileBean[] admin = match(MatchArg.equals("regionId", name));
+        if (admin.length == 0) {
+            return null;
+        }
+        else {
+            return admin;
+        }
+    }
 	public BusinessProfileBean[] getBusinessList() throws RollbackException{
 		BusinessProfileBean[] businesslist = match();
 		if(businesslist.length == 0) return null;

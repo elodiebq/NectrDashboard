@@ -260,7 +260,7 @@
 						<div class="col-sm-12">
 							<p id="addList"style="display: none" >${addList}</p>	
 							<p id="addList2"style="display: none" >${addList2}</p>							
-							<div class ="col-sm-8"><div id="googleMap" style="width: 880px; height: 550px;"></div></div>
+							<div class ="col-sm-8"><div id="googleMap" style="width: 90%; height: 550px;"></div></div>
 							<div class ="col-sm-4">
 							<h1 class="mainTitle">Create Region</h1>
 							<h4 style="color: green">${msg}</h4>

@@ -37,7 +37,7 @@ public class ViewHistoryAction extends Action {
         int a = business.getBusiness_id();
         try {
         	
-        	CampaignBean[] campaignList = campaignDAO.getCampaigns();
+        	CampaignBean[] campaignList = campaignDAO.getCampaign();
 
  
         	request.setAttribute("campaignList", campaignList);

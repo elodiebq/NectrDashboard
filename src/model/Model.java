@@ -15,6 +15,8 @@ public class Model {
 	private BusinessProfileDAO 	businessDAO;
 	private CampaignDAO campaignDAO;
 	private AdminDAO     adminDAO;
+	private BeaconDAO beaconDAO;
+
 	private CustomerAnalysisDAO customerAnalysisDAO;
 	private RegionDAO regionDAO;
 
@@ -31,6 +33,8 @@ public class Model {
 			campaignDAO = new CampaignDAO("campaign",pool);
 			customerAnalysisDAO = new CustomerAnalysisDAO("customerAnalysis", pool);
 			regionDAO = new RegionDAO("region", pool);
+			beaconDAO = new BeaconDAO("beacon", pool);
+
 	
 		} catch (DAOException e) {
 			throw new ServletException(e);
@@ -42,5 +46,8 @@ public class Model {
 	public CampaignDAO getCampaignDAO() {return campaignDAO;}
 	public CustomerAnalysisDAO getCustomerAnalysisDAO() {return customerAnalysisDAO;}
 	public RegionDAO getRegionDAO() {return regionDAO;}
+	public BeaconDAO getBeaconDAO() {return beaconDAO;}
+
+	
 }
 

@@ -20,13 +20,17 @@
       <param-value>   jdbc:mysql:///test      </param-value>
     </init-param>
   </servlet>
-  <servlet>
+    <servlet>
 		<servlet-name>LocationServlet</servlet-name>
 		<servlet-class>iOS_Communication.LocationServlet</servlet-class>
 	</servlet>
 	 <servlet>
 		<servlet-name>GetRegionServlet</servlet-name>
 		<servlet-class>iOS_Communication.GetRegionServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetBusinessServlet</servlet-name>
+		<servlet-class>iOS_Communication.GetBusinessServlet</servlet-class>
 	</servlet>
   <servlet-mapping>
     <servlet-name>controller-servlet</servlet-name>
@@ -39,9 +43,12 @@
 	</servlet-mapping>
 	 <servlet-mapping>
 		<servlet-name>GetRegionServlet</servlet-name>
-		<url-pattern>/getRegion</url-pattern>
+		<url-pattern>/preloadRegions</url-pattern>
 	</servlet-mapping>
-
+	 <servlet-mapping>
+		<servlet-name>GetBusinessServlet</servlet-name>
+		<url-pattern>/loadBusiness</url-pattern>
+	</servlet-mapping>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>

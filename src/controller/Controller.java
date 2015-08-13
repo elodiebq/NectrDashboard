@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.AdminDAO;
+import model.BeaconDAO;
 import model.BusinessProfileDAO;
 import model.CampaignDAO;
 import model.CustomerAnalysisDAO;
@@ -45,7 +46,7 @@ public class Controller extends HttpServlet {
 		
 		
 	
-		initializeTable(model.getAdminDAO(), model.getBusinessProfileDAO(), model.getCustomerAnalysisDAO(), model.getCampaignDAO(), model.getRegionDAO());
+		initializeTable(model.getAdminDAO(), model.getBusinessProfileDAO(), model.getCustomerAnalysisDAO(), model.getCampaignDAO(), model.getRegionDAO(),model.getBeaconDAO());
 		
 	}
 
@@ -118,7 +119,7 @@ public class Controller extends HttpServlet {
 	
 	
 	public void initializeTable(AdminDAO adminDAO, BusinessProfileDAO businessprofileDAO, 
-			CustomerAnalysisDAO customerAnalysisDAO, CampaignDAO campaignDAO, RegionDAO regionDAO) {
+			CustomerAnalysisDAO customerAnalysisDAO, CampaignDAO campaignDAO, RegionDAO regionDAO,BeaconDAO beaconDAO) {
 
 		try {
 			if (adminDAO.read("admin") == null) {

@@ -101,7 +101,7 @@
                         </div>
                         <ul class="folders">
                             <li>
-                                <a href="campaign_history.jsp">
+                                <a href="view_history.do">
                                     <div class="item-content">
                                         <div class="item-media">
                                             <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>

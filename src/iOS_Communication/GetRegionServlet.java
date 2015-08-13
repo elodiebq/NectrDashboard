@@ -38,27 +38,23 @@ public class GetRegionServlet extends HttpServlet {
 
 		
 			try {
-				List<RegionBean> regionlist = regionDAO.getRegionList();
+				List<RegionBean> regions = regionDAO.getRegionList();
 				
 //				RegionBean region = regionDAO.getRegion("Walnut");
 //				System.out.println(region.getRegionName());
 //				RegionBean[] regionlist = regionDAO.getRegionList();
-				Response[] responselist = new Response[regionlist.size()];
-				for(int i = 0;i<regionlist.size();i++){
+				Response[] responselist = new Response[regions.size()];
+				for(int i = 0;i<regions.size();i++){
 					Response tmp = new Response();
-					tmp.regionId = regionlist.get(i).getRegionId();
-					System.out.println("tmp.regionId" + tmp.regionId);
-					tmp.radius = regionlist.get(i).getRadius();
-					System.out.println("tmp.radius" + tmp.radius);
-					tmp.centerLat = regionlist.get(i).getCenterLat();
-					System.out.println("tmp.centerLat" + tmp.centerLat);
-					tmp.centerLng = regionlist.get(i).getCenterLng();
-					System.out.println("tmp.centerLng" + tmp.centerLng);
+					tmp.regionid = regions.get(i).getRegionId();
+					tmp.radius = regions.get(i).getRadius();
+					tmp.latitude = regions.get(i).getCenterLat();
+					tmp.longtitude= regions.get(i).getCenterLng();
 					responselist[i] = tmp;
 				}
 				
 				RegionList reglist = new RegionList();
-				reglist.regionList = responselist;
+				reglist.regions = responselist;
 				String json = new Gson().toJson(reglist);
 				
 				

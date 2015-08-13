@@ -1,10 +1,6 @@
 
 package databeans;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Date;
-import java.util.Random;
 
 import org.genericdao.PrimaryKey;
 

@@ -23,7 +23,7 @@ public class LocationServlet extends HttpServlet {
 		double distance = calculateDistance(userLatitude,userLongitude,40.438374, -79.922614);
 				
 		Response response = new Response();
-		response.distance = distance;
+	//	response.distance = distance;
 		response.id = req.getParameter("userID");
 		String json = new Gson().toJson(response);
 		
