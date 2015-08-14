@@ -322,7 +322,7 @@
 						<div class="col-sm-6">
 							<h4 style="color: red">${msg}</h4>
 							<form class="form-register" method="POST"
-								action="create_business.do">
+								action="create_business.do"  enctype="multipart/form-data">>
 								<fieldset>
 									<legend> Business Info </legend>
 									<p>Enter new business owner's info below:</p>
@@ -419,7 +419,9 @@
 												pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$"
 												class="inputs duration t1 time hrs" required>
 										</div>
-
+										<br>
+										<label class="control-label col-sm-2" for="image">Image:</label>
+										<input type="file" name="image">
 										<br></br>
 									</div>
 									<div class="form-group">

@@ -4,12 +4,20 @@ package databeans;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import org.genericdao.PrimaryKey;
+import org.mybeans.form.FileProperty;
 
 @PrimaryKey("business_id")
-public class BusinessProfileBean {
+public class BusinessProfileBean  {
+	public static final List<String> EXTENSIONS = Collections.unmodifiableList(Arrays.asList( new String[] {
+			".jpg", ".gif", ".JPG"
+	} ));
+	
 	
 	private int    business_id;
 	private int    regionId;
@@ -22,6 +30,7 @@ public class BusinessProfileBean {
 	private String facebook;
 	private String twitter;
 	private Date created_at; 
+	private byte[] image;
 	private String password;
 	private String username;
 	private String address;
@@ -45,6 +54,7 @@ public class BusinessProfileBean {
 	public Date getCreated_at() 		{ return created_at;		}
 	public String getPassword()  {return password;}
 	public String getUsername() {return username;}
+	public byte[] getImage()    {return image;}
 	public String getAddress() {return address;}
 	public String getCity()    {return city;}
 	public String getInLng() {return inLng;}
@@ -69,6 +79,7 @@ public class BusinessProfileBean {
 	public void setPassword(String s) {password = s;}
 	public void setUsername(String s) {username = s;}
 	public void setAddress(String s) {address = s;}
+	public void setImage(byte[] s)       {image = s;}
 	public void setCity(String s)       {city = s;}
 	public void setInLng(String s){inLng = s;}
 	public void setInLat(String s){inLat = s;}

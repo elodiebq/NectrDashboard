@@ -1,5 +1,10 @@
 package controller;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -10,8 +15,11 @@ import org.genericdao.GenericDAO;
 import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 
+import javax.imageio.ImageIO;
 import javax.mail.internet.MimeMultipart;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import model.BusinessProfileDAO;
 import model.Model;
@@ -19,6 +27,7 @@ import model.RegionDAO;
 
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
+import org.mybeans.form.FileProperty;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
@@ -111,9 +120,10 @@ public class CreateBusinessAction extends Action {
             customer.setCity(form.getCity());
             customer.setInLat(form.getInLat());
             customer.setInLng(form.getInLnt());
-
             customer.setCategory(form.getCategory());
 
+            FileProperty fileProp = form.getImage();
+            customer.setImage(fileProp.getBytes());
             try {
                 customerDAO.create(customer);
                 request.setAttribute("msg",
@@ -169,7 +179,28 @@ public class CreateBusinessAction extends Action {
             // // TODO Auto-generated catch block
             // e.printStackTrace();
             // }
+            BusinessProfileBean customer2 = null;
+            BusinessProfileBean[] tmp = null;
+            try {
+				tmp = customerDAO.match();
+				customer2 = tmp[tmp.length - 1];
+			} catch (RollbackException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            InputStream in = new ByteArrayInputStream(customer2.getImage());
+            System.out.println(customer.getImage());
+			BufferedImage bImageFromConvert;
+			try {
+				bImageFromConvert = ImageIO.read(in);
+				ImageIO.write(bImageFromConvert, "jpg", new File(
+						"d:/new-darksouls2.jpg"));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
+	
         } catch (FormBeanException e) {
             // // TODO Auto-generated catch block
             e.printStackTrace();

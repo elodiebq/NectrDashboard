@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mybeans.form.FileProperty;
 import org.mybeans.form.FormBean;
 
 public class CreateBusinessProfileForm extends FormBean {
@@ -23,6 +24,7 @@ public class CreateBusinessProfileForm extends FormBean {
 	private String created_at;  
 	private String password;
 	private String username;
+	private FileProperty image;
 	private String address;
 	private String city;
 	private String region;
@@ -41,6 +43,7 @@ public class CreateBusinessProfileForm extends FormBean {
 	public String getCreated_at() 		{ return created_at;		}
 	public String getPassword()      { return password;        }
 	public String getUsername() {return username;}
+	public FileProperty     getImage()    {return image;}
 	public String getAddress() {return address;}
 	public String getCity()    {return city;}
 	public String getRegion() {return region;}
@@ -61,6 +64,7 @@ public class CreateBusinessProfileForm extends FormBean {
 	public void setCreated_at(String s)		  { created_at     = s.trim(); }
 	public void setPassword(String s)      { password = s.trim();        }
 	public void setUsername(String s) {username = s;}
+	public void setImage(FileProperty s)        {this.image = s;}
 	public void setAddress(String s) {address = s;}
 	public void setCity(String s)   {city = s;}
 	public void setRegion(String s) {region = s;}
