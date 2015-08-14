@@ -19,6 +19,11 @@
       <param-name>jdbcURL</param-name>
       <param-value>   jdbc:mysql:///test      </param-value>
     </init-param>
+      <init-param>
+      <param-name>jdbcURL2</param-name>
+<param-value> jdbc:mysql://aa16jq5rf5djwrw.cw0kvjz4dk33.us-east-1.rds.amazonaws.com:3306/ebdb?user=root&amp;password=12345678 
+          </param-value>
+          </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>controller-servlet</servlet-name>

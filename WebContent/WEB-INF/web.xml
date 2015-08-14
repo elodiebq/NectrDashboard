@@ -15,7 +15,7 @@
       <param-name>jdbcDriverName</param-name>
       <param-value>   com.mysql.jdbc.Driver   </param-value>
     </init-param>
-    <init-param>
+  <init-param>
       <param-name>jdbcURL</param-name>
       <param-value>   jdbc:mysql:///test      </param-value>
     </init-param>
