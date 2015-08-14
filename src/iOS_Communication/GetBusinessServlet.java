@@ -65,6 +65,8 @@ public class GetBusinessServlet extends HttpServlet {
 
 				responselist[i].businessId = (businessList.get(i)).getBusiness_id();
 				responselist[i].beaconId = (businessList.get(i)).getBeaconId();
+				responselist[i].businessLng = (businessList.get(i)).getInLng();
+				responselist[i].businessLat = (businessList.get(i)).getInLat();
 				List<BeaconBean> beacon = beaconDAO.getBeacon((businessList.get(i)).getBeaconId());
 				if (beacon.size() == 0) {
 					responselist[i].beaconMajor = -1;

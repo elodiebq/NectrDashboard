@@ -10,6 +10,8 @@ public class Response {
 	public int beaconId;
 	public int beaconMajor;
 	public int beaconMinor;
+	public String businessLng;
+	public String businessLat;
 
 	
 	public int     regionid;
