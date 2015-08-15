@@ -337,6 +337,9 @@
 										<input type="text" name="password" placeholder="Password">
 									</div>
 									<div class="form-group">
+                                        <input type="text" name="udid" placeholder="Udid">
+                                    </div>
+									<div class="form-group">
 										<input id="address" class="form-control" name="address"
 											type="text" size="40" placeholder="Address" />
 									</div>
@@ -365,11 +368,11 @@
 										<label class="block"> Region </label>
 										<div>
 											<c:forEach var="c" items="${region}">
-												<c:set var="index" value="${index+1}" />
+												
 												
 												<input type="radio"  name="region"
                                                 value= "${c}" ><label>
-                                                region${index}: ${c} </label>
+                                                 ${c} </label>
                                                 
 											</c:forEach>
 										</div>

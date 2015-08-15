@@ -22,6 +22,7 @@ public class BusinessProfileBean  {
 	private int    business_id;
 	private int    regionId;
 	private int    id;
+	private String udid;
 	private String name;
 	private String phone;
 	private String operation_hours;
@@ -30,7 +31,7 @@ public class BusinessProfileBean  {
 	private String facebook;
 	private String twitter;
 	private Date created_at; 
-	private byte[] image;
+	private String image;
 	private String password;
 	private String username;
 	private String address;
@@ -54,12 +55,13 @@ public class BusinessProfileBean  {
 	public Date getCreated_at() 		{ return created_at;		}
 	public String getPassword()  {return password;}
 	public String getUsername() {return username;}
-	public byte[] getImage()    {return image;}
+	public String getImage()    {return image;}
 	public String getAddress() {return address;}
 	public String getCity()    {return city;}
 	public String getInLng() {return inLng;}
 	public String getInLat() {return inLat;}
 	public String getCategory() {return category;}
+	public String getUdid() {return udid;}
 
 
 
@@ -79,12 +81,12 @@ public class BusinessProfileBean  {
 	public void setPassword(String s) {password = s;}
 	public void setUsername(String s) {username = s;}
 	public void setAddress(String s) {address = s;}
-	public void setImage(byte[] s)       {image = s;}
+	public void setImage(String s)       {image = s;}
 	public void setCity(String s)       {city = s;}
 	public void setInLng(String s){inLng = s;}
 	public void setInLat(String s){inLat = s;}
 	public void setCategory(String s){category = s;}
-
+	public void setUdid(String s){udid = s;}
 
 
 	

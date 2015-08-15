@@ -107,6 +107,12 @@ public class Controller extends HttpServlet {
 			d.forward(request, response);
 			return;
 		}
+		
+		if (nextPage.equals("image")) {
+	   		RequestDispatcher d = request.getRequestDispatcher(nextPage);
+	   		d.forward(request,response);
+	   		return;
+    	}
 
 		throw new ServletException(Controller.class.getName()
 				+ ".sendToNextPage(\"" + nextPage + "\"): invalid extension.");
@@ -488,7 +494,7 @@ public class Controller extends HttpServlet {
 				CampaignBean campaign = new CampaignBean();
 		
 				campaign.setCampaign_id(1);              
-				campaign.setBusiness_id(1);
+				campaign.setBusiness_id(4);
 				campaign.setTitle("Buy two get one FREE");
 				campaign.setMessage("From the time period, buy two Bud Light to get another one for free!");
 				campaign.setDate_create("2015-08-05");
@@ -500,7 +506,7 @@ public class Controller extends HttpServlet {
 				campaignDAO.create(campaign);
 				
 				campaign.setCampaign_id(2);              
-				campaign.setBusiness_id(1);
+				campaign.setBusiness_id(3);
 				campaign.setTitle("Friday Night!");
 				campaign.setMessage("Enjoy the food for 20% off this Friday!");
 				campaign.setDate_create("2015-08-05");
@@ -512,7 +518,7 @@ public class Controller extends HttpServlet {
 				campaignDAO.create(campaign);
 				
 				campaign.setCampaign_id(3);              
-				campaign.setBusiness_id(1);
+				campaign.setBusiness_id(2);
 				campaign.setTitle("Wings 39 cents!!");
 				campaign.setMessage("During the promotion time, have our delicious wings for only 39 cent!");
 				campaign.setDate_create("2015-08-05");

@@ -32,6 +32,10 @@
 		<servlet-name>GetBusinessServlet</servlet-name>
 		<servlet-class>iOS_Communication.GetBusinessServlet</servlet-class>
 	</servlet>
+		<servlet>
+		<servlet-name>GetCampaignServlet</servlet-name>
+		<servlet-class>iOS_Communication.GetCampaignServlet</servlet-class>
+	</servlet>
   <servlet-mapping>
     <servlet-name>controller-servlet</servlet-name>
     <url-pattern>   *.do                     </url-pattern>
@@ -48,6 +52,10 @@
 	 <servlet-mapping>
 		<servlet-name>GetBusinessServlet</servlet-name>
 		<url-pattern>/loadBusiness</url-pattern>
+	</servlet-mapping>
+	 <servlet-mapping>
+		<servlet-name>GetCampaignServlet</servlet-name>
+		<url-pattern>/notificationDetails</url-pattern>
 	</servlet-mapping>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>

@@ -56,5 +56,10 @@ public class CampaignDAO extends GenericDAO<CampaignBean>  {
 			return admin[0];
 		}
 	}
+	public void updateById(int id) throws RollbackException{
+		CampaignBean campaign = match(MatchArg.equals("campaign_id", id))[0];
+		update(campaign);
+		
+	}
 	
 }

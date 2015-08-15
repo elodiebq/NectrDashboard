@@ -31,17 +31,15 @@ public class RegionAction extends Action {
         
         try {
             System.out.print("I'm here");
-            businessList = customerDAO.getBusinessList();
             HashSet<String> list = new HashSet<String>();
-            if (businessList.length != 0) {
+            RegionBean[] regions = regionDAO.getRegionList();
+            if (regions.length != 0) {
 
-                for (int i = 0; i < businessList.length; i++) {
-                    System.out.print(businessList[i].getRegionId());
-                    RegionBean regionList = regionDAO.getAnalysis(businessList[i].getRegionId());
-                    list.add(regionList.getRegionName());
-                 
+                for (int i = 0; i < regions.length; i++) {
+                    list.add(regions[i].getRegionName());
+
                 }
-                String[] region = new String[list.size()];
+                String[] region = new String[regions.length];
                 java.util.Iterator<String> iterator = list.iterator();
                 int i = 0;
                 while (iterator.hasNext()) {
@@ -49,7 +47,10 @@ public class RegionAction extends Action {
                     i++;
                 }
 
-                System.out.println(region);
+                for (int j = 0; j < region.length; j++) {
+                    System.out.println(region[j]);
+                }
+                
                 request.setAttribute("region", region);
             }
         } catch (RollbackException e1) {

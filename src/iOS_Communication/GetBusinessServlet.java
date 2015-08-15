@@ -1,6 +1,8 @@
 package iOS_Communication;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,6 +26,8 @@ import model.MyDAOException;
 import model.RegionDAO;
 
 import com.google.gson.Gson;
+
+import java.sql.Timestamp;
 
 import databeans.BeaconBean;
 import databeans.BusinessProfileBean;
@@ -53,7 +57,6 @@ public class GetBusinessServlet extends HttpServlet {
 		if (req.getParameter("regionId") == null) {
 			return;
 		}
-		System.out.print("I'm here~~");
 		List<BusinessProfileBean> businessList;
 		List<CampaignBean> campaignList;
 		System.out.print(Integer.parseInt(req.getParameter("regionId")));
@@ -64,33 +67,66 @@ public class GetBusinessServlet extends HttpServlet {
 				responselist[i] = new Response();
 
 				responselist[i].businessId = (businessList.get(i)).getBusiness_id();
-				responselist[i].beaconId = (businessList.get(i)).getBeaconId();
+				responselist[i].uuid = (businessList.get(i)).getBeaconId();
 				responselist[i].businessLng = (businessList.get(i)).getInLng();
 				responselist[i].businessLat = (businessList.get(i)).getInLat();
+				
 				List<BeaconBean> beacon = beaconDAO.getBeacon((businessList.get(i)).getBeaconId());
 				if (beacon.size() == 0) {
-					responselist[i].beaconMajor = -1;
-					responselist[i].beaconMinor = -1;
+					responselist[i].major = -1;
+					responselist[i].minor = -1;
 				} else {
-					responselist[i].beaconMajor = (beacon.get(0)).getMajor_value();
-					responselist[i].beaconMinor = (beacon.get(0)).getMinor_value();
+					responselist[i].major = (beacon.get(0)).getMajor_value();
+					responselist[i].minor = (beacon.get(0)).getMinor_value();
 				}
 				campaignList = campaignDAO.getCampaignByCampaign((businessList.get(i)).getBusiness_id());
-				String[] campagin = new String[4];
-				if (campaignList.size() == 0) {
-					campagin[0] = null;
-					campagin[1] = null;
-					campagin[2] = null;
-					campagin[3] = null;
+				ArrayList<Campaign> campaigns = new ArrayList<Campaign>();
+				for (int a = 0; a < campaignList.size(); a++) {
+				    System.out.println("index:" + a);
+	                String from = campaignList.get(a).getDate_from() + " " + campaignList.get(a).getTime_from();
+	                String to = campaignList.get(a).getDate_to() + " " + campaignList.get(a).getTime_to();
+	                System.out.println("date from" + campaignList.get(a).getDate_from());
+	                System.out.println("time to" + campaignList.get(a).getTime_to());
+	                System.out.println("from:" + from.substring(0,19));
+	                long tmpFrom;
+	                long tmpTo;
+                    try {
+                        tmpFrom = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(from.substring(0,19)).getTime();
+                        System.out.println("Timestamp from:" + Long.toString(tmpFrom/1000));
+                        tmpTo = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(to.substring(0,19)).getTime();
+	                
+	               
+	               
+	                Campaign campagin  = new Campaign();
+	                
+	                Timestamp curr = new Timestamp(System.currentTimeMillis()); 
+	               // || curr.after(tmpTo) || curr.before(tmpFrom)
+	                if (campaignList.size() == 0  ) {
+	                    
+	                    campagin.campaignId = -1;
+	                    campagin.description = null;
+	                    campagin.start = null;
+	                    campagin.expire = null;
+	                   
 
-				} else {
+	                } else {
 
-					campagin[0] = Integer.toString((campaignList.get(i)).getCampaign_id());
-					campagin[1] = (campaignList.get(i)).getMessage();
-					campagin[2] = Integer.toString((campaignList.get(i)).getType());
-					campagin[3] = Integer.toString((campaignList.get(i)).getInStore());
+	                    campagin.campaignId = (campaignList.get(i)).getCampaign_id();
+	                    campagin.description = (campaignList.get(i)).getMessage();
+	                    System.out.println((campaignList.get(i)).getMessage()+"*******");
+	                    campagin.start = String.valueOf(Long.toString(tmpFrom/1000));
+	                    campagin.expire = String.valueOf(Long.toString(tmpTo/1000));
+	                   
+	                }
+                   
+	                campaigns.add(campagin);
+                    } catch (ParseException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
 				}
-				responselist[i].campagin = campagin;
+				
+				responselist[i].campagin = campaigns;
 				
 
 			}

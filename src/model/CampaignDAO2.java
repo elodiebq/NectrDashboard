@@ -60,6 +60,76 @@ public class CampaignDAO2{
 	private synchronized void releaseConnection(Connection con) {
 		connectionPool.add(con);
 	}
+	public CampaignBean getCampaignById(int name) throws MyDAOException {
+	    Connection con = null;
+        try {
+            con = getConnection();
+
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM "
+                    + "campaign " + "WHERE campaign_id = " + name);
+           
+            ResultSet rs = pstmt.executeQuery();
+            
+            CampaignBean campaign ;
+               if(!rs.next()){
+            	   campaign = null;
+               }else{
+            
+                campaign = new CampaignBean();
+                campaign.setUsed_amount(Integer.parseInt(rs.getString("used_amount")));
+                campaign.setCampaign_id((Integer.parseInt(rs.getString("campaign_id"))));
+                campaign.setBusiness_id(Integer.parseInt(rs.getString("business_id")));
+                campaign.setInStore((Integer.parseInt(rs.getString("inStore"))));
+                campaign.setType(((Integer.parseInt(rs.getString("type")))));
+                campaign.setTitle(rs.getString("title"));
+                campaign.setMessage(rs.getString("message"));
+                campaign.setDate_from(rs.getString("date_from"));
+                campaign.setDate_to(rs.getString("date_to"));
+                campaign.setTime_from((rs.getString("time_from")));
+                campaign.setTime_to((rs.getString("time_from")));
+               }
+
+            rs.close();
+            pstmt.close();
+            releaseConnection(con);
+            return campaign;
+
+        } catch (Exception e) {
+            try {
+                if (con != null)
+                    con.close();
+            } catch (SQLException e2) { /* ignore */
+            }
+            throw new MyDAOException(e);
+        }
+    }
+	public void updateById(int id) throws MyDAOException{
+	    Connection con = null;
+	    CampaignBean campaign = getCampaignById(id);
+	    int count = campaign.getUsed_amount()+1;
+	    System.out.println(count);
+	    PreparedStatement pstmt;
+		try {
+            con = getConnection();
+            String str = "UPDATE campaign SET used_amount = "+
+                    count +" WHERE campaign_id = "+ id;
+            System.out.println(str);
+			pstmt = con.prepareStatement(str);
+		
+		    pstmt.executeUpdate();
+            pstmt.close();
+            releaseConnection(con);
+
+        } catch (Exception e) {
+            try {
+                if (con != null)
+                    con.close();
+            } catch (SQLException e2) { /* ignore */
+            }
+            throw new MyDAOException(e);
+        }
+		
+	}
 	public List<CampaignBean> getCampaignByCampaign(int name) throws MyDAOException {
 	    Connection con = null;
         try {
@@ -77,8 +147,14 @@ public class CampaignDAO2{
                 CampaignBean temp = new CampaignBean();
                 temp.setCampaign_id((Integer.parseInt(rs.getString("campaign_id"))));
                 temp.setBusiness_id(Integer.parseInt(rs.getString("business_id")));
+                
                 temp.setInStore((Integer.parseInt(rs.getString("inStore"))));
                 temp.setType(((Integer.parseInt(rs.getString("type")))));
+                temp.setMessage(rs.getString("message"));
+                temp.setDate_from(rs.getString("date_from"));
+                temp.setDate_to(rs.getString("date_to"));
+                temp.setTime_from((rs.getString("time_from")));
+                temp.setTime_to((rs.getString("time_to")));
                 regionlist.add(temp);
             }
 
@@ -96,7 +172,5 @@ public class CampaignDAO2{
             throw new MyDAOException(e);
         }
     }
-	
-
 	
 }

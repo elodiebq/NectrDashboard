@@ -64,8 +64,8 @@ public class CreateCampaignAction extends Action{
             campaign.setDate_to(form.getDate_to());          
             campaign.setTitle(form.getTitle());
             campaign.setType(Integer.parseInt(form.getType()));
-            campaign.setTime_from(form.getTime_from());            
-            campaign.setTime_to(form.getTime_to());
+            campaign.setTime_from(form.getTime_from()+ ":00");            
+            campaign.setTime_to(form.getTime_to() + ":00");
             if (sb.toString() != null || c.length != 0)
             	campaign.setRepeats_on(sb.toString());
             campaign.setMessage(form.getMessage());

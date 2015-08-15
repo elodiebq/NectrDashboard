@@ -31,6 +31,7 @@ public class CreateBusinessProfileForm extends FormBean {
 	private String inLng;
 	private String inLat;
 	private String category;
+	private String udid;
 
 	
 	public String getName()    { return name; }
@@ -50,6 +51,7 @@ public class CreateBusinessProfileForm extends FormBean {
 	public String getInLnt() {return inLng;}
 	public String getInLat() {return inLat;}
 	public String getCategory() {return category;}
+	public String getUdid() {return udid;}
 
 
 
@@ -71,6 +73,7 @@ public class CreateBusinessProfileForm extends FormBean {
 	public void setInLng(String s){inLng = s;}
 	public void setInLat(String s){inLat = s;}
 	public void setCategory(String s){category = s;}
+	public void setUdid(String s){udid = s;}
 
 
 

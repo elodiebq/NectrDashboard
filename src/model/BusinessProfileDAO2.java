@@ -60,6 +60,43 @@ public class BusinessProfileDAO2{
 		connectionPool.add(con);
 	}
 	
+	public BusinessProfileBean getBusinessById(int name) throws MyDAOException {
+	    Connection con = null;
+        try {
+        	 con = getConnection();
+
+             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM "
+                     + "businessprofile " + "WHERE business_id = " + name);
+            
+             ResultSet rs = pstmt.executeQuery();
+             BusinessProfileBean business;
+             if(!rs.next()){
+            	 business = null;
+             }else{
+             
+             business = new BusinessProfileBean();
+             
+         
+                 
+                 business.setBusiness_id(Integer.parseInt(rs.getString("business_id")));
+                 business.setName(rs.getString("name"));
+                 business.setImage(rs.getString("image"));
+             }    
+             rs.close();
+             pstmt.close();
+             releaseConnection(con);
+             return business;
+        } catch (Exception e) {
+            try {
+                if (con != null)
+                    con.close();
+            } catch (SQLException e2) { /* ignore */
+            }
+            throw new MyDAOException(e);
+        }
+    }
+
+
 	public List<BusinessProfileBean> getBusinessByRegionId(int name) throws MyDAOException {
 	    Connection con = null;
         try {
@@ -96,6 +133,4 @@ public class BusinessProfileDAO2{
             throw new MyDAOException(e);
         }
     }
-
-	
 }
