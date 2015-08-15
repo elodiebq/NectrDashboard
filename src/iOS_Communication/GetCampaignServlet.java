@@ -2,6 +2,8 @@ package iOS_Communication;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -64,25 +66,34 @@ public class GetCampaignServlet extends HttpServlet {
             String from = campaign.getDate_from() + " " + campaign.getTime_from();
             String to = campaign.getDate_to() + " " + campaign.getTime_to();
            
-            Timestamp tmpFrom= Timestamp.valueOf(from);
-            Timestamp tmpTo= Timestamp.valueOf(to);
-            Timestamp curr = new Timestamp(System.currentTimeMillis()); 
-           
-			Response campaignRes = new Response();
-			campaignRes.businessId = campaign.getBusiness_id();
-			campaignRes.campaignTitle = campaign.getTitle();
-			campaignRes.campaignMessage = campaign.getMessage();
-			campaignRes.businessName = business.getName();
-			campaignRes.image = business.getImage();
-			 
-			campaignRes.from = tmpFrom;
-			campaignRes.to = tmpTo;
+            Long tmpFrom;
+            Long tmpTo;
+            try {
+                tmpFrom = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(from.substring(0,19)).getTime();
+               
+                tmpTo = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(to.substring(0,19)).getTime();
+               
+                Response campaignRes = new Response();
+                campaignRes.businessId = campaign.getBusiness_id();
+                campaignRes.campaignTitle = campaign.getTitle();
+                campaignRes.campaignMessage = campaign.getMessage();
+                campaignRes.businessName = business.getName();
+                campaignRes.image = business.getImage();
+                 
+                campaignRes.from = String.valueOf(Long.toString(tmpFrom/1000));
+                campaignRes.to = String.valueOf(Long.toString(tmpTo/1000));
+                String json = new Gson().toJson(campaignRes);
+                resp.setContentType("application/json");
+                resp.getWriter().println(json);
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            
             
 			
 			
-			String json = new Gson().toJson(campaignRes);
-			resp.setContentType("application/json");
-			resp.getWriter().println(json);
+			
 		} catch (MyDAOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

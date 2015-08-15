@@ -86,7 +86,7 @@ public class CampaignDAO2{
                 campaign.setDate_from(rs.getString("date_from"));
                 campaign.setDate_to(rs.getString("date_to"));
                 campaign.setTime_from((rs.getString("time_from")));
-                campaign.setTime_to((rs.getString("time_from")));
+                campaign.setTime_to((rs.getString("time_to")));
                }
 
             rs.close();

@@ -13,8 +13,8 @@ public class Response {
 	public int minor;
 	public String businessLat;
 	public String businessLng;
-	public Timestamp from;
-	public Timestamp to;
+	public String from;
+	public String to;
 	
 
 	
