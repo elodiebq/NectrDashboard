@@ -23,7 +23,9 @@ import java.util.List;
 
 
 
+
 import databeans.BusinessProfileBean;
+import databeans.CampaignBean;
 import databeans.RegionBean;
 
 public class BusinessProfileDAO2{
@@ -59,6 +61,8 @@ public class BusinessProfileDAO2{
 	private synchronized void releaseConnection(Connection con) {
 		connectionPool.add(con);
 	}
+	
+	
 	
 	public BusinessProfileBean getBusinessById(int name) throws MyDAOException {
 	    Connection con = null;

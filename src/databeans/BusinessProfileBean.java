@@ -42,6 +42,7 @@ public class BusinessProfileBean  {
 	
 	
 	
+	
 	public int    getBusiness_id()   { return business_id;}
 	public int    getRegionId()   { return regionId;}
 	public int    getBeaconId()   { return id;}
