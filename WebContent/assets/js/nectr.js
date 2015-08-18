@@ -1,4 +1,4 @@
-var bar = $("#bar").html();
+//var bar = $("#bar").html();
 var walkIn = $("#walkIn").html();
 var walkBy = $("#walkBy").html();
 

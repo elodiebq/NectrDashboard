@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -57,61 +58,7 @@ public class SetViewDataByDayAction extends Action {
                 CustomerAnalysisBean[] customer;
 
                 customer = customerAnalysisDAO.getAnalysisArray(a);
-                int OneDayWalkIn = 0;
-                for (int i = 0; i < 7; i++) {
-                    for (CustomerAnalysisBean cus : customer) {
-                        // System.out.print(cus.getTime().substring(0, 10));
-                        if (cus.getTime()
-                                .substring(0, 10)
-                                .equals(new SimpleDateFormat("yyyy-MM-dd")
-                                        .format(currTime.getTime() - i * 24
-                                                * 3600 * 1000))) {
-                            OneDayWalkIn = OneDayWalkIn + cus.getAmount_enter();
-                        }
-                        System.out.println(new SimpleDateFormat("yyyy-MM-dd")
-                                .format(currTime.getTime() - i * 24 * 3600
-                                        * 1000));
-                    }
-
-                }
-                int OneDayWalkBy = 0;
-                for (int i = 0; i < 7; i++) {
-                    for (CustomerAnalysisBean cus : customer) {
-                        // System.out.print(cus.getTime().substring(0, 10));
-                        if (cus.getTime()
-                                .substring(0, 10)
-                                .equals(new SimpleDateFormat("yyyy-MM-dd")
-                                        .format(currTime.getTime() - i * 24
-                                                * 3600 * 1000))) {
-                            OneDayWalkBy = OneDayWalkBy
-                                    + cus.getAmount_passby();
-                        }
-                        System.out.println(new SimpleDateFormat("yyyy-MM-dd")
-                                .format(currTime.getTime() - i * 24 * 3600
-                                        * 1000));
-                    }
-
-                }
-
-                int[] visitTimebyDay = new int[7];
-                int[] walkByTimebyDay = new int[7];
-                int[] existTime = { -1, -1, -1, -1, -1, -1, -1 };
-                int[] existTime2 = { -1, -1, -1, -1, -1, -1, -1 };
-                for (int i = 0; i < 7; i++) {
-                    for (CustomerAnalysisBean cus : customer) {
-                        // System.out.print(cus.getTime().substring(0, 10));
-                        if (cus.getTime()
-                                .substring(0, 10)
-                                .equals(new SimpleDateFormat("yyyy-MM-dd")
-                                        .format(currTime.getTime() - i * 24
-                                                * 3600 * 1000))) {
-                            existTime[6 - i] += cus.getAmount_enter();
-                            existTime2[6 - i] += cus.getAmount_passby();
-
-                        }
-                    }
-
-                }
+                
 
                 String time = new SimpleDateFormat("yyyy-MM-dd")
                         .format(currTime.getTime());
@@ -122,43 +69,33 @@ public class SetViewDataByDayAction extends Action {
                                     .format(currTime.getTime() - i * 24 * 3600
                                             * 1000);
                 }
-                for (int i = 0; i < 7; i++) {
-                    if (existTime[i] == -1) {
-                        visitTimebyDay[i] = 0;
-                    } else {
-                        visitTimebyDay[i] = existTime[i];
-                    }
+                
+                String defaultWalkInView;
+                try {
+                    defaultWalkInView = customerAnalysisDAO.getWalkinByDay(time);
+                    System.out.println("currTime" + time);
+                    String defaultWalkByView = customerAnalysisDAO.getWalkbyByDay(time);
+                    int totalVisit = customerAnalysisDAO.getTotalVisit();
+                    request.setAttribute("currTime",  new SimpleDateFormat("yyyy-MM-dd")
+                    .format(currTime));
+                    request.setAttribute("defaultWalkInView", defaultWalkInView);
+                    request.setAttribute("defaultWalkByView", defaultWalkByView);
+//                    request.setAttribute("OneDayWalkIn", OneDayWalkIn);
+//                    request.setAttribute("OneDayWalkBy", OneDayWalkBy);
+                    request.setAttribute("timeByDay", time);
+                    request.setAttribute("totalVisit", totalVisit);
 
-                    if (existTime2[i] == -1) {
-                        walkByTimebyDay[i] = 0;
-                    } else {
-                        walkByTimebyDay[i] = existTime2[i];
-                    }
+                    System.out.println("walkin" + defaultWalkInView);
+                    System.out.println("walkby" + defaultWalkByView);
+                    
+                    System.out.println(time);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
-
-                String defaultWalkInView = String.valueOf(visitTimebyDay[0]);
-                String defaultWalkByView = String.valueOf(walkByTimebyDay[0]);
-                for (int i = 1; i < 7; i++) {
-                    defaultWalkInView = defaultWalkInView + ","
-                            + String.valueOf(visitTimebyDay[i]);
-                    defaultWalkByView = defaultWalkByView + ","
-                            + String.valueOf(walkByTimebyDay[i]);
-                }
-                int totalVisit = customerAnalysisDAO.getAnalysis(a).getTotal_visit();
-                request.setAttribute("currTime",  new SimpleDateFormat("yyyy-MM-dd")
-                .format(currTime));
-                request.setAttribute("defaultWalkInView", defaultWalkInView);
-                request.setAttribute("defaultWalkByView", defaultWalkByView);
-                request.setAttribute("OneDayWalkIn", OneDayWalkIn);
-                request.setAttribute("OneDayWalkBy", OneDayWalkBy);
-                request.setAttribute("timeByDay", time);
-                request.setAttribute("totalVisit", totalVisit);
-
-                System.out.println(defaultWalkInView);
-                System.out.println(defaultWalkByView);
-                System.out.println(OneDayWalkIn);
-                System.out.println(OneDayWalkBy);
-                System.out.println(time);
+                
+                
+                
             } catch (ParseException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

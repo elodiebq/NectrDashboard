@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -180,20 +181,36 @@ public class SetViewDataByMonthAction extends Action {
                     defaultWalkByView = defaultWalkByView + ","
                             + String.valueOf(walkByTimebyMonth[i]);
                 }
-                int totalVisit = customerAnalysisDAO.getAnalysis(a).getTotal_visit();
-                request.setAttribute("currTime",
-                        new SimpleDateFormat("yyyy-MM").format(currTime));
-                request.setAttribute("timeTo",
-                        new SimpleDateFormat("yyyy-MM").format(timeTo));
-                request.setAttribute("defaultWalkInView", defaultWalkInView);
-                request.setAttribute("defaultWalkByView", defaultWalkByView);
-                request.setAttribute("MonthWalkIn", MonthWalkIn);
-                request.setAttribute("MonthWalkBy", MonthWalkBy);
-                request.setAttribute("timeMonth", timeMonth);
-                request.setAttribute("totalVisit", totalVisit);
+                
+                String monthFrom = new SimpleDateFormat("yyyy-MM").format(currTime);
+                String monthTo = new SimpleDateFormat("yyyy-MM").format(timeTo);
+                
+                
+                try {
+                    String defaultWalkInView1 = customerAnalysisDAO.getWalkinByMonth(monthFrom, monthTo);
+                    String defaultWalkByView2 = customerAnalysisDAO.getWalkbyByMonth(monthFrom, monthTo);
+                    int totalVisit = customerAnalysisDAO.getTotalVisit();
+                    request.setAttribute("currTime",
+                            new SimpleDateFormat("yyyy-MM").format(currTime));
+                    request.setAttribute("timeTo",
+                            new SimpleDateFormat("yyyy-MM").format(timeTo));
+                    request.setAttribute("defaultWalkInView", defaultWalkInView1);
+                    request.setAttribute("defaultWalkByView", defaultWalkByView2);
+                    request.setAttribute("MonthWalkIn", MonthWalkIn);
+                    request.setAttribute("MonthWalkBy", MonthWalkBy);
+                    request.setAttribute("timeMonth", timeMonth);
+                    request.setAttribute("totalVisit", totalVisit);
+                    
+                    System.out.println(defaultWalkInView1);
+                    System.out.println(defaultWalkByView2);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                
+               
 
-                System.out.println(defaultWalkInView);
-                System.out.println(defaultWalkByView);
+               
                 System.out.println(MonthWalkIn);
                 System.out.println(MonthWalkBy);
                 System.out.println(timeMonth);
