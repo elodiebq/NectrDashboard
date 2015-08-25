@@ -1,8 +1,3 @@
-//Hua-Ming Lee
-//huamingl
-//08-600
-//hw9
-//2014/12/1
 
 package formbeans;
 
@@ -32,6 +27,20 @@ public class CreateBusinessProfileForm extends FormBean {
 	private String inLat;
 	private String category;
 	private String udid;
+	private String monday_from;
+	private String monday_to;
+	private String tuesday_from;
+	private String tuesday_to;
+	private String wednesday_from;
+	private String wednesday_to;
+	private String thursday_from;
+	private String thursday_to;
+	private String friday_from;
+	private String friday_to;
+	private String saturday_from;
+	private String saturday_to;
+	private String sunday_from;
+	private String sunday_to;
 
 	
 	public String getName()    { return name; }
@@ -52,7 +61,20 @@ public class CreateBusinessProfileForm extends FormBean {
 	public String getInLat() {return inLat;}
 	public String getCategory() {return category;}
 	public String getUdid() {return udid;}
-
+	public String getMonday_from() {return monday_from;}
+	public String getMonday_to()  {return monday_to;}
+	public String getTuesday_from() {return tuesday_from;}
+	public String getTuesday_to()  {return tuesday_to;}
+	public String getWednesday_from() {return wednesday_from;}
+	public String getWednesday_to()  {return wednesday_to;}
+	public String getThursday_from() {return thursday_from;}
+	public String getThursday_to()  {return thursday_to;}
+	public String getFriday_from() {return friday_from;}
+	public String getFriday_to()  {return friday_to;}
+	public String getSaturday_from() {return saturday_from;}
+	public String getSaturday_to()  {return saturday_to;}
+	public String getSunday_from() {return sunday_from;}
+	public String getSunday_to()  {return sunday_to;}
 
 
 
@@ -74,7 +96,21 @@ public class CreateBusinessProfileForm extends FormBean {
 	public void setInLat(String s){inLat = s;}
 	public void setCategory(String s){category = s;}
 	public void setUdid(String s){udid = s;}
-
+	public void setMonday_from(String s) {monday_from = s;}
+	public void setMonday_to(String s) {monday_to = s;}
+	public void setTuesday_from(String s) {tuesday_from = s;}
+	public void setTuesday_to(String s) {tuesday_to = s;}
+	public void setWednesday_from(String s) {wednesday_from = s;}
+	public void setWednesday_to(String s) {wednesday_to = s;}
+	public void setThursday_from(String s) {thursday_from = s;}
+	public void setThursday_to(String s) {thursday_to = s;}
+	public void setFriday_from(String s) {friday_from = s;}
+	public void setFriday_to(String s) {friday_to = s;}
+	public void setSaturday_from(String s) {saturday_from = s;}
+	public void setSaturday_to(String s) {saturday_to = s;}
+	public void setSunday_from(String s) {sunday_from = s;}
+	public void setSunday_to(String s) {sunday_to = s;}
+	
 
 
 

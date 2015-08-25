@@ -13,7 +13,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -38,8 +37,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
+import model.BeaconDAO;
+import model.BeaconDAO2;
 import model.BusinessProfileDAO;
 import model.Model;
+import model.MyDAOException;
 import model.RegionDAO;
 
 import org.apache.commons.io.FileUtils;
@@ -50,8 +52,11 @@ import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
 
+
+
 import com.mysql.jdbc.Util;
 
+import databeans.BeaconBean;
 import databeans.BusinessProfileBean;
 import databeans.RegionBean;
 import formbeans.CreateBusinessProfileForm;
@@ -59,8 +64,15 @@ import formbeans.CreateBusinessProfileForm;
 public class CreateBusinessAction extends Action {
     private FormBeanFactory<CreateBusinessProfileForm> formBeanFactory = FormBeanFactory
             .getInstance(CreateBusinessProfileForm.class);
+
+    private String jdbcDriver  = "com.mysql.jdbc.Driver";
+  //  private String jdbcURL = "jdbc:mysql:///test";
+    private String jdbcURL = "jdbc:mysql://aatlnydnhg5jd9.cw0kvjz4dk33.us-east-1.rds.amazonaws.com:3306/ebdb?user=nectr&password=123456789";
+
+    private String tableName;
     private BusinessProfileDAO customerDAO;
     private RegionDAO regionDAO;
+    private BeaconDAO2 beaconDAO;
     
     public static final boolean _DEBUG_ = true;
 	private static final int HOST_CLASS_INDEX = 3;
@@ -125,6 +137,7 @@ public class CreateBusinessAction extends Action {
             }
 
             BusinessProfileBean customer = new BusinessProfileBean();
+            BeaconBean beacon = new BeaconBean();
             RegionBean region1 = new RegionBean();
             if (form.getRegion() != null){
             try {
@@ -136,10 +149,15 @@ public class CreateBusinessAction extends Action {
             }
             customer.setRegionId(region1.getRegionId());
             }
+            try {
+				beaconDAO = new BeaconDAO2("com.mysql.jdbc.Driver", "jdbc:mysql://aatlnydnhg5jd9.cw0kvjz4dk33.us-east-1.rds.amazonaws.com:3306/ebdb?user=nectr&password=123456789", "beacon");
+			} catch (MyDAOException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+
             customer.setName(form.getName());
-            if (form.getUdid() != null) {
-                customer.setUdid(form.getUdid());
-            }
+         
             customer.setPhone(form.getPhone());
             customer.setDescription(form.getDescription());
             customer.setOperation_housrs(form.getOperation_hours());
@@ -151,6 +169,8 @@ public class CreateBusinessAction extends Action {
             customer.setInLat(form.getInLat());
             customer.setInLng(form.getInLnt());
             customer.setCategory(form.getCategory());
+            customer.setBeaconId(beaconDAO.getLastId());
+            System.out.println(beaconDAO.getLastId());
 
             FileProperty fileProp = form.getImage();
             String webContentPath = request.getServletContext()
@@ -159,6 +179,23 @@ public class CreateBusinessAction extends Action {
 			String pathInWebContent = CreateBusinessAction.getPath("images/upload", fileLocalName);
 			String pathInSystem = CreateBusinessAction.getPath(webContentPath, pathInWebContent);
 			System.out.println("save file to " + pathInSystem);
+			String monday = "" + form.getMonday_from() + "to" + form.getMonday_to();
+			customer.setMonday(monday);
+			String tuesday = "" + form.getTuesday_from() + "to" + form.getTuesday_to();
+			customer.setTuesday(tuesday);
+			String wednesday = "" + form.getWednesday_from() + "to" + form.getWednesday_to();
+			customer.setWednesday(wednesday);
+			String thursday = "" + form.getThursday_from() + "to" + form.getThursday_to();
+			customer.setThursday(thursday);
+			String friday = "" + form.getFriday_from() + "to" + form.getFriday_to();
+			customer.setFriday(friday);
+			String saturday = "" + form.getSaturday_from() + "to" + form.getSaturday_to();
+			customer.setSaturday(saturday);
+			String sunday = "" + form.getSunday_from() + "to" + form.getSunday_to();
+			customer.setSunday(sunday);
+			
+			
+			
 			try {
 				FileUtils.writeByteArrayToFile(new File(pathInSystem),fileProp.getBytes());
 			} catch (IOException e1) {
@@ -182,7 +219,10 @@ public class CreateBusinessAction extends Action {
         } catch (FormBeanException e) {
             // // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+        } catch (MyDAOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
         return "create_business.jsp";
     }
 	

@@ -30,7 +30,7 @@ public class RegionAction extends Action {
         BusinessProfileBean[] businessList;
         
         try {
-            System.out.print("I'm here");
+            System.out.println("I'm here");
             HashSet<String> list = new HashSet<String>();
             RegionBean[] regions = regionDAO.getRegionList();
             if (regions.length != 0) {

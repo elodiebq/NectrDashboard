@@ -67,8 +67,10 @@ public class BeaconDAO2{
         try {
             con = getConnection();
 
-            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM "
-                    + "beacon " + "WHERE id=" + name );
+            String str = "SELECT * FROM "
+                    + "beacon " + "WHERE id=" + name ;
+            PreparedStatement pstmt = con.prepareStatement(str);
+            System.out.println("sql" + str);
             //pstmt.setInt(1, name);
             ResultSet rs = pstmt.executeQuery();
             
@@ -98,7 +100,32 @@ public class BeaconDAO2{
             throw new MyDAOException(e);
         }
     }
-	
+    public int getLastId()
+            throws MyDAOException {
+        Connection con = null;
+        try {
+            con = getConnection();
+            String str = "select id from beacon order by id desc limit 1";
+            PreparedStatement pstmt = con.prepareStatement(str);
+            int id=0;
+            System.out.println(str);
+            ResultSet rs = pstmt.executeQuery(str);
+            if(rs.next()){
+            id = Integer.parseInt(rs.getString("id"));
+            }
+            rs.close();
+            pstmt.close();
+            releaseConnection(con);
+            return id;
+        } catch (Exception e) {
+            try {
+                if (con != null)
+                    con.close();
+            } catch (SQLException e2) { /* ignore */
+            }
+            throw new MyDAOException(e);
+        }
+    }
 
 	
 }

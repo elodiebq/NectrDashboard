@@ -31,7 +31,35 @@ public class SetViewDataByDayAction extends Action {
     public String getName() {
         return "view_data_day.do";
     }
-
+    public String[] getPercentege(String defaultWalkInView) {
+        String[] array = defaultWalkInView.split(",");
+        
+        int total = 0;
+        for (int i = 0 ; i < array.length; i++) {
+            total += Integer.parseInt((array[i]));
+        }
+        System.out.println("total" + total);
+        float loyal = (Integer.parseInt(array[0])*100)/total;
+        float firstTime = (Integer.parseInt(array[1])*100)/total;
+        float lukeWarm = (Integer.parseInt(array[2])*100)/total;
+        String[] result = new String[3];
+        result[0] =  String.format("%.0f%%", loyal);
+        result[1] =  String.format("%.0f%%", lukeWarm);
+        result[2] =  String.format("%.0f%%", firstTime);
+       
+        return result;
+    }
+    public int getTotalCustomer(String defaultWalkInView) {
+        String[] array = defaultWalkInView.split(",");
+        
+        int total = 0;
+        for (int i = 0 ; i < array.length; i++) {
+            total += Integer.parseInt((array[i]));
+        }
+        System.out.println("total" + total);
+     
+        return total;
+    }
     public String perform(HttpServletRequest request) {
         BusinessProfileBean business = (BusinessProfileBean) request
                 .getSession(false).getAttribute("business");
@@ -71,11 +99,22 @@ public class SetViewDataByDayAction extends Action {
                 }
                 
                 String defaultWalkInView;
+                String defaultWalkByView;
                 try {
                     defaultWalkInView = customerAnalysisDAO.getWalkinByDay(time);
                     System.out.println("currTime" + time);
-                    String defaultWalkByView = customerAnalysisDAO.getWalkbyByDay(time);
+                    defaultWalkByView = customerAnalysisDAO.getWalkbyByDay(time);
+                    
                     int totalVisit = customerAnalysisDAO.getTotalVisit();
+                    int totalWalkBy = customerAnalysisDAO.getTotalWalkBy(business.getBusiness_id());
+                    int totalVisitThisWeek = customerAnalysisDAO.totalVisitThisWeek(business.getBusiness_id());
+                    int newCustomerThisWeek = customerAnalysisDAO.getNewCustomer(business.getBusiness_id());
+                    int repeatCustomerThisWeek = customerAnalysisDAO.getRepeatCustomer(business.getBusiness_id());
+                    int walkbyThisWeek = customerAnalysisDAO.getWalkbyThisWeek(business.getBusiness_id());
+                    String loyalCustomer = customerAnalysisDAO.getLoyalCustomer(a);
+                    String[] result = getPercentege(loyalCustomer);
+                    int total = getTotalCustomer(loyalCustomer);
+                    
                     request.setAttribute("currTime",  new SimpleDateFormat("yyyy-MM-dd")
                     .format(currTime));
                     request.setAttribute("defaultWalkInView", defaultWalkInView);
@@ -84,6 +123,21 @@ public class SetViewDataByDayAction extends Action {
 //                    request.setAttribute("OneDayWalkBy", OneDayWalkBy);
                     request.setAttribute("timeByDay", time);
                     request.setAttribute("totalVisit", totalVisit);
+                    
+                    
+                    request.setAttribute("loyalCustomer", loyalCustomer);
+                    //request.setAttribute("walkInByDay", walkIn);
+//                    request.setAttribute("walkByDay", walkBy);
+                    request.setAttribute("totalVisit", totalVisit);
+                    request.setAttribute("totalWalkBy", totalWalkBy);
+                    request.setAttribute("loyalPercentege", result[0]);
+                    request.setAttribute("lukeWarmPercentege", result[1]);
+                    request.setAttribute("firstTimePercentege", result[2]);
+                    request.setAttribute("total", total);
+                    request.setAttribute("totalVisitThisWeek", totalVisitThisWeek);
+                    request.setAttribute("newCustomerThisWeek", newCustomerThisWeek);
+                    request.setAttribute("repeatCustomerThisWeek", repeatCustomerThisWeek);
+                    request.setAttribute("walkbyThisWeek", walkbyThisWeek);
 
                     System.out.println("walkin" + defaultWalkInView);
                     System.out.println("walkby" + defaultWalkByView);

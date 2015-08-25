@@ -121,10 +121,10 @@ public class LoginAction extends Action {
 	        }
         } catch (RollbackException e) {
         	errors.add(e.getMessage());
-        	return "error.jsp";
+        	return "login.jsp";
         } catch (FormBeanException e) {
         	errors.add(e.getMessage());
-        	return "error.jsp";
+        	return "login.jsp";
         }
     }
 }

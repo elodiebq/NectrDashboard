@@ -21,6 +21,7 @@ import model.BusinessProfileDAO;
 import model.BusinessProfileDAO2;
 import model.CampaignDAO;
 import model.CampaignDAO2;
+import model.CustomerAnalysisDAO2;
 import model.Model;
 import model.MyDAOException;
 import model.RegionDAO;
@@ -38,15 +39,19 @@ public class GetBusinessServlet extends HttpServlet {
 	private BusinessProfileDAO2 businessDAO;
 	private CampaignDAO2 campaignDAO;
 	private BeaconDAO2 beaconDAO;
+    private CustomerAnalysisDAO2 customerAnalysisDAO;
+
 
 	public void init() throws ServletException {
 		String jdbcDriverName = "com.mysql.jdbc.Driver";
-		String jdbcURL = "jdbc:mysql:///test";
+        String jdbcURL = "jdbc:mysql://aatlnydnhg5jd9.cw0kvjz4dk33.us-east-1.rds.amazonaws.com:3306/ebdb?user=nectr&password=123456789";
 
 		try {
 			businessDAO = new BusinessProfileDAO2(jdbcDriverName, jdbcURL, "businessprofile");
 			campaignDAO = new CampaignDAO2(jdbcDriverName, jdbcURL, "campaign");
 			beaconDAO = new BeaconDAO2(jdbcDriverName, jdbcURL, "beacon");
+			 customerAnalysisDAO = new CustomerAnalysisDAO2(jdbcDriverName,
+	                    jdbcURL, "customeranalysis");
 		} catch (MyDAOException e) {
 			throw new ServletException(e);
 		}
@@ -62,16 +67,24 @@ public class GetBusinessServlet extends HttpServlet {
 		System.out.print(Integer.parseInt(req.getParameter("regionId")));
 		try {
 			businessList = businessDAO.getBusinessByRegionId(Integer.parseInt(req.getParameter("regionId")));
+			for(int j = 0;j<businessList.size();j++){
+			customerAnalysisDAO.updateById(
+					businessList.get(j).getBusiness_id(),
+		                    req.getParameter("time"),req.getParameter("venderId"));
+				
+			}
 			Response[] responselist = new Response[businessList.size()];
 			for (int i = 0; i < businessList.size(); i++) {
 				responselist[i] = new Response();
 
 				responselist[i].businessId = (businessList.get(i)).getBusiness_id();
-				responselist[i].uuid = (businessList.get(i)).getBeaconId();
+				responselist[i].uuid = (businessList.get(i)).getUdid();
 				responselist[i].businessLng = (businessList.get(i)).getInLng();
 				responselist[i].businessLat = (businessList.get(i)).getInLat();
 				
 				List<BeaconBean> beacon = beaconDAO.getBeacon((businessList.get(i)).getBeaconId());
+				System.out.println(beacon.size());
+			
 				if (beacon.size() == 0) {
 					responselist[i].major = -1;
 					responselist[i].minor = -1;
@@ -82,17 +95,18 @@ public class GetBusinessServlet extends HttpServlet {
 				campaignList = campaignDAO.getCampaignByCampaign((businessList.get(i)).getBusiness_id());
 				ArrayList<Campaign> campaigns = new ArrayList<Campaign>();
 				for (int a = 0; a < campaignList.size(); a++) {
-				    System.out.println("index:" + a);
 	                String from = campaignList.get(a).getDate_from() + " " + campaignList.get(a).getTime_from();
 	                String to = campaignList.get(a).getDate_to() + " " + campaignList.get(a).getTime_to();
-	                System.out.println("date from" + campaignList.get(a).getDate_from());
-	                System.out.println("time to" + campaignList.get(a).getTime_to());
-	                System.out.println("from:" + from.substring(0,19));
+	                System.out.println("time to"+to);
+	                System.out.println("time to"+to.length());
+
+	                
+
 	                long tmpFrom;
 	                long tmpTo;
                     try {
                         tmpFrom = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(from.substring(0,19)).getTime();
-                        System.out.println("Timestamp from:" + Long.toString(tmpFrom/1000));
+                      //  System.out.println("Timestamp from:" + Long.toString(tmpFrom/1000));
                         tmpTo = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(to.substring(0,19)).getTime();
 	                
 	               
@@ -111,9 +125,10 @@ public class GetBusinessServlet extends HttpServlet {
 
 	                } else {
 
-	                    campagin.campaignId = (campaignList.get(i)).getCampaign_id();
-	                    campagin.description = (campaignList.get(i)).getMessage();
-	                    System.out.println((campaignList.get(i)).getMessage()+"*******");
+	                    campagin.campaignId = (campaignList.get(a)).getCampaign_id();
+	                  //  System.out.println("i"+i+(campaignList.get(a)).getCampaign_id());
+	                    campagin.description = (campaignList.get(a)).getMessage();
+	                  // System.out.println((campaignList.get(i)).getMessage()+"*******");
 	                    campagin.start = String.valueOf(Long.toString(tmpFrom/1000));
 	                    campagin.expire = String.valueOf(Long.toString(tmpTo/1000));
 	                   

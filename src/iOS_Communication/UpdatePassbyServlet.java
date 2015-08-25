@@ -21,7 +21,7 @@ public class UpdatePassbyServlet extends HttpServlet {
 
     public void init() throws ServletException {
         String jdbcDriverName = "com.mysql.jdbc.Driver";
-        String jdbcURL = "jdbc:mysql:///test";
+        String jdbcURL = "jdbc:mysql://aatlnydnhg5jd9.cw0kvjz4dk33.us-east-1.rds.amazonaws.com:3306/ebdb?user=nectr&password=123456789";
 
         try {
 
@@ -39,15 +39,16 @@ public class UpdatePassbyServlet extends HttpServlet {
         if (req.getParameter("businessId") == null) {
             return;
         }
-        CustomerAnalysisBean customer;
+       
         try {
-            customer = customerAnalysisDAO.getAnalysisById(
-                    (Integer.parseInt(req.getParameter("businessId"))),
-                    req.getParameter("time"));
-            System.out.println("time" + req.getParameter("time"));
-            customerAnalysisDAO.updateById(
-                    Integer.parseInt(req.getParameter("businessId")),
-                    req.getParameter("time"));
+              if(customerAnalysisDAO.distinctVisistInHour(req
+                      .getParameter("time"), req.getParameter("venderId"))){
+                  customerAnalysisDAO.updateById(Integer.parseInt(req.getParameter("businessId")),req
+                            .getParameter("time"), req.getParameter("venderId"));
+                  System.out.println("customer update");
+
+              }
+           
         } catch (NumberFormatException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -55,7 +56,7 @@ public class UpdatePassbyServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        ;
+        
 
     }
 }

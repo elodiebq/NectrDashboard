@@ -23,7 +23,7 @@ public class GetRegionServlet extends HttpServlet {
 	
 	public void init() throws ServletException {
 		String jdbcDriverName = "com.mysql.jdbc.Driver";
-		String jdbcURL        = "jdbc:mysql:///test";
+        String jdbcURL = "jdbc:mysql://aatlnydnhg5jd9.cw0kvjz4dk33.us-east-1.rds.amazonaws.com:3306/ebdb?user=nectr&password=123456789";
 
 		
 		try {

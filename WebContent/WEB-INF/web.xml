@@ -17,7 +17,10 @@
     </init-param>
   <init-param>
       <param-name>jdbcURL</param-name>
-      <param-value>   jdbc:mysql:///test      </param-value>
+   <param-value>jdbc:mysql://aatlnydnhg5jd9.cw0kvjz4dk33.us-east-1.rds.amazonaws.com:3306/ebdb?user=nectr&amp;password=123456789
+
+          </param-value>
+          
     </init-param>
   </servlet>
     <servlet>

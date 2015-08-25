@@ -39,7 +39,7 @@ public class GetCampaignServlet extends HttpServlet {
 
 	public void init() throws ServletException {
 		String jdbcDriverName = "com.mysql.jdbc.Driver";
-		String jdbcURL = "jdbc:mysql:///test";
+        String jdbcURL = "jdbc:mysql://aatlnydnhg5jd9.cw0kvjz4dk33.us-east-1.rds.amazonaws.com:3306/ebdb?user=nectr&password=123456789";
 
 		try {
 			businessDAO = new BusinessProfileDAO2(jdbcDriverName, jdbcURL, "businessprofile");
@@ -79,6 +79,7 @@ public class GetCampaignServlet extends HttpServlet {
                 campaignRes.campaignMessage = campaign.getMessage();
                 campaignRes.businessName = business.getName();
                 campaignRes.image = business.getImage();
+                campaignRes.success = true;
                  
                 campaignRes.from = String.valueOf(Long.toString(tmpFrom/1000));
                 campaignRes.to = String.valueOf(Long.toString(tmpTo/1000));

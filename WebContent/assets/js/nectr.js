@@ -1,9 +1,11 @@
 //var bar = $("#bar").html();
-var walkIn = $("#walkIn").html();
-var walkBy = $("#walkBy").html();
+var walkIn = $("#defaultWalkInView").html();
+var walkBy = $("#defaultWalkByView").html();
+
 
 var walkIns = String(walkIn).split(',');
 var walkBys = String(walkBy).split(',');
+
 
 
 
@@ -11,8 +13,9 @@ var barHourData = {
         labels : ["00:00","02:00","04:00","06:00","08:00","10:00","12:00","14:00","16:00","18:00","20:00","22:00"],
         datasets : [
             {
-                fillColor : "rgba(73,188,170,0.4)",
-                strokeColor : "rgba(72,174,209,0.4)",
+                fillColor : "rgba(217,83,79,1)",
+                strokeColor : "rgba(217,83,79,0.6)",
+                label: "Walk in",
                 data : [parseInt(walkIns[0]),
                         parseInt(walkIns[1]),
                         parseInt(walkIns[2]),
@@ -28,8 +31,9 @@ var barHourData = {
                       ]
             },
             {
-                fillColor : "rgba(151,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,0.8)",
+                fillColor : "rgba(92,184,92,1)",
+                strokeColor : "rgba(92,184,92,0.6)",
+                label: "Walk by",
                 data : [parseInt(walkBys[0]),
                         parseInt(walkBys[1]),
                         parseInt(walkBys[2]),
@@ -50,3 +54,7 @@ var barHourData = {
 
 var hour = $("#hour").get(0).getContext("2d");
 new Chart(hour).Bar(barHourData);
+
+
+
+

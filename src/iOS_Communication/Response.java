@@ -8,7 +8,7 @@ public class Response {
 	public String id;
 	public ArrayList<Campaign> campagin;
 	public int businessId;
-	public int uuid;
+	public String uuid;
 	public int major;
 	public int minor;
 	public String businessLat;
@@ -27,5 +27,6 @@ public class Response {
 	public String businessName;
 	public String campaignMessage;
 	public String image;
+	public boolean success;
 }
 

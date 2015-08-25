@@ -215,46 +215,7 @@
 				<!-- start: NAVBAR COLLAPSE -->
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-right">
-						<!-- start: ACTIVITIES DROPDOWN -->
-						<li class="dropdown"><a href class="dropdown-toggle"
-							data-toggle="dropdown"> <i class="ti-check-box"></i> <span>ACTIVITIES</span>
-						</a>
-							<ul
-								class="dropdown-menu dropdown-light dropdown-messages dropdown-large">
-								<li><span class="dropdown-header"> You have new
-										notifications</span></li>
-								<li>
-									<div class="drop-down-wrapper ps-container">
-										<div class="list-group no-margin">
-											<a class="media list-group-item" href=""> <img
-												class="img-circle" alt="..."
-												src="assets/images/avatar-1.jpg"> <span
-												class="media-body block no-margin"> Use awesome
-													animate.css <small class="block text-grey">10
-														minutes ago</small>
-											</span>
-											</a> <a class="media list-group-item" href=""> <span
-												class="media-body block no-margin"> 1.0 initial
-													released <small class="block text-grey">1 hour ago</small>
-											</span>
-											</a>
-										</div>
-									</div>
-								</li>
-								<li class="view-all"><a href="#"> See All </a></li>
-							</ul></li>
-						<!-- end: ACTIVITIES DROPDOWN -->
-						<!-- start: LANGUAGE SWITCHER -->
-						<li class="dropdown"><a href class="dropdown-toggle"
-							data-toggle="dropdown"> <i class="ti-world"></i> English
-						</a>
-							<ul role="menu"
-								class="dropdown-menu dropdown-light fadeInUpShort">
-								<li><a href="#" class="menu-toggler"> Deutsch </a></li>
-								<li><a href="#" class="menu-toggler"> English </a></li>
-								<li><a href="#" class="menu-toggler"> Italiano </a></li>
-							</ul></li>
-						<!-- start: LANGUAGE SWITCHER -->
+						
 						<!-- start: USER OPTIONS DROPDOWN -->
 						<li class="dropdown current-user"><a href
 							class="dropdown-toggle" data-toggle="dropdown"> <img
@@ -319,10 +280,26 @@
 					<!-- end: DASHBOARD TITLE -->
 					<!-- start: REGISTER BOX -->
 					<div class="box-register">
-						<div class="col-sm-6">
+						<div class="col-sm-9">
 							<h4 style="color: red">${msg}</h4>
+							<filedset>
+							<legend> Beacon Info </legend>
 							<form class="form-register" method="POST"
-								action="create_business.do"  enctype="multipart/form-data">>
+								action="create_beacon.do"  enctype="multipart/form-data">
+								
+									
+                                    
+                                    
+                                        <input type="text" name="major_value" placeholder="Major Value">
+                                        <input type="text" name="minor_value" placeholder="Minor Value">
+                                        <input type="text" name="udid" placeholder="Udid">
+                                        
+                                   	<button type="submit" name="action" value="Add">Add </button>
+                                   	
+								</form>
+								</filedset>
+							<form class="form-register" method="POST"
+								action="create_business.do"  enctype="multipart/form-data">
 								<fieldset>
 									<legend> Business Info </legend>
 									<p>Enter new business owner's info below:</p>
@@ -336,11 +313,12 @@
 									<div class="form-group">
 										<input type="text" name="password" placeholder="Password">
 									</div>
+							
+   									                                     
+											
+									
 									<div class="form-group">
-                                        <input type="text" name="udid" placeholder="Udid">
-                                    </div>
-									<div class="form-group">
-										<input id="address" class="form-control" name="address"
+										<input id="address" name="address"
 											type="text" size="40" placeholder="Address" />
 									</div>
 									<div class="form-group">
@@ -413,14 +391,410 @@
 											</div>
 										</div>
 										<div class="input-append bootstrap-timepicker">
-											Business Hours <br></br> From:<input type="time" name="hrs"
-												name="timefrom" placeholder="hrs:mins" value=""
-												pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$"
-												class="inputs duration t1 time hrs" required> To:<input
-												type="time" name="hrs" name="timeto" placeholder="hrs:mins"
-												value=""
-												pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$"
-												class="inputs duration t1 time hrs" required>
+										Operating Hours <br></br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										Mon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										Tue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										Wed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										Thu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp
+										Fri&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+										Sat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+										Sun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+										<br> 
+										From:&nbsp;&nbsp;<select name="monday_from" >
+												  <option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="tuesday_from" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="wednesday_from" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="thursday_from" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="friday_from" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="saturday_from" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="sunday_from" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<br>
+												<br>
+										To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="monday_to" >
+										<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="tuesday_to" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="wednesday_to" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="thursday_to" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="friday_to" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="saturday_to" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
+												<select name="sunday_to" >
+												<option selected="selected">closed</option>
+												  <option value="12am">12:00am</option>
+												  <option value="1am">1:00am</option>
+												  <option value="2am">2:00am</option>
+												  <option value="3am">3:00am</option>
+												  <option value="4am">4:00am</option>
+												  <option value="5am">5:00am</option>
+												  <option value="6am">6:00am</option>
+												  <option value="7am">7:00am</option>
+												  <option value="8am">8:00am</option>
+												  <option value="9am">9:00am</option>
+												  <option value="10am">10:00am</option>
+												  <option value="11am">11:00am</option>
+												  <option value="12pm">12:00pm</option>
+												  <option value="1pm">1:00pm</option>
+												  <option value="2pm">2:00pm</option>
+												  <option value="3pm">3:00pm</option>
+												  <option value="4pm">4:00pm</option>
+												  <option value="5pm">5:00pm</option>
+												  <option value="6pm">6:00pm</option>
+												  <option value="7pm">7:00pm</option>
+												  <option value="8pm">8:00pm</option>
+												  <option value="9pm">9:00pm</option>
+												  <option value="10pm">10:00pm</option>
+												  <option value="11pm">11:00pm</option>
+												</select>
+												&nbsp;&nbsp;
 										</div>
 										<br>
 										<label class="control-label col-sm-2" for="image">Image:</label>
@@ -442,7 +816,7 @@
 							<!-- start: COPYRIGHT -->
 							<div class="copyright">
 								&copy; <span class="current-year"></span><span
-									class="text-bold text-uppercase"> ClipTheme</span>. <span>All
+									class="text-bold text-uppercase"> Nectr</span>. <span>All
 									rights reserved</span>
 							</div>
 						</div>
@@ -450,130 +824,7 @@
 						<!-- end: COPYRIGHT -->
 					</div>
 					<!-- end: REGISTER BOX -->
-					<!-- start: SETTINGS -->
-					<div class="settings panel panel-default hidden-xs hidden-sm"
-						id="settings">
-						<button ct-toggle="toggle" data-toggle-class="active"
-							data-toggle-target="#settings" class="btn btn-default">
-							<i class="fa fa-spin fa-gear"></i>
-						</button>
-						<div class="panel-heading">Style Selector</div>
-						<div class="panel-body">
-							<!-- start: FIXED HEADER -->
-							<div class="setting-box clearfix">
-								<span class="setting-title pull-left"> Fixed header</span> <span
-									class="setting-switch pull-right"> <input
-									type="checkbox" class="js-switch" id="fixed-header" />
-								</span>
-							</div>
-							<!-- end: FIXED HEADER -->
-							<!-- start: FIXED SIDEBAR -->
-							<div class="setting-box clearfix">
-								<span class="setting-title pull-left">Fixed sidebar</span> <span
-									class="setting-switch pull-right"> <input
-									type="checkbox" class="js-switch" id="fixed-sidebar" />
-								</span>
-							</div>
-							<!-- end: FIXED SIDEBAR -->
-							<!-- start: CLOSED SIDEBAR -->
-							<div class="setting-box clearfix">
-								<span class="setting-title pull-left">Closed sidebar</span> <span
-									class="setting-switch pull-right"> <input
-									type="checkbox" class="js-switch" id="closed-sidebar" />
-								</span>
-							</div>
-							<!-- end: CLOSED SIDEBAR -->
-							<!-- start: FIXED FOOTER -->
-							<div class="setting-box clearfix">
-								<span class="setting-title pull-left">Fixed footer</span> <span
-									class="setting-switch pull-right"> <input
-									type="checkbox" class="js-switch" id="fixed-footer" />
-								</span>
-							</div>
-							<!-- end: FIXED FOOTER -->
-							<!-- start: THEME SWITCHER -->
-							<div class="colors-row setting-box">
-								<div class="color-theme theme-1">
-									<div class="color-layout">
-										<label> <input type="radio" name="setting-theme"
-											value="theme-1"> <span class="ti-check"></span> <span
-											class="split header"> <span class="color th-header"></span>
-												<span class="color th-collapse"></span>
-										</span> <span class="split"> <span class="color th-sidebar"><i
-													class="element"></i></span> <span class="color th-body"></span>
-										</span>
-										</label>
-									</div>
-								</div>
-								<div class="color-theme theme-2">
-									<div class="color-layout">
-										<label> <input type="radio" name="setting-theme"
-											value="theme-2"> <span class="ti-check"></span> <span
-											class="split header"> <span class="color th-header"></span>
-												<span class="color th-collapse"></span>
-										</span> <span class="split"> <span class="color th-sidebar"><i
-													class="element"></i></span> <span class="color th-body"></span>
-										</span>
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="colors-row setting-box">
-								<div class="color-theme theme-3">
-									<div class="color-layout">
-										<label> <input type="radio" name="setting-theme"
-											value="theme-3"> <span class="ti-check"></span> <span
-											class="split header"> <span class="color th-header"></span>
-												<span class="color th-collapse"></span>
-										</span> <span class="split"> <span class="color th-sidebar"><i
-													class="element"></i></span> <span class="color th-body"></span>
-										</span>
-										</label>
-									</div>
-								</div>
-								<div class="color-theme theme-4">
-									<div class="color-layout">
-										<label> <input type="radio" name="setting-theme"
-											value="theme-4"> <span class="ti-check"></span> <span
-											class="split header"> <span class="color th-header"></span>
-												<span class="color th-collapse"></span>
-										</span> <span class="split"> <span class="color th-sidebar"><i
-													class="element"></i></span> <span class="color th-body"></span>
-										</span>
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="colors-row setting-box">
-								<div class="color-theme theme-5">
-									<div class="color-layout">
-										<label> <input type="radio" name="setting-theme"
-											value="theme-5"> <span class="ti-check"></span> <span
-											class="split header"> <span class="color th-header"></span>
-												<span class="color th-collapse"></span>
-										</span> <span class="split"> <span class="color th-sidebar"><i
-													class="element"></i></span> <span class="color th-body"></span>
-										</span>
-										</label>
-									</div>
-								</div>
-								<div class="color-theme theme-6">
-									<div class="color-layout">
-										<label> <input type="radio" name="setting-theme"
-											value="theme-6"> <span class="ti-check"></span> <span
-											class="split header"> <span class="color th-header"></span>
-												<span class="color th-collapse"></span>
-										</span> <span class="split"> <span class="color th-sidebar"><i
-													class="element"></i></span> <span class="color th-body"></span>
-										</span>
-										</label>
-									</div>
-								</div>
-							</div>
-							<!-- end: THEME SWITCHER -->
-						</div>
-					</div>
-					<!-- end: SETTINGS -->
+				
 				</div>
 				<!-- start: MAIN JAVASCRIPTS -->
 				<script src="vendor/jquery/jquery.min.js"></script>

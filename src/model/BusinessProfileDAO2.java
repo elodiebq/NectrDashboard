@@ -85,6 +85,9 @@ public class BusinessProfileDAO2{
                  business.setBusiness_id(Integer.parseInt(rs.getString("business_id")));
                  business.setName(rs.getString("name"));
                  business.setImage(rs.getString("image"));
+
+                
+
              }    
              rs.close();
              pstmt.close();
@@ -106,9 +109,10 @@ public class BusinessProfileDAO2{
         try {
             con = getConnection();
 
-
-            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM "
-                    + "businessprofile "+"WHERE regionId="+ name );
+            String str = "SELECT * FROM "
+                    + "businessprofile "+"WHERE regionId="+ name ;
+            PreparedStatement pstmt = con.prepareStatement(str);
+            System.out.println("sql business" + str);
            //pstmt.setInt(1, name);
             ResultSet rs = pstmt.executeQuery();
             
@@ -119,6 +123,10 @@ public class BusinessProfileDAO2{
                 BusinessProfileBean temp = new BusinessProfileBean();
                 temp.setRegionId(Integer.parseInt(rs.getString("regionId")));
                 temp.setBusiness_id(Integer.parseInt(rs.getString("business_id")));
+                temp.setUdid(rs.getString("udid"));
+                temp.setInLat(rs.getString("inLat"));
+                temp.setInLng(rs.getString("inLng"));
+                temp.setBeaconId(Integer.parseInt(rs.getString("beaconId")));
                
                 regionlist.add(temp);
             }

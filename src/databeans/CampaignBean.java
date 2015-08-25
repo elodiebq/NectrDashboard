@@ -27,6 +27,7 @@ public class CampaignBean {
 	private int total_amount;
 	private int used_amount;
 	
+	
 	public int    getCampaign_id()              { return campaign_id;}
 	public int    getBusiness_id()                 { return business_id;}
 	public String getTitle()                          { return title; }
@@ -42,6 +43,7 @@ public class CampaignBean {
 	public String getRepeats_on()               { return repeats_on;  }
 	public int getTotal_amount() 			{ return total_amount;		}
 	public int getUsed_amount()           { return used_amount;		}
+	
 
 	public void setCampaign_id(int i)                 { campaign_id = i; }
 	public void setBusiness_id(int i)                    { business_id = i;}
@@ -58,5 +60,6 @@ public class CampaignBean {
 	public void setRepeats_on(String s)              { repeats_on = s; }
 	public void setTotal_amount(int s) 			{ total_amount = s;		}
 	public void setUsed_amount(int s)           { used_amount = s;		}
+	
 	
 }

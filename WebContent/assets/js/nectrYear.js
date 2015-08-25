@@ -15,14 +15,14 @@ var barDayMonth = {
     labels : n.map(function(i){return timeByMonths[i];}),
     datasets : [
         {
-            fillColor : "rgba(73,188,170,0.4)",
-            strokeColor : "rgba(72,174,209,0.4)",
-            data : n.map(function(i){return parseInt(walkInByMonths[walkInByMonths.length - i - 1]);})
+        	fillColor : "rgba(217,83,79,1)",
+            strokeColor : "rgba(217,83,79,0.6)",
+            data : n.map(function(i){return parseInt(walkInByMonths[i]);})
         },
         {
-            fillColor : "rgba(151,187,205,0.5)",
-            strokeColor : "rgba(151,187,205,0.8)",
-            data : n.map(function(i){return parseInt(walkByByMonths[walkInByMonths.length - i - 1]);})
+        	fillColor : "rgba(92,184,92,1)",
+            strokeColor : "rgba(92,184,92,0.6)",
+            data : n.map(function(i){return parseInt(walkByByMonths[i]);})
         }
         
     ]

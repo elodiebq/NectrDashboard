@@ -9,10 +9,12 @@ public class Campaign {
 	public String start;
 	public String expire;
 	
+	
 	public Campaign(){
 		this.campaignId = -1;
 		this.description = null;
 		this.start = null;
 		this.expire = null;
+		
 	}
 }

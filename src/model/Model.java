@@ -18,6 +18,7 @@ public class Model {
 	private BeaconDAO beaconDAO;
 
 	private CustomerAnalysisDAO customerAnalysisDAO;
+	
 	private RegionDAO regionDAO;
 
 	
@@ -32,6 +33,7 @@ public class Model {
 			businessDAO   = new BusinessProfileDAO("businessProfile",pool);
 			campaignDAO = new CampaignDAO("campaign",pool);
 			customerAnalysisDAO = new CustomerAnalysisDAO("customerAnalysis", pool);
+			
 			regionDAO = new RegionDAO("region", pool);
 			beaconDAO = new BeaconDAO("beacon", pool);
 

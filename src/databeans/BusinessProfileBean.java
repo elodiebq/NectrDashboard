@@ -39,7 +39,13 @@ public class BusinessProfileBean  {
 	private String inLng;
 	private String inLat;
 	private String category;
-	
+	private String monday;
+	private String tuesday;
+	private String wednesday;
+	private String thursday;
+	private String friday;
+	private String saturday;
+	private String sunday;
 	
 	
 	
@@ -63,6 +69,13 @@ public class BusinessProfileBean  {
 	public String getInLat() {return inLat;}
 	public String getCategory() {return category;}
 	public String getUdid() {return udid;}
+	public String getMonday() {return monday;}
+	public String getTuesday() {return tuesday;}
+	public String getWednesday() {return wednesday;}
+	public String getThursday() {return thursday;}
+	public String getFriday() {return friday;}
+	public String getSaturday() {return saturday;}
+	public String getSunday() {return sunday;}
 
 
 
@@ -88,6 +101,13 @@ public class BusinessProfileBean  {
 	public void setInLat(String s){inLat = s;}
 	public void setCategory(String s){category = s;}
 	public void setUdid(String s){udid = s;}
+	public void setMonday(String s){monday = s;}
+	public void setTuesday(String s){tuesday = s;}
+	public void setWednesday(String s){wednesday = s;}
+	public void setThursday(String s){thursday = s;}
+	public void setFriday(String s){friday = s;}
+	public void setSaturday(String s){saturday = s;}
+	public void setSunday(String s){sunday = s;}
 
 
 	
